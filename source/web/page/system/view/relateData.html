@@ -1,0 +1,99 @@
+<div>
+    <label>Cells: </label><input id="cells" type="text" placeholder="Cells" value="3">
+    <label>Rows: </label><input id="rows" type="text" placeholder="Rows" value="100">
+    <button id="build" class="btn btn-default">Build</button>
+</div>
+<table id="table"
+       data-toggle="table"
+       data-show-columns="true"
+       data-search="true"
+       data-show-refresh="true"
+       data-show-toggle="true"
+       data-pagination="true"
+       data-height="500">
+    <thead>
+    <tr>
+        <th data-field="id" data-formatter="idFormatter">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    /*function GetRequest() {
+//        var url = location.search; //获取url中"?"符后的字串
+        var url = window.document.location.href; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        alert("url:"+url)
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    var Request = new Object();
+    Request = GetRequest();
+    console.log(Request)
+    alert('getQueryString:'+Request['type']);*/
+    $(function () {
+        $('#build').click(build);//.trigger('click');
+        $('#cells, #rows').keyup(function (e) {
+            if (e.keyCode === 13) {
+                build();
+            }
+        });
+    });
+
+    function build() {
+        var cells = $('#cells').val(),
+                rows = $('#rows').val(),
+                i, j, row,
+                columns = [],
+                data = [];
+
+        /*for (i = 0; i < cells; i++) {
+         if (i==0){
+         columns.push({
+         field: 'field' + i,
+         checkbox: true
+         });
+         }else{
+         columns.push({
+         field: 'field' + i,
+         title: 'Cell' + i
+         });
+
+         }
+         }*/
+        columns.push({
+            field: 'field0',
+            checkbox: true
+        });
+        columns.push({
+            field: 'field1',
+            title: '编号'
+        });
+        columns.push({
+            field: 'field2',
+            title: '名称'
+        });
+        for (i = 0; i < rows; i++) {
+            row = {};
+            for (j = 0; j < cells; j++) {
+                row['field' + j] = 'Row-' + i + '-' + j;
+            }
+            data.push(row);
+        }
+        $('#table').bootstrapTable('destroy').bootstrapTable({
+            columns: columns,
+            data: data
+        });
+    }
+
+    function idFormatter(value) {
+        return value + 100;
+    }
+</script>

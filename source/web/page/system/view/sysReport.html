@@ -1,0 +1,418 @@
+<!-- 报表管理列表 -->
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	{{i18n('page_reportlist_manage')}}
+    </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}}</a></li>
+		<li class="active">{{i18n('page_reportlist_manage')}}</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">{{i18n('page_reportlist_list')}}</h3>
+			<div class="box-tools">
+				<span class="pull-left span-lh">{{i18n('page_reportlist_name')}}</span>
+				<div class="input-group pull-left">
+					<input ng-model="search.menuName" type="text" class="form-control input-sm" placeholder="{{i18n('page_reportlist_name')}}" />
+					<input ng-model="search.menuType" type="hidden" class="form-control input-sm" ng-init="search.menuType='02'" />
+				</div>
+				<div class="pull-right">
+					<a ng-click="editBtn('getMenuListBtn','yes')" class="btn btn-default btn-sm" id="search-btn">
+						<i class="fa fa-search"></i> {{i18n('page_reporttool_search')}}
+					</a>
+					<a ng-click="addMenu()" class="btn btn-default btn-sm" data-toggle="modal">
+						<i class="fa fa-plus-circle"></i> {{i18n('sys_title_dlg_new')}}
+					</a>
+					<!-- Loading -->
+					<div class="zeng_msgbox_layer_wrap" id="q_Msgbox"></div>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>{{i18n('page_reportlist_code')}}</th>
+						<th>{{i18n('page_reportlist_name')}}</th>
+						<th>{{i18n('page_reportlist_attributes')}}</th>
+						<th>{{i18n('page_reportlist_status')}}</th>
+						<th>{{i18n('page_menu_createuser')}}</th>
+						<th>{{i18n('page_reporttool_creationtime')}}</th>
+						<th>{{i18n('page_reporttool_operation')}}</th>
+					</tr>
+					<tr ng-repeat="sysMenu in datas">
+						<td>{{sysMenu.code}}</td>
+						<td>{{sysMenu.menuName}}</td>
+						<td ng-if="sysMenu.menuAttribute==0">{{i18n('page_reportMan_catalog')}}</td>
+						<td ng-if="sysMenu.menuAttribute==1">{{i18n('page_role_detail_reportform')}}</td>
+						<td ng-if="sysMenu.menuStatus==1">{{i18n('page_user_new_enable')}}</td>
+						<td ng-if="sysMenu.menuStatus==0">{{i18n('page_user_new_disable')}}</td>
+						<td>{{sysMenu.createUser}}</td>
+						<td>{{sysMenu.createTime}}</td>
+						<td>
+							<a ng-click="editMenu(sysMenu.id)" title="{{i18n('sys_title_dlg_edit')}}" data-toggle="modal" ><i class="fa fa-edit"></i></a>
+							<a ng-if="sysMenu.menuType==02" ng-click="deleteMenu(sysMenu.id)" title="{{i18n('page_delete')}}" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a ng-click="getMenuDetail(sysMenu.id)" title="{{i18n('page_user_details')}}" ><i class="fa fa-info-circle"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+			<p class="pull-left">
+			{{i18n('page_index_pages_total')}} <span>{{itemCount}}</span>
+			 {{i18n('page_index_pages_record')}} , {{i18n('page_index_pages_total')}} 
+			 <span>{{pageCount}}</span> {{i18n('page_index_pages_page')}}
+			</p>
+			<ul id="pagination" class="pagination pagination-sm no-margin pull-right">
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+<!-- Modals -->
+<!-- 新增编辑 -->
+<div class="modal fade" id="adminModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="newTitle" style="display: inline;" >{{i18n('page_reportlist_manage')}}-{{i18n('sys_title_dlg_new')}}</h4>
+				<h4 class="modal-title" id="editTitle" style="display: none;" >{{i18n('page_reportlist_manage')}}-{{i18n('sys_title_dlg_edit')}}</h4>
+			</div>
+			<div class="modal-body">
+				<form id="menu" method="post">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_menu_new_chinesename')}}</label>
+								<input type="text" class="form-control" name="Chinamenuname" placeholder="{{i18n('page_menu_new_chinesename')}}" ng-model="sysMenu.menuNameZh" id="menuNameZh"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_menu_new_englishname')}}</label>
+								<input type="text" class="form-control" name="Englishmenuname" placeholder="{{i18n('page_menu_new_englishname')}}" ng-model="sysMenu.menuNameEn" id="menuNameEn"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_reportlist_order')}}</label>
+								<input type="text" class="form-control" name="menuorder" placeholder="{{i18n('page_reportlist_order')}}" ng-model="sysMenu.menuOrder" id="menuOrder"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" style="position: relative;">
+								<input type="hidden" ng-model="sysMenu.menuParentId" />
+								<label>{{i18n('page_reportlist_level')}}</label>
+								<input type="text" class="form-control" readonly="readonly" id="selInput" />
+								<!-- 树形下拉选择框 -->
+								<div class="ztree-sel" id="menuselDiv" style="left:0px;top:60px">
+									<ul class="ztree" id="menuselTree"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_reportlist_status')}}</label>
+								<select class="form-control" ng-model="sysMenu.menuStatus" name="menuStatus" ng-options="x.id as x.name for x in menuStatus" >
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group menuproperty">
+								<label>{{i18n('page_reportlist_attributes')}}</label>
+								<select class="form-control" ng-model="sysMenu.menuAttribute" ng-options="x.id as x.name for x in menuAttributes">
+								</select>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row menu-report">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_index_menu_birt')}}</label>
+								<select class="form-control"  ng-model="sysMenu.menuReportTool" ng-options="x.id as x.name for x in menuReportTools">
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="hidden" ng-model="sysMenu.reportMenuParam" />
+								<label>{{i18n('page_index_menu_reportparameter')}}</label>
+								<!-- multiple -->
+								<select class="form-control SlectBox" multiple="multiple" id="reportMenuParams">
+								</select>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row menu-report">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_reportlist_address')}}</label>
+								<input type="text" class="form-control" placeholder="{{i18n('page_reportlist_address')}}" ng-model="sysMenu.menuUrl"/>
+							</div>
+						</div>
+						
+					</div>
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}</button>
+				<button type="button" class="btn btn-preserve" data-toggle="modal" id="menupreservebtn">{{i18n('page_sys_dlg_save')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 报表详情 -->
+<div class="modal fade" id="detailModal1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_report_details')}}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reportlist_code')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.code" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reportlist_name')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.menuName" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_report_reportCode')}}</label>
+							<input type="text" class="form-control" readonly="readonly" id="menuParentCode" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_report_reportName')}}</label>
+							<input type="text" class="form-control" readonly="readonly" id="menuParentName" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_menu_new_chinesename')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.menuNameZh" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_menu_new_englishname')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.menuNameEn" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reportlist_order')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.menuOrder" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reportlist_status')}}</label>
+							<input type="text" class="form-control" readonly="readonly"  id="menuStatus"/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reportlist_attributes')}}</label>
+							<input type="text" class="form-control" readonly="readonly" id="menuAttribute"  />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_index_menu_birt')}}</label>
+							<input type="text" class="form-control" readonly="readonly" id="menuReportTool" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_menu_createuser')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.createUser" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_menudetail_modifyUser')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.updateUser" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reporttool_creationtime')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.createTime" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_menudetail_modifyTime')}}</label>
+							<input type="text" class="form-control" readonly="readonly" ng-model="sysMenu.updateTime" />
+						</div>
+					</div>
+				</div>
+				<div class="row" id="menuReportParam">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>{{i18n('page_index_menu_reportparameter')}}</label>
+							<div class="box-body no-padding TableDiv">
+								<table class="table table-striped">
+									<tbody id="reportParam">
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal">{{i18n('page_user_close')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 删除操作 -->
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_reportlist_manage')}}-{{i18n('page_delete')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">{{i18n('page_sys_dlg_confirm')}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}</button>
+				<button type="button" class="btn btn-preserve" id="btnConfirm">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--保存成功-->
+<div class="modal fade" id="successModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_reportlist_manage')}}-{{i18n('page_sys_dlg_save')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure" id="hintInfo"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal" id="btnSave">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Modals -->
+
+ <!--提示信息-->
+<div class="modal fade" id="tipModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_reportlist_manage')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">{{i18n('page_tip_repeat')}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+<script type="text/javascript">
+$(function(){
+	//表单验证
+	$('#menu').bootstrapValidator({
+		feedbackIcons: {
+			valid: 'glyphicon glyphicon-ok',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
+		},
+		fields: {
+			menucode: {
+				validators: {
+					notEmpty: {
+						message: "{{i18n('page_report_codeValidate')}}"
+					},
+					regexp: {
+						regexp: /^[a-zA-Z0-9]+$/,
+						message: "{{i18n('page_report_include')}}"
+					}
+				}
+			},
+			menuname: {
+				validators: {
+					notEmpty: {
+						message: "{{i18n('page_report_nameEmpty')}}"
+					}
+				}
+			},
+			Chinamenuname: {
+				validators: {
+					notEmpty: {
+						message: "{{i18n('page_menu_chinesenametip')}}"
+					}
+				}
+			},
+			Englishmenuname: {
+				validators: {
+					notEmpty: {
+						message: "{{i18n('page_menu_englishnametip')}}"
+					}
+				}
+			},
+			menuorder: {
+				validators: {
+					notEmpty: {
+						message: "{{i18n('page_report_orderEmpty')}}"
+					},
+					regexp: {
+						regexp: /^[Z0-9]+$/,
+						message: "{{i18n('page_report_contain')}}"
+					}
+				}
+			}
+		}
+	});
+});
+</script>

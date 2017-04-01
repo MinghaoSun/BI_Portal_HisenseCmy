@@ -1,0 +1,420 @@
+<!-- 创建群发消息 -->
+
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                                        创建群发消息
+    	<small>创建一条新的群发消息内容</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">消息中心</a></li>
+    	<li class="active">群发消息</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+        <div class="box-header">
+            <h3 class="box-title">群发消息设置</h3>
+            <div class="box-tools">
+            	<a href="#" data-page="msg-group" class="btn btn-default btn-sm">
+            		<i class="fa fa-reply"></i> 返回
+            	</a>
+            </div>
+        </div>
+    	<div class="box-body no-pad-top">
+    		<div class="setting-con">
+          		<ul class="nav nav-tabs">
+				    <li role="presentation" class="active">
+				    	<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
+				    		<i class="fa fa-pencil"></i> 文字消息
+				    	</a>
+				    </li>
+				    <li role="presentation">
+				    	<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
+				    		<i class="fa fa-list-alt"></i> 图文素材
+				    	</a>
+				    </li>
+				    <li role="presentation">
+				    	<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
+				    		<i class="fa fa-image"></i> 图片素材
+				    	</a>
+				   	</li>
+				</ul>
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="tab1" style="position:relative;margin-right:225px;">
+						<textarea class="form-control" rows="8" data-emojiable="true" placeholder="请输入回复内容 ..." id="tarea"></textarea>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tab2">
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#" class="block-link">
+									<i class="fa fa-plus"></i>
+									<br />
+									<span>从素材库中选择</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="tab3">
+						<div class="row">
+							<div class="col-md-12">
+								<a href="#" class="block-link">
+									<i class="fa fa-plus"></i>
+									<br />
+									<span>从素材库中选择</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 选择发送群体 -->
+				<div class="form-group">
+					<label>发送对象</label>
+					<div class="radio">
+					    <label>
+					        <input type="radio" name="sendObj" value="0" checked="checked"> 全部用户
+					    </label>
+					    <label style="margin-left:15px;">
+					        <input type="radio" name="sendObj" value="1"> 指定部门
+					    </label>
+					    <label style="margin-left:15px;">
+					        <input type="radio" name="sendObj" value="2"> 指定用户
+					    </label>
+					    <label style="margin-left:15px;">
+					        <input type="radio" name="sendObj" value="3"> 指定标签
+					    </label>
+					</div>
+				</div>
+				
+				<div class="tree-panel" id="groupPanel" style="display:none;">
+					<ul class="ztree" id="groupTree"></ul>
+				</div>
+				<div class="tree-panel" id="userPanel" style="display:none;">
+					<div id="tagDiv">
+					    <label class="no-padding">
+					        <span class="label label-default">
+					        	张三 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+					        </span>
+					    </label>
+					    <label class="no-padding">
+					        <span class="label label-default">
+					        	李四 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+					        </span>
+					    </label>
+					    <label class="no-padding">
+					        <span class="label label-default">
+					        	Neo <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+					        </span>
+					    </label>
+					    <label class="no-padding">
+					        <span class="label label-default">
+					        	郑令 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+					        </span>
+					    </label>
+					    <label class="no-padding">
+					        <span class="label label-default">
+					        	T-bag <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+					        </span>
+					    </label>
+					    <label class="no-padding">
+					        <span class="label label-default">
+					        	<a href="#" data-toggle="modal" data-target="#searchModal">
+					        		<i class="glyphicon glyphicon-resize-full small"></i>
+					        	</a>
+					        </span>
+					    </label>
+					</div>
+				</div>
+				<div class="tree-panel" id="tagPanel" style="display:none;">
+					<ul class="ztree" id="tagTree"></ul>
+				</div>
+				
+				<!-- 选择发送时间 -->
+				<div class="form-group">
+					<label>发送时间</label>
+					<div class="radio">
+					    <label>
+					        <input type="radio" name="sendtime" value="0" checked="checked"> 立即发送
+					    </label>
+					    <label style="margin-left:15px;">
+					        <input type="radio" name="sendtime" value="1"> 定时发送
+					    </label>
+					</div>
+				</div>
+				
+				<div class="tree-panel" id="timePanel" style="display:none;">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group no-margin">
+	            				<div class="input-group">
+			                        <input type="text" class="form-control" readonly="readonly" id="dpicker" />
+			                        <div class="input-group-addon">
+			                        	<i class="fa fa-calendar"></i>
+			                      	</div>
+			                    </div>
+	            			</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group no-margin">
+	            				<div class="input-group">
+			                        <input type="text" class="form-control" readonly="readonly" id="tpicker" />
+			                        <div class="input-group-addon">
+			                        	<i class="fa fa-clock-o"></i>
+			                      	</div>
+			                    </div>
+	            			</div>
+						</div>
+					</div>
+				</div>
+				
+    			<div class="form-group">
+    				<a href="#" data-page="msg-group" class="btn btn-success">保存并发布</a>
+    			</div>
+    		</div>
+    	</div>
+	</div>
+</section>
+<!-- /Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="searchModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">查找用户</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-4">
+            			<div class="form-group form-group-sm">
+            				<label>用户名</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-4">
+            			<div class="form-group form-group-sm">
+            				<label>电话</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-4">
+            			<div class="form-group form-group-sm">
+            				<label>邮箱</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<a href="#" class="btn btn-success btn-block">搜索</a>
+            	<table class="table table-bordered table-condensed" style="margin-top:15px;">
+	        		<tbody>
+	        			<tr>
+	                        <th>
+	                        	<label>
+									<input type="checkbox" class="check-all" />
+								</label>
+	                        </th>
+	                        <th>姓名</th>
+	                        <th>账号</th>
+	                        <th>职位</th>
+	                        <th>手机</th>
+	                        <th>邮箱</th>
+	                    </tr>
+	        			<tr>
+	                        <td>
+	                        	<label>
+									<input type="checkbox" />
+								</label>
+	                        </td>
+	                      	<td>张三</td>
+	                      	<td>zhangsan</td>
+	                      	<td>初级管理员</td>
+	                      	<td>15987654321</td>
+	                      	<td>zhangsan@163.com</td>
+	        			</tr>
+	        			<tr>
+	                        <td>
+	                        	<label>
+									<input type="checkbox" />
+								</label>
+	                        </td>
+	                      	<td>李四</td>
+	                      	<td>lisi</td>
+	                      	<td>初级管理员</td>
+	                      	<td>15987654321</td>
+	                      	<td>lisi@163.com</td>
+	        			</tr>
+	        			<tr>
+	                        <td>
+	                        	<label>
+									<input type="checkbox" />
+								</label>
+	                        </td>
+	                      	<td>张三</td>
+	                      	<td>zhangsan</td>
+	                      	<td>初级管理员</td>
+	                      	<td>15987654321</td>
+	                      	<td>zhangsan@163.com</td>
+	        			</tr>
+	        			<tr>
+	                        <td>
+	                        	<label>
+									<input type="checkbox" />
+								</label>
+	                        </td>
+	                      	<td>李四</td>
+	                      	<td>lisi</td>
+	                      	<td>初级管理员</td>
+	                      	<td>15987654321</td>
+	                      	<td>lisi@163.com</td>
+	        			</tr>
+	        			<tr>
+	                        <td>
+	                        	<label>
+									<input type="checkbox" />
+								</label>
+	                        </td>
+	                      	<td>张三</td>
+	                      	<td>zhangsan</td>
+	                      	<td>初级管理员</td>
+	                      	<td>15987654321</td>
+	                      	<td>zhangsan@163.com</td>
+	        			</tr>
+	      			</tbody>
+	      		</table>
+	      		<div class="clearfix">
+		    		<p class="pull-left">
+		    			共<span>52</span>条记录，
+		    			共<span>6</span>页
+		    		</p>
+		            <ul class="pagination pagination-sm no-margin pull-right">
+		            	<li><a href="#">«</a></li>
+		            	<li><a href="#">1</a></li>
+		            	<li><a href="#">2</a></li>
+		            	<li><a href="#">3</a></li>
+		            	<li><a href="#">»</a></li>
+		            </ul>
+		        </div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success">确定</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!-- /Modals -->
+			
+<script type="text/javascript">
+	$(function() {
+		//初始化树形结构
+		var groupNodes = [
+			{id:1, pId:0, name:"部门", open:true},
+			{id:11, pId:1, name:"部门 A", open:true, checked:true},
+			{id:111, pId:11, name:"部门 A-1", checked:true},
+			{id:112, pId:11, name:"部门 A-2", checked:true},
+			{id:113, pId:11, name:"部门 A-3", checked:true},
+			{id:12, pId:1, name:"部门 B", open:true},
+			{id:121, pId:12, name:"部门 B-1"},
+			{id:122, pId:12, name:"部门 B-2"},
+			{id:123, pId:12, name:"部门 B-3"},
+			{id:124, pId:12, name:"部门 B-4"},
+			{id:13, pId:1, name:"部门 C", open:true},
+			{id:131, pId:13, name:"部门 C-1"},
+			{id:132, pId:13, name:"部门 C-2"}
+		];
+		$.fn.zTree.init($("#groupTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true},
+			view: {showIcon:false}
+		}, groupNodes);
+		
+		/*
+		var userNodes = [
+			{id:1, pId:0, name:"用户", open:true},
+			{id:11, pId:1, name:"用户 A", checked:true},
+			{id:12, pId:1, name:"用户 B", checked:true},
+			{id:13, pId:1, name:"用户 C"},
+			{id:13, pId:1, name:"用户 D"},
+			{id:13, pId:1, name:"用户 E"},
+			{id:13, pId:1, name:"用户 F"},
+			{id:13, pId:1, name:"用户 G"},
+			{id:13, pId:1, name:"用户 H"}
+		];
+		$.fn.zTree.init($("#userTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true},
+			view: {showIcon:false}
+		}, userNodes);
+		*/
+		
+		var tagNodes = [
+			{id:1, pId:0, name:"标签", open:true},
+			{id:11, pId:1, name:"标签 A", checked:true},
+			{id:12, pId:1, name:"标签 B", checked:true},
+			{id:13, pId:1, name:"标签 C"},
+			{id:13, pId:1, name:"标签 D"}
+		];
+		$.fn.zTree.init($("#tagTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true},
+			view: {showIcon:false}
+		}, tagNodes);
+		
+	    //选择发送对象
+	    $("input[name='sendObj']").on("change", function() {
+	    	$(".tree-panel").hide();
+	    	if($(this).val()=="1") {
+	    		$("#groupPanel").show();
+	    	}else if($(this).val()=="2") {
+	    		$("#userPanel").show();
+	    	}else if($(this).val()=="3") {
+	    		$("#tagPanel").show();
+	    	}
+	    });
+	    
+	    //选择发送时间
+	    $("input[name='sendtime']").on("change", function() {
+	    	if($(this).val()=="1") {
+	    		$("#timePanel").slideDown();
+	    	}else {
+	    		$("#timePanel").slideUp();
+	    	}
+	    });
+		
+		//选择日期
+		$("#dpicker").datepicker({
+			format: 'yyyy-mm-dd',
+			language: 'zh-CN',
+			todayHighlight: true
+		});
+		
+		//选择时间
+		$("#tpicker").clockpicker();
+		
+		//删除标签
+		$("#tagDiv").on("click", ".tag-del", function(e) {
+			e.preventDefault();
+			$(this).parent().parent().remove();
+		});
+		
+		//初始化表情符号插件
+        window.emojiPicker = new EmojiPicker({
+	        emojiable_selector: "[data-emojiable='true']",
+	        assetsPath: "plugins/emojipicker/img",
+	        popupButtonClasses: "fa fa-smile-o"
+        });
+      	window.emojiPicker.discover();
+	});
+</script>

@@ -1,0 +1,14 @@
+ 一.目前海信方生产机和测试机均已部署BI_Portal,相关机器资源环境如下：
+    1.测试环境：
+         1>.IP地址: 10.19.34.34
+         2>.用户名/密码: administrator/p@ssw0rd123         
+         3>.项目位置C:/BI_Portal
+         4>.mysql用户名/密码：root/root
+
+    2.生产环境:
+         1>.需要通过堡垒机登录，堡垒机https://172.16.41.249，用户名/密码：zhanghuimin/Hisense...2015
+         2>.IP地址: 172.16.34.108
+
+         3>.项目位置/root/software
+         4>.mysql用户名/密码：root/mysql
+

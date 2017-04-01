@@ -1,0 +1,985 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	用户管理
+    </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+		<li><a href="#">系统管理</a></li>
+		<li class="active">用户管理</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">用户列表</h3>
+			<div class="box-tools">
+				<span class="pull-left span-lh">登录账户</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="登录账户" />
+				</div>
+				<span class="pull-left span-lh">用户姓名</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="用户姓名" />
+				</div>
+				<span class="pull-left span-lh">手机号码</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="手机号码" />
+				</div>
+				<div class="pull-right">
+					<a href="#" class="btn btn-default btn-sm">
+						<i class="fa fa-search"></i> 检索
+					</a>
+					<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#adminModal">
+						<i class="fa fa-plus-circle"></i> 新增
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>登录账户</th>
+						<th>用户姓名</th>
+						<th>手机号码</th>
+						<th>电子邮件</th>
+						<th>创建用户</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+					<tr>
+						<td>001</td>
+						<td>张三</td>
+						<td>13625272637</td>
+						<td>654747474@qq.com</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="分配功能角色" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配工具角色" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配数据角色" data-toggle="modal" data-target="#roleModal3"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td>张三</td>
+						<td>13625272637</td>
+						<td>654747474@qq.com</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="分配功能角色" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配工具角色" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配数据角色" data-toggle="modal" data-target="#roleModal3"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>张三</td>
+						<td>13625272637</td>
+						<td>654747474@qq.com</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="分配功能角色" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配工具角色" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配数据角色" data-toggle="modal" data-target="#roleModal3"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>004</td>
+						<td>张三</td>
+						<td>13625272637</td>
+						<td>654747474@qq.com</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="分配功能角色" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配工具角色" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配数据角色" data-toggle="modal" data-target="#roleModal3"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>005</td>
+						<td>张三</td>
+						<td>13625272637</td>
+						<td>654747474@qq.com</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="分配功能角色" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配工具角色" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="分配数据角色" data-toggle="modal" data-target="#roleModal3"><i class="fa fa-user-plus"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+			<p class="pull-left">
+				共<span>52</span>条记录， 共
+				<span>6</span>页
+			</p>
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<li><a href="#">«</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">»</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<!--详情-->
+<div class="modal fade" id="detailModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">菜单详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>登录账户</label>
+							<input type="text" class="form-control" readonly="readonly" value="登录账户" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>用户全名</label>
+							<input type="text" class="form-control" readonly="readonly" value="用户全名" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>用户名</label>
+							<input type="text" class="form-control" readonly="readonly" value="用户名" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>用户姓</label>
+							<input type="text" class="form-control" readonly="readonly" value="用户姓" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>电子邮件</label>
+							<input type="text" class="form-control" readonly="readonly" value="657346536@qq.com" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>手机号码</label>
+							<input type="text" class="form-control" readonly="readonly" value="12533366778" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>出生日期</label>
+							<input type="text" class="form-control" readonly="readonly" value="1994-03-22" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>用户性别</label>
+							<input type="text" class="form-control" readonly="readonly" value="女" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>是否启用</label>
+							<input type="text" class="form-control" readonly="readonly" value="是" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>创建账户</label>
+							<input type="text" class="form-control" readonly="readonly" value="张三" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>创建时间</label>
+							<input type="text" class="form-control" readonly="readonly" value="2016-03-07" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>更新账户</label>
+							<input type="text" class="form-control" readonly="readonly" value="更新账户" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>更新时间</label>
+							<input type="text" class="form-control" readonly="readonly" value="2016-03-07" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>用户角色</label>
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>角色类别</th>
+											<th>角色代码</th>
+											<th>角色名称</th>
+										</tr>
+										<tr>
+											<td>功能角色</td>
+											<td>01</td>
+											<td>功能角色1</td>
+										</tr>
+										<tr>
+											<td>工具角色</td>
+											<td>01</td>
+											<td>工具角色1</td>
+										</tr>
+										<tr>
+											<td>数据角色</td>
+											<td>01</td>
+											<td>数据角色1</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>报表映射</label>
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>报表工具名称</th>
+											<th>报表工具类型</th>
+											<th>报表映射账户</th>
+										</tr>
+										<tr>
+											<td>BO</td>
+											<td>选项卡</td>
+											<td>张三</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="adminModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">用户管理-新增/编辑</h4>
+			</div>
+			<div class="modal-body">
+				<form id="user" method="post">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>登录账户</label>
+								<input type="text" class="form-control" name="useraccount" placeholder="登录账户" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>用户全名</label>
+								<input type="text" class="form-control" name="username" placeholder="用户全名" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>用户名</label>
+								<input type="text" class="form-control" name="userfirstname" placeholder="用户名" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>用户姓</label>
+								<input type="text" class="form-control" name="userlastname" placeholder="用户姓" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>登录密码</label>
+								<input type="password" class="form-control" name="password" placeholder="登录密码" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>密码确认</label>
+								<input type="password" class="form-control" name="confirmpassword" placeholder="密码确认" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>电子邮件</label>
+								<input type="text" class="form-control" name="email" placeholder="电子邮件" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>手机号码</label>
+								<input type="text" class="form-control" name="telnumber" placeholder="手机号码" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>出生日期</label>
+								<div class="input-group">
+									<input type="text" class="form-control dpicker" readonly="readonly" />
+									<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>用户性别</label>
+								<select class="form-control">
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>是否启用</label>
+								<select class="form-control">
+									<option value="启用">启用</option>
+									<option value="禁用">禁用</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+						</div>
+					</div>
+					<div class="setting-con">
+						<ul class="nav nav-tabs">
+							<li role="presentation" class="active">
+								<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
+									<i class="fa fa-user"></i> 功能角色
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">
+									<i class="fa fa-user"></i> 工具角色
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
+									<i class="fa fa-user"></i> 数据角色
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">
+									<i class="fa fa-file-text"></i> 报表映射
+								</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="tab1">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="multiselect-title">角色列表</div>
+										<select name="from" id="undo_redo" class="form-control" size="6" multiple="multiple">
+											<option value="1">角色1</option>
+											<option value="2">角色2</option>
+											<option value="3">角色3</option>
+											<option value="4">角色4</option>
+											<option value="5">角色5</option>
+											<option value="6">角色6</option>
+											<option value="7">角色7</option>
+											<option value="8">角色8</option>
+											<option value="9">角色9</option>
+											<option value="10">角色10</option>
+										</select>
+									</div>
+
+									<div class="col-xs-2">
+										<div class="form-btn-group1">
+											<button type="button" id="undo_redo_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+											<button type="button" id="undo_redo_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+											<!--<button type="button" id="undo_redo_undo" class="btn btn-warning btn-block">撤销</button>-->
+										</div>
+									</div>
+									<div class="col-xs-5">
+										<div class="multiselect-title">已选角色</div>
+										<select name="to" id="undo_redo_to" class="form-control" size="6" multiple="multiple">
+										</select>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="tab2">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="multiselect-title">角色列表</div>
+										<select name="from1" id="undo_redo1" class="form-control" size="6" multiple="multiple">
+											<option value="1">角色1</option>
+											<option value="2">角色2</option>
+											<option value="3">角色3</option>
+											<option value="4">角色4</option>
+											<option value="5">角色5</option>
+											<option value="6">角色6</option>
+											<option value="7">角色7</option>
+											<option value="8">角色8</option>
+											<option value="9">角色9</option>
+											<option value="10">角色10</option>
+										</select>
+									</div>
+
+									<div class="col-xs-2">
+										<div class="form-btn-group1">
+											<button type="button" id="undo_redo1_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+											<button type="button" id="undo_redo1_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+											<!--<button type="button" id="undo_redo_undo" class="btn btn-warning btn-block">撤销</button>-->
+										</div>
+									</div>
+									<div class="col-xs-5">
+										<div class="multiselect-title">已选角色</div>
+										<select name="to1" id="undo_redo1_to" class="form-control" size="6" multiple="multiple">
+										</select>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="tab3">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="multiselect-title">角色列表</div>
+										<select name="from2" id="undo_redo2" class="form-control" size="6" multiple="multiple">
+											<option value="1">角色1</option>
+											<option value="2">角色2</option>
+											<option value="3">角色3</option>
+											<option value="4">角色4</option>
+											<option value="5">角色5</option>
+											<option value="6">角色6</option>
+											<option value="7">角色7</option>
+											<option value="8">角色8</option>
+											<option value="9">角色9</option>
+											<option value="10">角色10</option>
+										</select>
+									</div>
+
+									<div class="col-xs-2">
+										<div class="form-btn-group1">
+											<button type="button" id="undo_redo2_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+											<button type="button" id="undo_redo2_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+											<!--<button type="button" id="undo_redo_undo" class="btn btn-warning btn-block">撤销</button>-->
+										</div>
+									</div>
+									<div class="col-xs-5">
+										<div class="multiselect-title">已选角色</div>
+										<select name="to2" id="undo_redo2_to" class="form-control" size="6" multiple="multiple">
+										</select>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="tab4">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>报表工具名称</th>
+											<th>报表工具类型</th>
+											<th>报表映射账户</th>
+										</tr>
+										<tr>
+											<td>Tableau</td>
+											<td>
+												<input type="text" value="选项卡" class="no-border" />
+											</td>
+											<td>
+												<input type="text" value="张三" class="no-border" />
+											</td>
+										</tr>
+										<tr>
+											<td>BO</td>
+											<td>
+												<input type="text" value="选项卡" class="no-border" />
+											</td>
+											<td>
+												<input type="text" value="张三" class="no-border" />
+											</td>
+										</tr>
+										<tr>
+											<td>QlikView</td>
+											<td>
+												<input type="text" value="选项卡" class="no-border" />
+											</td>
+											<td>
+												<input type="text" value="张三" class="no-border" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">保存</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="modal fade" id="roleModal1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">分配功能角色</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-5">
+						<div class="multiselect-title">角色列表</div>
+						<select name="from3" id="undo_redo3" class="form-control" size="6" multiple="multiple">
+							<option value="1">角色1</option>
+							<option value="2">角色2</option>
+							<option value="3">角色3</option>
+							<option value="4">角色4</option>
+							<option value="5">角色5</option>
+							<option value="6">角色6</option>
+							<option value="7">角色7</option>
+							<option value="8">角色8</option>
+							<option value="9">角色9</option>
+							<option value="10">角色10</option>
+						</select>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="form-btn-group1">
+							<button type="button" id="undo_redo3_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+							<button type="button" id="undo_redo3_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+							<!--<button type="button" id="undo_redo_undo" class="btn btn-warning btn-block">撤销</button>-->
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<div class="multiselect-title">已选角色</div>
+						<select name="to3" id="undo_redo3_to" class="form-control" size="6" multiple="multiple">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" id="saveBtn">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="roleModal2">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">分配工具角色</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-5">
+						<div class="multiselect-title">角色列表</div>
+						<select name="from4" id="undo_redo4" class="form-control" size="6" multiple="multiple">
+							<option value="1">角色1</option>
+							<option value="2">角色2</option>
+							<option value="3">角色3</option>
+							<option value="4">角色4</option>
+							<option value="5">角色5</option>
+							<option value="6">角色6</option>
+							<option value="7">角色7</option>
+							<option value="8">角色8</option>
+							<option value="9">角色9</option>
+							<option value="10">角色10</option>
+						</select>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="form-btn-group1">
+							<button type="button" id="undo_redo4_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+							<button type="button" id="undo_redo4_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+							<!--<button type="button" id="undo_redo_undo" class="btn btn-warning btn-block">撤销</button>-->
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<div class="multiselect-title">已选角色</div>
+						<select name="to4" id="undo_redo4_to" class="form-control" size="6" multiple="multiple">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" id="saveBtn">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="roleModal3">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">分配数据角色</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-5">
+						<div class="multiselect-title">角色列表</div>
+						<select name="from5" id="undo_redo5" class="form-control" size="6" multiple="multiple">
+							<option value="1">角色1</option>
+							<option value="2">角色2</option>
+							<option value="3">角色3</option>
+							<option value="4">角色4</option>
+							<option value="5">角色5</option>
+							<option value="6">角色6</option>
+							<option value="7">角色7</option>
+							<option value="8">角色8</option>
+							<option value="9">角色9</option>
+							<option value="10">角色10</option>
+						</select>
+					</div>
+
+					<div class="col-xs-2">
+						<div class="form-btn-group1">
+							<button type="button" id="undo_redo5_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+							<button type="button" id="undo_redo5_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+							<!--<button type="button" id="undo_redo_undo" class="btn btn-warning btn-block">撤销</button>-->
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<div class="multiselect-title">已选角色</div>
+						<select name="to5" id="undo_redo5_to" class="form-control" size="6" multiple="multiple">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" id="saveBtn">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">&nbsp;</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">确认删除该项？</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">确认</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+	$(function() {
+		//选择日期
+		$(".dpicker").datepicker({
+			format: 'yyyy-mm-dd',
+			language: 'zh-CN',
+			todayHighlight: true
+		});
+		//获取选中的节点Id
+		$("#saveBtn").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj = $.fn.zTree.getZTreeObj("roleTree");
+			var selectedNodes = zTreeObj.getSelectedNodes(true);
+			var selectedIds = [];
+			$.each(selectedNodes, function(i, el) {
+				selectedIds.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		//初始化下拉树形结构
+		var selNodes = [{
+			id: 1,
+			pId: 0,
+			name: "部门 A",
+			open: true,
+			nocheck: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "A1",
+			open: true,
+			nocheck: true
+		}, {
+			id: 111,
+			pId: 11,
+			name: "A11",
+			nocheck: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "A2",
+			nocheck: true
+		}, {
+			id: 13,
+			pId: 1,
+			name: "A3",
+			nocheck: true
+		}, {
+			id: 2,
+			pId: 0,
+			name: "部门 B",
+			open: true,
+			nocheck: true
+		}, {
+			id: 21,
+			pId: 2,
+			name: "B1",
+			nocheck: true
+		}, {
+			id: 22,
+			pId: 2,
+			name: "B2",
+			nocheck: true
+		}, {
+			id: 3,
+			pId: 0,
+			name: "部门 C",
+			open: true,
+			nocheck: true
+		}, {
+			id: 31,
+			pId: 3,
+			name: "C1",
+			nocheck: true
+		}, {
+			id: 32,
+			pId: 3,
+			name: "C2",
+			nocheck: true
+		}, {
+			id: 33,
+			pId: 3,
+			name: "C3",
+			nocheck: true
+		}];
+		$.fn.zTree.init($("#selTree"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true,
+				chkStyle: "radio",
+				radioType: "all"
+			},
+			view: {
+				showIcon: false,
+				dblClickExpand: false
+			},
+			callback: {
+				onClick: function(e, treeId, treeNode) {
+					var zTree = $.fn.zTree.getZTreeObj("selTree"),
+						nodes = zTree.getSelectedNodes(true),
+						v = "";
+					for (var i = 0, l = nodes.length; i < l; i++) {
+						v += nodes[i].name + ",";
+					}
+					if (v.length > 0) {
+						v = v.substring(0, v.length - 1);
+					};
+					$("#selInput").val(v);
+				}
+			}
+		}, selNodes);
+		//弹出树形下拉选择框
+		$("#selInput").on("click", function(e) {
+			e.stopPropagation();
+			$("#selDiv").slideToggle();
+		});
+		//隐藏树形下拉选择框
+		$("body").on("click", function() {
+			$("#selDiv").slideUp();
+		});
+		$("#selDiv").on("click", function(e) {
+			e.stopPropagation();
+		});
+		//		左右交换内容
+		$("#undo_redo,#undo_redo1,#undo_redo2,#undo_redo3,#undo_redo4,#undo_redo5").multiselect();
+		//		用户报表映射
+		$("input[type=text].no-border").on("focus", function() {
+			$(this).removeClass("no-border");
+		}).on("blur", function() {
+			$(this).addClass("no-border");
+		});
+		//		模糊查询
+		$(".higher-level1").select2({
+			placeholder: "选择用户部门",
+			allowClear: true,
+			width: "100%"
+		});
+		//表单验证
+		$('#user').bootstrapValidator({
+			message: '值不能为空',
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				useraccount: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '账户不能为空'
+						}
+					}
+				},
+				username: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '用户全名值不能为空'
+						}
+					}
+				},
+				userfirstname: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '用户名值不能为空'
+						}
+					}
+				},
+				userlastname: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '用户姓值不能为空'
+						}
+					}
+				},
+				password: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '密码不能为空'
+						}
+					}
+				},
+				confirmpassword: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '密码确认不能为空'
+						},
+						identical: {
+							field: 'password',
+							message: '两次输入密码不一致'
+						}
+					}
+				},
+				email: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '电子邮件不能为空不能为空'
+						},
+						emailAddress: {
+							message: '请输入有效的电子邮件地址'
+						}
+					}
+				},
+				telnumber: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '手机号码不能为空'
+						},
+						regexp: {
+							regexp: /^\d{8}-\d{1,9}$|^\d{11}-\d{1,9}$|^\d{8}$|^\d{11}$/,
+							message: '请输入有效的手机号码'
+						}
+					}
+				}
+			}
+		});
+	});
+</script>

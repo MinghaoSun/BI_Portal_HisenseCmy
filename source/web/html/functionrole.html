@@ -1,0 +1,327 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+    	功能角色管理
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">系统管理</a></li>
+    	<li><a href="#">角色管理</a></li>
+    	<li class="active">功能角色管理</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+        <div class="box-header">
+            <h3 class="box-title">角色列表</h3>
+            <div class="box-tools">
+            	<span class="pull-left span-lh">角色代码</span>
+            	<div class="input-group pull-left">
+      				<input type="text" class="form-control input-sm" placeholder="角色代码"/>
+    			</div>
+    			<span class="pull-left span-lh">角色名称</span>
+            	<div class="input-group pull-left">
+      				<input type="text" class="form-control input-sm" placeholder="角色名称" />
+    			</div>
+    			<div class="pull-right">
+    				<a href="#" class="btn btn-default btn-sm">
+                		<i class="fa fa-search"></i> 检索
+                	</a>
+    				<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#adminModal">
+                		<i class="fa fa-plus-circle"></i> 新增
+                	</a>
+    			</div>
+            </div>
+        </div>
+    	<div class="box-body no-padding">
+      		<table class="table table-striped">
+        		<tbody>
+        			<tr>
+                        <th>角色代码</th>
+                        <th>角色名称</th>
+                        <th>中文名称</th>
+                        <th>英文名称</th>
+                        <th>创建用户</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+        			<tr>
+                      	<td>001</td>
+                      	<td>初级管理员</td>
+                      	<td>张三</td>
+                      	<td>zhangsan</td>
+                      	<td>张三</td>
+                      	<td>2016-02-21</td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal"><i class="fa fa-lock"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                      	<td>002</td>
+                      	<td>中级管理员</td>
+                      	<td>李四</td>
+                      	<td>lisi</td>
+                      	<td>李四</td>
+                      	<td>2016-02-21</td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal"><i class="fa fa-lock"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                      	<td>003</td>
+                      	<td>初级管理员</td>
+                      	<td>张三</td>
+                      	<td>zhangsan</td>
+                      	<td>张三</td>
+                      	<td>2016-02-21</td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal"><i class="fa fa-lock"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                      	<td>004</td>
+                      	<td>中级管理员</td>
+                      	<td>李四</td>
+                      	<td>lisi</td>
+                      	<td>李四</td>
+                      	<td>2016-02-21</td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal"><i class="fa fa-lock"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                      	<td>005</td>
+                      	<td>中级管理员</td>
+                      	<td>李四</td>
+                      	<td>lisi</td>
+                      	<td>李四</td>
+                      	<td>2016-02-21</td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal"><i class="fa fa-lock"></i></a>
+                        </td>
+        			</tr>
+      			</tbody>
+      		</table>
+    	</div>
+    	<div class="box-footer clearfix">
+    		<p class="pull-left">
+    			共<span>52</span>条记录，
+    			共<span>6</span>页
+    		</p>
+            <ul class="pagination pagination-sm no-margin pull-right">
+            	<li><a href="#">«</a></li>
+            	<li><a href="#">1</a></li>
+            	<li><a href="#">2</a></li>
+            	<li><a href="#">3</a></li>
+            	<li><a href="#">»</a></li>
+            </ul>
+        </div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="adminModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">角色管理-新增/编辑</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>角色代码</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>角色名称</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>中文名称</label>
+            				<input type="text" class="form-control"/>
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>英文名称</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>角色状态</label>
+            				<select class="form-control">
+            					<option value="启用">启用</option>
+            					<option value="禁用">禁用</option>
+            				</select>
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group" style="position: relative;">
+            				<label>菜单名称</label>
+            				<input type="text" class="form-control" readonly="readonly" id="selInput" />
+            				<!-- 树形下拉选择框 -->
+    						<div class="ztree-sel" id="selDiv" style="left:0px;top:60px;">
+   								<ul class="ztree" id="selTree"></ul>
+   							</div>
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-12">
+            			<div class="form-group">
+            				<label>备注说明</label>
+            				<textarea class="form-control" rows="2" placeholder="请输入100字以内 ..."></textarea>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-preserve">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<div class="modal fade" id="roleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">权限管理</h4>
+            </div>
+            <div class="modal-body">
+            	<ul class="ztree" id="roleTree"></ul>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-preserve" id="saveBtn">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal">
+	 <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            	<h4 class="modal-title">&nbsp;</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">确认删除该项？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-preserve">确认</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+		
+<script type="text/javascript">
+	$(function() {
+		//初始化树形结构
+		var zNodes = [
+			{id:1, pId:0, name:"系统管理", open:true},
+			{id:11, pId:1, name:"角色管理", checked:true},
+			{id:12, pId:1, name:"用户管理", checked:true}
+		];
+		$.fn.zTree.init($("#roleTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true},
+			view: {showIcon:false}
+		}, zNodes);
+		
+		//获取选中的节点Id
+		$("#saveBtn").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj = $.fn.zTree.getZTreeObj("roleTree");
+			var selectedNodes = zTreeObj.getCheckedNodes(true);
+			var selectedIds = [];
+			$.each(selectedNodes, function(i, el) {
+				selectedIds.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		
+		//初始化下拉树形结构
+		var selNodes = [
+			{id:1, pId:0, name:"系统管理", open:true},
+			{id:11, pId:1, name:"业务管理"},
+			{id:12, pId:1, name:"部门管理"},
+			{id:13, pId:1, name:"用户管理"},
+			{id:14, pId:1, name:"角色管理"},
+			{id:15, pId:1, name:"菜单管理"},
+			{id:16, pId:1, name:"访问日志"},
+			{id:2, pId:0, name:"报表工具", open:true},
+			{id:21, pId:2, name:"BO报表"},
+			{id:22, pId:2, name:"Tableau报表"},
+			{id:23, pId:2, name:"QlikView报表"},
+			{id:3, pId:0, name:"其他系统", open:true},
+			{id:31, pId:3, name:"DCI系统"}
+		];
+		$.fn.zTree.init($("#selTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true, chkboxType:{"Y" : "s", "N" : "ps" }},
+			view: {showIcon:false, dblClickExpand:false},
+			callback: {
+				onCheck: function(e, treeId, treeNode) {
+					var zTree = $.fn.zTree.getZTreeObj("selTree"),
+					nodes = zTree.getCheckedNodes(true),
+					v = "";
+					for(var i=0, l=nodes.length; i<l; i++) {
+						v += nodes[i].name + ",";
+					}
+					if(v.length > 0) {
+						v = v.substring(0, v.length-1);
+					};
+					$("#selInput").val(v);
+				}
+			}
+		}, selNodes);
+		//弹出树形下拉选择框
+		$("#selInput").on("click", function(e) {
+			e.stopPropagation();
+			$("#selDiv").slideDown();
+		});
+		//隐藏树形下拉选择框
+		$("body").on("click", function() {
+			$("#selDiv").slideUp();
+		});
+		$("#selDiv").on("click", function(e) {
+			e.stopPropagation();
+		});
+	});
+</script>

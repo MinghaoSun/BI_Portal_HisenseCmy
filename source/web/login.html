@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html ng-app="baseModule" ng-controller="baseCtrl">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>海信集团报表门户</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/adminx.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/skins/_all-skins.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <script type="text/javascript" src="js/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/i18n/jquery.i18n.properties-min-1.0.9.js"></script>
+    <script type="text/javascript" src="js/i18n/local.i18n.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap-3.3.5.min.js"></script>
+    <script type="text/javascript" src="js/angular/angular.min.js"></script>
+</head>
+<!-- 登陆页y轴滚动条强制隐藏 -->
+<body class="hold-transition skin-blue-light login-pagebg" id="Loginbody" style="overflow-y: hidden">
+<div class="login-box1">
+    <div class="login-box-body1">
+        <div class="login-logo1">
+            <h1>BI Portal</h1>
+            海信集团报表系统
+        </div>
+        <div class="login-form">
+            <form novalidate action="sysUsers/userLogin.do" method="post" id="loginForm">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label>{{i18n('page_login_lbl_username')}}</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="has-feedback">
+                            <input type="text" id="loginName" name="loginName" class="form-control"
+                                   placeholder="{{i18n('page_login_lbl_username')}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label>{{i18n('page_login_lbl_password')}}</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="has-feedback">
+                            <input id="password" type="password" name="password" class="form-control"
+                                   placeholder="{{i18n('page_login_lbl_password')}}">
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="form-group row checkcode-row">
+                    <div class="col-md-3">
+                        <label>{{i18n('page_login_lbl_verificationCode')}}</label>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="has-feedback">
+                            <input id="code" name="code" type="text" class="form-control" placeholder="{{i18n('page_login_lbl_verificationCode')}}">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-middle">
+                        <img id="imgcode" src="sysUsers/checkCode.do" alt=""  class="img-responsive checkcode-pic" />
+                    </div>
+                    <div class="col-md-2 text-center col-middle">
+                        <a href="javascript:void(0)" id="aRefreshCode"><i class="glyphicon glyphicon-refresh"></i></a>
+                    </div>
+                </div>-->
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label>{{i18n('page_login_lbl_language')}}</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select id="languageSelect" name="languageSelect" class="form-control">
+                            <option value="zh-CN" selected="selected">简体中文</option>
+                            <option value="en-US">English</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col-md-9 login-btn-box">
+                        <input type="submit" class="btn btn-primary btn-fixwidth"
+                               value="{{i18n('page_login_btn_login')}}"/>
+                        <input type="reset" id="btnReset" class="btn btn-primary btn-fixwidth"
+                               value="{{i18n('page_login_btn_reset')}}"/>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div style="margin-top:6px">
+                        <label style="margin-left:88px;margin-bottom:0px;font-size:10px;color:#A9A9A9;font-weight: normal;font-family: inherit">用户名和密码与邮箱一致</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<!--提示信息-->
+<div class="modal fade" id="tipModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_login_Tip')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p id="codeTip" class="delete-sure">{{i18n('page_login_valError')}}</p>
+                <p id="userTip" class="delete-sure">{{i18n('page_login_loginError')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">
+                    {{i18n('page_user_close')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        if ($.cookie("localLanguage") != null) {
+            $("#languageSelect")
+            var localLanguage = $.cookie("localLanguage");
+            //为语言选择加载默认值
+            $("#languageSelect").val(localLanguage);
+        }
+        //绑定onchange事件
+        $("#languageSelect").change(function () {
+            var localLanguage = $(this).children("option:selected").val();
+            $.cookie("localLanguage", localLanguage, {expires: 30});
+            window.location.reload();
+        });
+    });
+    localI18n(0);
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+
+    var errcode = getUrlParam('error');
+    jQuery(".delete-sure").hide();
+    if (errcode == 'code') {
+        jQuery('#tipModal').modal();
+        jQuery("#codeTip").show();
+    } else if (errcode == 'user') {
+        jQuery('#tipModal').modal();
+        jQuery("#userTip").show();
+    }
+
+    $('#imgcode').click(function () {
+        this.src = 'sysUsers/checkCode.do?_=' + +new Date;
+    })
+    //重新获取验证码
+    $('#aRefreshCode').click(function () {
+        $('#imgcode').attr("src", 'sysUsers/checkCode.do?_=' + +new Date);
+    })
+
+    var baseModule = angular.module('baseModule', []);
+    baseModule.controller('baseCtrl', ['$scope', '$http',
+        function ($scope, $http) {
+            $scope.i18n = function (k) {
+                return $.i18n.prop(k);
+            };
+
+
+        }]);
+
+</script>
+
+</body>
+
+</html>

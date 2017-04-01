@@ -1,0 +1,99 @@
+
+<div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="static/img/lunbo/3.jpg" alt="Second slide">
+            <!--<img src="static/img/lunbo/3.png" alt="Second slide">-->
+        </div>
+        <div class="item">
+            <img src="static/img/lunbo/2.jpg" alt="Third slide">
+            <!--<img src="static/img/lunbo/2.png" alt="Third slide">-->
+        </div>
+        <div class="item">
+            <img src="static/img/lunbo/1.jpg" alt="Fourth slide">
+            <!--<img src="static/img/lunbo/1.png" alt="Fourth slide">-->
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <!--<a style="top: 50%" class="carousel-control left" href="#myCarousel"
+       data-slide="prev"><img src="static/img/lunbo/left.png"></a>
+    <a style="top: 50%" class="carousel-control right" href="#myCarousel"
+       data-slide="next"><img src="static/img/lunbo/right.png"></a>-->
+</div>
+
+<section ng-if="dataLog!=null" class="content-header">
+    <h1>
+        {{i18n('page_index_lbl_recentaccessReport')}}
+    </h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}}</li>
+        <li class="active">{{i18n('page_index_lbl_recentaccessReport')}}</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+<!-- Main content -->
+<h5 style="margin-bottom: 0px;margin-left: 15px;">最近浏览：</h5>
+<section class="content" style="padding-top: 5px;">
+
+    <div id="currentVisitReportListId" class="list-group msg-list">
+						<!--<span class="list-group-item" ng-repeat="log in dataLog">
+							<div class="badge" style="font-weight:500">{{log.createTime}}</div>
+							<i class="fa fa-circle"></i>
+                            &lt;!&ndash;<a href="#/reportBusiness/{{log.menuId}}" reportOfIndexId="{{log.menuId}}" onclick="addForIndex(this);" target="_blank" class="report-name" title="{{log.logDesc}}">{{log.menuName}}</a> &ndash;&gt;
+							&lt;!&ndash;<a href="#/reportBusiness/{{log.menuId}}" &ndash;&gt;
+                            <a reportOfIndexId="{{log.menuId}}" href="javascript:return false;"
+                               ui-sref=".reportBusiness{{log.menuId}}({id:'{{log.menuId}}'})" ui-sref-active="selected"
+                               onclick="addForIndex(this);" class="report-name"
+                               title="{{log.logDesc}}">{{log.menuName}}</a>
+                            <a  href="javascript:return false;"  ng-click="reportClicked({{log.menuId}})" class="report-name ng-binding" title=""><span>{{log.menuName}}</span></a>
+						</span>-->
+        <!--<a href="javascript:return false;" ng-click="reportClicked('20161013123214474')" class="report-name ng-binding" title=""><span class="ng-binding">Teableau报表测试</span></a>-->
+        <!--<a href="javascript:return false;" ng-click="reportClicked(20161013123214474)" class="report-name ng-binding" title=""><span class="ng-binding">Teableau报表测试</span></a>-->
+    </div>
+</section>
+
+<script>
+    $(function () {
+        // 初始化轮播
+//        $("#myCarousel").carousel('cycle');
+        $('#myCarousel').carousel({
+         interval: 3000
+         });
+        // 停止轮播
+        /*$("#myCarousel").carousel('pause');
+         // 循环轮播到上一个项目
+         $("#myCarousel").carousel('prev');
+         // 循环轮播到下一个项目
+         $("#myCarousel").carousel('next');
+         // 循环轮播到某个特定的帧
+         $("#myCarousel").carousel(0);
+         $("#myCarousel").carousel(1);
+         $("#myCarousel").carousel(2);*/
+        $.ajax({
+            url: 'sysUsers/getVisitReportListByUser.do',
+            async: false,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var currentVisitReportList='';
+                $.each(data, function (i, item) {
+                    currentVisitReportList=currentVisitReportList+
+                            '<span class="list-group-item">'+
+                            '<div class="badge" style="font-weight:500">'+item.createTime+'</div>'+
+                            '<i class="fa fa-circle"></i>'+
+                            '<a  reportOfIndexId="'+item.menuId+'" href="javascript:return false;" onclick="addForIndex(this);"   class="report-name ng-binding" title=""><span>'+item.menuName+'</span></a>'+
+                            '</span>';
+                });
+                $('#currentVisitReportListId').append(currentVisitReportList)
+            }
+        })
+    });
+</script>
+

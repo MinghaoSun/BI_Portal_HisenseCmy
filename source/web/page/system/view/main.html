@@ -1,0 +1,44 @@
+<section ng-if="dataLog!=null" class="content-header">
+    <h1>
+        {{i18n('page_index_lbl_recentaccessReport')}}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#/main"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}} </a></li>
+        <li class="active">{{i18n('page_index_lbl_recentaccessReport')}}</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="list-group msg-list">
+						<span class="list-group-item" ng-repeat="log in dataLog">
+							<div class="badge" style="font-weight:500">{{log.createTime}}</div>
+							<i class="fa fa-circle"></i>
+                            <!--<a href="#/reportBusiness/{{log.menuId}}" reportOfIndexId="{{log.menuId}}" onclick="addForIndex(this);" target="_blank" class="report-name" title="{{log.logDesc}}">{{log.menuName}}</a> -->
+							<a href="#/reportBusiness/{{log.menuId}}" reportOfIndexId="{{log.menuId}}"
+                               onclick="addForIndex(this);" class="report-name"
+                               title="{{log.logDesc}}">{{log.menuName}}</a>
+						</span>
+        <!-- <span class="list-group-item">
+            <div class="badge">2016-02-21 12:00:00</div>
+            <i class="fa fa-circle"></i>
+            <a target="_blank" href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="销售报表">销售报表</a>
+        </span>
+        <span class="list-group-item">
+            <div class="badge">2016-02-21 12:00:00</div>
+            <i class="fa fa-circle"></i>
+            <a target="_blank"  href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="年度分类汇总明细报表">年度分类汇总明细报表</a>
+        </span>
+        <span class="list-group-item">
+            <div class="badge">2016-02-21 12:00:00</div>
+            <i class="fa fa-circle"></i>
+            <a target="_blank"  href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="东南季度销售汇总报表">东南季度销售汇总报表</a>
+        </span>
+        <span class="list-group-item">
+            <div class="badge">2016-02-21 12:00:00</div>
+            <i class="fa fa-circle"></i>
+            <a target="_blank"  href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="华南区域汇总报表">华南区域汇总报表</a>
+        </span>  -->
+    </div>
+</section>

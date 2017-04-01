@@ -1,0 +1,797 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	菜单管理
+    </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+		<!--<li><a href="#">系统管理</a></li>-->
+		<li class="active">菜单管理</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">菜单列表</h3>
+			<div class="box-tools">
+				<!--<span class="pull-left span-lh">菜单代码</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="菜单代码" />
+				</div>-->
+				<span class="pull-left span-lh">菜单名称</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="菜单名称" />
+				</div>
+				<span class="pull-left span-lh">菜单类型</span>
+				<div class="input-group pull-left">
+					<select class="form-control select-sm">
+						<option value="选择" selected="selected" disabled="disabled">选择</option>
+						<option value="系统管理">系统管理</option>
+						<option value="报表中心">报表中心</option>
+						<option value="其它系统">其它系统</option>
+					</select>
+				</div>
+				<div class="pull-right">
+					<a href="#" class="btn btn-default btn-sm" id="search-btn">
+						<i class="fa fa-search"></i> 检索
+					</a>
+					<div class="zeng_msgbox_layer_wrap" id="q_Msgbox"></div>
+					<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#adminModal">
+						<i class="fa fa-plus-circle"></i> 新增
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>菜单代码</th>
+						<th>菜单名称</th>
+						<th>菜单类型</th>
+						<th>上级菜单</th>
+						<th>创建用户</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+					<tr>
+						<td>001</td>
+						<td>菜单1</td>
+						<td>菜单</td>
+						<td>系统管理</td>
+						<td>zhangsan</td>
+						<td>2016-02-21 16:44:30</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-info-circle"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td>菜单1</td>
+						<td>菜单</td>
+						<td>系统管理</td>
+						<td>zhangsan</td>
+						<td>2016-02-21 16:44:30</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal1"><i class="fa fa-info-circle"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>菜单1</td>
+						<td>菜单</td>
+						<td>系统管理</td>
+						<td>zhangsan</td>
+						<td>2016-02-21 16:44:30</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal1"><i class="fa fa-info-circle"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>004</td>
+						<td>菜单1</td>
+						<td>菜单</td>
+						<td>系统管理</td>
+						<td>zhangsan</td>
+						<td>2016-02-21 16:44:30</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-info-circle"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+			<p class="pull-left">
+				共<span>52</span>条记录， 共
+				<span>6</span>页
+			</p>
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<li><a href="#">«</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">»</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="adminModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">菜单管理-新增/编辑</h4>
+			</div>
+			<div class="modal-body">
+				<form id="menu" method="post">
+					<div class="row">
+						<div class="col-md-6">
+							<!--<div class="form-group">
+								<label>菜单代码</label>
+								<input type="text" class="form-control" name="menucode" placeholder="菜单代码" />
+							</div>-->
+							<div class="form-group">
+								<label>菜单名称</label>
+								<input type="text" class="form-control" name="menuname" placeholder="菜单名称" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>菜单顺序</label>
+								<input type="text" class="form-control" name="menuorder" placeholder="菜单顺序" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>中文名称</label>
+								<input type="text" class="form-control" name="Chinamenuname" placeholder="中文名称" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>英文名称</label>
+								<input type="text" class="form-control" name="Englishmenuname" placeholder="英文名称" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>菜单类型</label>
+								<select class="form-control menu-type">
+									<option value="系统管理" selected="selected">系统管理</option>
+									<option value="报表中心">报表中心</option>
+									<option value="其它系统">其它系统</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>菜单状态</label>
+								<select class="form-control">
+									<option value="启用">启用</option>
+									<option value="禁用">禁用</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group" style="position: relative;">
+								<label>上级菜单</label>
+								<input type="text" class="form-control" readonly="readonly" id="selInput" />
+								<!-- 树形下拉选择框 -->
+								<div class="ztree-sel" id="menuselDiv" style="left:0px;top:60px;height: 80px;">
+									<ul class="ztree" id="menuselTree"></ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<!--<div class="form-group">
+								<label>菜单图标</label>
+								<input type="text" class="form-control" />
+							</div>-->
+							<div class="form-group menuaddress">
+								<label>菜单地址</label>
+								<input type="text" class="form-control" placeholder="菜单地址"/>
+							</div>
+							<div class="form-group menuproperty">
+								<label>菜单属性</label>
+								<select class="form-control">
+									<option value="选择" selected="selected" disabled="disabled">选择</option>
+									<option value="报表">报表</option>
+									<option value="目录">目录</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row menu-report">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>报表工具</label>
+								<select class="form-control">
+									<option value="BO" selected="selected">BO</option>
+									<option value="Tableau">Tableau</option>
+									<option value="QlikView">QlikView</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>报表参数</label>
+								<select multiple="multiple" placeholder="选择报表参数" class="form-control SlectBox">
+									<option value="参数1" selected="selected">参数1</option>
+									<option value="参数2">参数2</option>
+									<option value="参数3">参数3</option>
+									<option value="参数4">参数4</option>
+									<option value="参数5">参数5</option>
+									<option value="参数6">参数6</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" data-toggle="modal" id="menupreservebtn">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--详情-->
+<div class="modal fade" id="detailModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">菜单详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单代码</label>
+							<input type="text" class="form-control" readonly="readonly" value="001" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>上级菜单代码</label>
+							<input type="text" class="form-control" readonly="readonly" value="01" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>上级菜单名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="上级菜单名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>中文名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="中文名称" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>英文名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="英文名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单类型</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单类型" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单状态</label>
+							<input type="text" class="form-control" readonly="readonly" value="启用" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单顺序</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单顺序" />
+						</div>
+					</div>
+					<!--<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单图标</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单图标" />
+						</div>
+					</div>-->
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单地址</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单地址" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>创建用户</label>
+							<input type="text" class="form-control" readonly="readonly" value="创建用户" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>修改用户</label>
+							<input type="text" class="form-control" readonly="readonly" value="修改用户" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>创建时间</label>
+							<input type="text" class="form-control" readonly="readonly" value="2016-03-07 12:12:00" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>修改时间</label>
+							<input type="text" class="form-control" readonly="readonly" value="2016-03-07 12:12:00" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="detailModal1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">菜单详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单代码</label>
+							<input type="text" class="form-control" readonly="readonly" value="001" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>上级菜单代码</label>
+							<input type="text" class="form-control" readonly="readonly" value="01" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>上级菜单名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="上级菜单名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>中文名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="中文名称" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>英文名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="英文名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单类型</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单类型" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单状态</label>
+							<input type="text" class="form-control" readonly="readonly" value="启用" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单顺序</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单顺序" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单属性</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单属性" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>创建用户</label>
+							<input type="text" class="form-control" readonly="readonly" value="创建用户" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>修改用户</label>
+							<input type="text" class="form-control" readonly="readonly" value="修改用户" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>创建时间</label>
+							<input type="text" class="form-control" readonly="readonly" value="2016-03-07 12:12:00" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>修改时间</label>
+							<input type="text" class="form-control" readonly="readonly" value="2016-03-07 12:12:00" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>报表工具</label>
+							<input type="text" class="form-control" readonly="readonly" value="BO" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>报表参数</label>
+							<div class="box-body no-padding TableDiv">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>参数名称</th>
+											<th>参数键</th>
+											<th>参数值</th>
+										</tr>
+										<tr>
+											<td>参数1</td>
+											<td>para</td>
+											<td>1</td>
+										</tr>
+										<tr>
+											<td>参数2</td>
+											<td>para</td>
+											<td>2</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">菜单管理-删除</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">确认删除该项？</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">确认</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--保存成功-->
+<div class="modal fade" id="successModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">报表工具-保存</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">保存成功！</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal">确认</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+	$(function() {
+		//loading
+		$("#search-btn").click(function() {
+			var tip = "正在加载中，请稍候...";
+			ZENG.msgbox.show(tip, 6, 3000);
+		});
+		//获取选中的节点Id
+		$("#saveBtn").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj = $.fn.zTree.getZTreeObj("roleTree");
+			var selectedNodes = zTreeObj.getSelectedNodes(true);
+			var selectedIds = [];
+			$.each(selectedNodes, function(i, el) {
+				selectedIds.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		//初始化下拉树形结构
+		var selNodes = [{
+			id: 1,
+			pId: 0,
+			name: "菜单1",
+			open: true,
+			nocheck: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "子菜单1",
+			nocheck: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "子菜单2",
+			nocheck: true
+		}, {
+			id: 13,
+			pId: 1,
+			name: "子菜单3",
+			nocheck: true
+		}, {
+			id: 14,
+			pId: 1,
+			name: "子菜单3",
+			nocheck: true
+		}, {
+			id: 15,
+			pId: 1,
+			name: "子菜单3",
+			nocheck: true
+		}, {
+			id: 16,
+			pId: 1,
+			name: "子菜单3",
+			nocheck: true
+		}, {
+			id: 17,
+			pId: 1,
+			name: "子菜单3",
+			nocheck: true
+		}, {
+			id: 18,
+			pId: 1,
+			name: "子菜单3",
+			nocheck: true
+		}, {
+			id: 19,
+			pId: 1,
+			name: "子菜单4",
+			nocheck: true
+		}];
+		$.fn.zTree.init($("#menuselTree"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true,
+				chkStyle: "radio",
+				radioType: "all"
+			},
+			view: {
+				showIcon: false,
+				dblClickExpand: false
+			},
+			callback: {
+				onClick: function(e, treeId, treeNode) {
+					var zTree = $.fn.zTree.getZTreeObj("menuselTree"),
+						nodes = zTree.getSelectedNodes(true),
+						v = "";
+					for (var i = 0, l = nodes.length; i < l; i++) {
+						v += nodes[i].name + ",";
+					}
+					if (v.length > 0) {
+						v = v.substring(0, v.length - 1);
+					};
+					$("#selInput").val(v);
+				}
+			}
+		}, selNodes);
+		//弹出树形下拉选择框
+		$("#selInput").on("click", function(e) {
+			e.stopPropagation();
+			$("#menuselDiv").slideToggle();
+		});
+		//隐藏树形下拉选择框
+		$("body").on("click", function() {
+			$("#menuselDiv").slideUp();
+		});
+		$("#menuselDiv").on("click", function(e) {
+			e.stopPropagation();
+		});
+		//		模糊查询
+		$(".higher-level1").select2({
+			placeholder: "选择上级菜单",
+			allowClear: true,
+			width: "100%"
+		});
+		//		菜单隐现
+		$(".menu-type").change(function() {
+			var menuTypeval = $(this).val();
+			if (menuTypeval == "报表中心") {
+				$(".menuproperty").show();
+				var menupropertyvals = $(".menuproperty>select").val();
+				if (menupropertyvals == "报表") {
+					$(".menu-report").show();
+				} else {
+					$(".menu-report").hide();
+				}
+				$(".menuproperty>select").change(function() {
+					var menupropertyval = $(this).val();
+					if (menupropertyval == "报表") {
+						$(".menu-report").show();
+					} else {
+						$(".menu-report").hide();
+					}
+				});
+				$(".menuaddress").hide();
+			} else {
+				$(".menuproperty").hide();
+				$(".menu-report").hide();
+				$(".menuaddress").show();
+			}
+		});
+		//表单验证
+		$('#menu').bootstrapValidator({
+			message: '值不能为空',
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				menucode: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '菜单代码不能为空'
+						},
+						regexp: {
+							regexp: /^[a-zA-Z0-9]+$/,
+							message: '菜单代码只能包括字母、数字'
+						}
+					}
+				},
+				menuname: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '菜单名称不能为空'
+						}
+					}
+				},
+				Chinamenuname: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '中文名称不能为空'
+						}
+					}
+				},
+				Englishmenuname: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '英文名称不能为空'
+						}
+					}
+				},
+//				higherlevelmenu: {
+//					message: '值不能为空',
+//					validators: {
+//						notEmpty: {
+//							message: '请选择上级菜单'
+//						}
+//					}
+//				},
+				menuorder: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '菜单顺序不能为空'
+						},
+						regexp: {
+							regexp: /^[Z0-9]+$/,
+							message: '菜单顺序只能包括数字'
+						}
+					}
+				}
+			}
+		});
+		$("#menupreservebtn").click(function() {
+			if ($("#menu").data("bootstrapValidator").validate().isValid()) {
+				$(this).attr("data-target", "#successModal");
+			} else {
+				$(this).removeAttr("data-target");
+			}
+		});
+		//		带复选框的下拉菜单--报表参数
+		$('.SlectBox').SumoSelect({
+			csvDispCount: 3
+		});
+	});
+</script>

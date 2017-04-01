@@ -1,0 +1,106 @@
+<!-- 实时消息  -->
+
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                                实时消息
+    	<small>查看应用中的消息记录</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">消息中心</a></li>
+    	<li class="active">实时消息</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+        <div class="box-header">
+            <h3 class="box-title">消息列表</h3>
+            <div class="box-tools">
+            	<div class="input-group pull-left">
+      				<input type="text" class="form-control input-sm" placeholder="发送人/消息内容" />
+      				<div class="input-group-btn">
+        				<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+      				</div>
+    			</div>
+    			<div class="pull-right">
+    				<div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-default">全部消息</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        	<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" id="selBtn">
+                        	<li><a href="#">全部消息</a></li>
+                        	<li><a href="#">文本消息</a></li>
+                        	<li><a href="#">图片消息</a></li>
+                        	<li><a href="#">链接消息</a></li>
+                        </ul>
+                    </div>
+    			</div>
+            </div>
+        </div>
+    	<div class="box-body no-padding">
+      		<table class="table table-striped">
+        		<tbody>
+        			<tr>
+                        <th>发送人</th>
+                        <th>发送时间</th>
+                        <th>消息内容</th>
+                        <th>操作</th>
+                    </tr>
+        			<tr>
+                      	<td>张三</td>
+                      	<td>2015-09-15 15:31:22</td>
+                      	<td>这是一条测试消息</td>
+                      	<td>
+                        	<a href="#" data-page="msg-reply" title="回复"><i class="fa fa-comments"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                      	<td>张三</td>
+                      	<td>2015-09-15 15:31:22</td>
+                      	<td>这是一条测试消息</td>
+                      	<td>
+                        	<a href="#" data-page="msg-reply" title="回复"><i class="fa fa-comments"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                      	<td>张三</td>
+                      	<td>2015-09-15 15:31:22</td>
+                      	<td>这是一条测试消息</td>
+                      	<td>
+                        	<a href="#" data-page="msg-reply" title="回复"><i class="fa fa-comments"></i></a>
+                        </td>
+        			</tr>
+      			</tbody>
+      		</table>
+    	</div>
+    	<div class="box-footer clearfix">
+    		<p class="pull-left">
+    			共<span>35</span>条记录，
+    			共<span>3</span>页
+    		</p>
+            <ul class="pagination pagination-sm no-margin pull-right">
+            	<li><a href="#">«</a></li>
+            	<li><a href="#">1</a></li>
+            	<li><a href="#">2</a></li>
+            	<li><a href="#">3</a></li>
+            	<li><a href="#">»</a></li>
+            </ul>
+        </div>
+	</div>
+</section>
+<!-- /Main content -->		
+
+<script type="text/javascript">
+	$(function() {
+		//选择消息类型
+		$("#selBtn").on("click", "a", function(e) {
+			e.preventDefault();
+			$("#selBtn").prev().prev().text($(this).text());
+		});
+	});
+</script>

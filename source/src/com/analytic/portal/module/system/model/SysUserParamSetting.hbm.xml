@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.analytic.portal.module.system.model.SysUserParamSetting" table="sys_user_param_setting">
+        <id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="java.lang.String">
+            <column name="user_id" length="100" />
+        </property>
+        <property name="paramId" type="java.lang.String">
+            <column name="param_id" length="100" />
+        </property>
+        <property name="refreshValue" type="java.lang.String">
+            <column name="refresh_value" length="255" />
+        </property>
+        <property name="isDelete" type="java.lang.String">
+            <column name="is_delete" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

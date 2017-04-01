@@ -1,0 +1,383 @@
+<!-- 菜单管理 -->
+
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                                        菜单管理
+    	<small>定义系统菜单及其操作</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">系统管理</a></li>
+    	<li class="active">菜单管理</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="box">
+				<div class="box-header">
+                    <h3 class="box-title">菜单列表</h3>
+                    <div class="box-tools">
+                    	<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#menuModal">
+                    		<i class="fa fa-plus"></i>
+                    	</a>
+                    </div>
+                </div>
+				<div class="box-body">
+					<div class="treeview" id="menuTree"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="box">
+				<div class="box-header">
+					<div class="box-title">菜单详情</div>
+					<div class="box-tools">
+                    	<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#menuModal">
+                    		<i class="fa fa-plus-circle"></i> 新增子菜单
+                    	</a>
+                    	<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#menuModal">
+                    		<i class="fa fa-edit"></i> 编辑
+                    	</a>
+                    	<a href="#" class="btn btn-default btn-sm">
+                    		<i class="fa fa-times-circle"></i> 删除
+                    	</a>
+                    </div>
+				</div>
+				<div class="box-body no-pad-top">
+					<table class="table table-bordered">
+            			<tbody>
+            				<tr>
+            					<td class="t-label">菜单名称</td>
+            					<td>菜单管理</td>
+            					<td class="t-label">菜单Code</td>
+            					<td>menuManager</td>
+            					<td class="t-label">菜单状态</td>
+            					<td><span class="label label-success">启用</span></td>
+            				</tr>
+            				<tr>
+            					<td class="t-label">菜单图标</td>
+            					<td><i class="fa fa-gear"></i></td>
+            					<td class="t-label">菜单Url</td>
+            					<td>/system/menuManager</td>
+            					<td class="t-label">排序码</td>
+            					<td>1</td>
+            				</tr>
+            			</tbody>
+            		</table>
+				</div>
+			</div>
+			
+			<div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">操作列表</h3>
+                    <div class="box-tools">
+                    	<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#optModal">
+                    		<i class="fa fa-plus-circle"></i> 新增
+                    	</a>
+                    	<a href="#" class="btn btn-default btn-sm">
+                    		<i class="fa fa-times-circle"></i> 批量删除
+                    	</a>
+                    </div>
+                </div>
+            	<div class="box-body no-padding">
+              		<table class="table table-striped">
+                		<tbody>
+                			<tr>
+		                        <th>
+		                        	<label>
+      									<input type="checkbox" class="check-all" />
+    								</label>
+		                        </th>
+		                        <th>操作名称</th>
+		                        <th>操作Code</th>
+		                        <th>执行方法</th>
+		                        <th>操作图标</th>
+		                        <th>显示位置</th>
+		                        <th>状态</th>
+		                        <th>排序码</th>
+		                        <th>操作</th>
+		                    </tr>
+                			<tr>
+		                        <td>
+		                        	<label>
+      									<input type="checkbox" />
+    								</label>
+		                        </td>
+		                      	<td>新增</td>
+		                      	<td>add</td>
+		                      	<td>add</td>
+		                      	<td><i class="fa fa-plus-circle"></i></td>
+		                      	<td>表格上方</td>
+		                        <td><span class="label label-success">启用</span></td>
+		                        <td>1</td>
+		                        <td>
+		                        	<a href="#" title="编辑" data-toggle="modal" data-target="#optModal"><i class="fa fa-edit"></i></a>
+		                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+		                        </td>
+                			</tr>
+                			<tr>
+		                        <td>
+		                        	<label>
+      									<input type="checkbox" />
+    								</label>
+		                        </td>
+		                      	<td>编辑</td>
+		                      	<td>edit</td>
+		                      	<td>edit</td>
+		                      	<td><i class="fa fa-edit"></i></td>
+		                      	<td>数据行尾</td>
+		                        <td><span class="label label-success">启用</span></td>
+		                        <td>2</td>
+		                        <td>
+		                        	<a href="#" title="编辑" data-toggle="modal" data-target="#optModal"><i class="fa fa-edit"></i></a>
+		                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+		                        </td>
+                			</tr>
+                			<tr>
+		                        <td>
+		                        	<label>
+      									<input type="checkbox" />
+    								</label>
+		                        </td>
+		                      	<td>删除</td>
+		                      	<td>delete</td>
+		                      	<td>delete</td>
+		                      	<td><i class="fa fa-remove"></i></td>
+		                      	<td>数据行尾</td>
+		                        <td><span class="label label-danger">禁用</span></td>
+		                        <td>3</td>
+		                        <td>
+		                        	<a href="#" title="编辑" data-toggle="modal" data-target="#optModal"><i class="fa fa-edit"></i></a>
+		                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+		                        </td>
+                			</tr>
+                			<tr>
+		                        <td>
+		                        	<label>
+      									<input type="checkbox" />
+    								</label>
+		                        </td>
+		                      	<td>批量删除</td>
+		                      	<td>batchDelete</td>
+		                      	<td>batchDelete</td>
+		                      	<td><i class="fa fa-times-circle"></i></td>
+		                      	<td>表格上方</td>
+		                        <td><span class="label label-danger">禁用</span></td>
+		                        <td>4</td>
+		                        <td>
+		                        	<a href="#" title="编辑" data-toggle="modal" data-target="#optModal"><i class="fa fa-edit"></i></a>
+		                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+		                        </td>
+                			</tr>
+              			</tbody>
+              		</table>
+            	</div>
+          </div>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="menuModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加/编辑菜单</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>菜单名称</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>菜单Code</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>菜单Url</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>图标</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>排序码</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>菜单状态</label>
+            				<select class="form-control">
+            					<option value="0">启用</option>
+            					<option value="1">禁用</option>
+            				</select>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success">保存</button>
+            </div>
+        </div>
+   	</div>
+</div>
+
+<div class="modal fade" id="optModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加/编辑操作</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>操作名称</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>操作Code</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>执行方法</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>操作图标</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>显示位置</label>
+            				<select class="form-control">
+            					<option value="0">表格上方</option>
+            					<option value="1">数据行尾</option>
+            				</select>
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>排序码</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>操作状态</label>
+            				<select class="form-control">
+            					<option value="0">启用</option>
+            					<option value="1">禁用</option>
+            				</select>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success">保存</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+	$(function() {
+		//初始化树形菜单
+		var menuData = [{
+            text: '通讯录',
+            href: '#1',
+            nodes: [{
+                text: '部门管理',
+                href: '#11'
+            }, {
+                text: '微信用户管理',
+                href: '#12'
+            }]
+        }, {
+            text: '应用中心',
+            href: '#2',
+            nodes: [{
+            	text: "我的应用",
+            	href: "#21"
+            }]
+        }, {
+            text: '个人中心',
+            href: '#3',
+            nodes: [{
+            	text: "我的资料",
+            	href: "#31"
+            }, {
+            	text: "修改密码",
+            	href: "#32"
+            }]
+        }, {
+            text: '系统管理',
+            href: '#4',
+            nodes: [{
+            	text: "菜单管理",
+            	href: "#41"
+            }, {
+            	text: "管理员列表",
+            	href: "#42"
+            }, {
+            	text: "角色管理",
+            	href: "#43"
+            }]
+        }];
+		$('#menuTree').treeview({
+            data: menuData,
+            levels: 1,
+            expandIcon: 'glyphicon glyphicon-menu-right',
+			collapseIcon: 'glyphicon glyphicon-menu-down',
+			emptyIcon: 'glyphicon',
+			nodeIcon: 'glyphicon glyphicon-link',
+            enableLinks: true,
+            onNodeSelected: function(event, node) {
+            	//console.log("menuId: " + node.href.substring(1));
+            }
+        });
+        $('#menuTree').on("click", "a", function(e) {
+        	e.preventDefault();
+        });
+	});
+</script>

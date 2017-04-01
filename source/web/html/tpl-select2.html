@@ -1,0 +1,73 @@
+<!-- 输入界面 -->
+			
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                        选择国家
+    	<small>使用select2插件实现可查询选择</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">模板界面</a></li>
+    	<li class="active">选择国家</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+    	<div class="box-body">
+    		<div class="row">
+        		<div class="col-md-6">
+        			<div class="form-group">
+        				<label>选择国家</label>
+        				<select class="form-control select2" id="selCountry">
+        					<optgroup label="亚洲">
+        						<option>中国</option>
+        						<option>日本</option>
+        						<option>韩国</option>
+        						<option>菲律宾</option>
+        						<option>泰国</option>
+        						<option>中国台湾</option>
+        					</optgroup>
+        					<optgroup label="北美洲">
+        						<option>美国</option>
+        						<option>加拿大</option>
+        						<option>墨西哥</option>
+        					</optgroup>
+        					<optgroup label="欧洲">
+        						<option>德国</option>
+        						<option>法国</option>
+        						<option>英国</option>
+        						<option>意大利</option>
+        						<option>西班牙</option>
+        						<option>葡萄牙</option>
+        						<option>瑞典</option>
+        						<option>瑞士</option>
+        					</optgroup>
+        					<optgroup label="南美洲">
+        						<option>巴西</option>
+        						<option>阿根廷</option>
+        					</optgroup>
+        					<optgroup label="大洋洲">
+        						<option>澳大利亚</option>
+        						<option>新西兰</option>
+        					</optgroup>
+        				</select>
+        			</div>
+        		</div>
+    		</div>
+    	</div>
+    	<div class="box-footer">	  
+    		<button type="button" class="btn btn-success">保存</button>
+    	</div>
+	</div>
+</section>
+<!-- /Main content -->
+				
+<script type="text/javascript">
+	$(function() {
+		$("#selCountry").select2().select2("val", "美国");
+	});
+</script>

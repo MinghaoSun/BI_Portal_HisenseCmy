@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 4.5.3
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8"/>
+    <title>海信集团报表门户</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/global/plugins/googleapis.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="assets/global/css/plugins.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="assets/apps/css/inbox.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="assets/layouts/layout2/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/layouts/layout2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/layouts/layout2/css/custom.min.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME LAYOUT STYLES -->
+    <!--<link rel="shortcut icon"  type="image/x-icon" href="favicon.ico" />-->
+    <!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />-->
+    <!-- END HEAD -->
+    <!--todo css begin-->
+    <!--分标签页展示-->
+    <!--<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>-->
+    <link rel="stylesheet" type="text/css" href="plugins/ztree/zTreeStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="plugins/datepicker/datepicker3.css"/>
+    <link rel="stylesheet" type="text/css" href="plugins/loading/msgbox.css"/>
+    <link rel="stylesheet" type="text/css" href="css/adminx.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/skins/_all-skins.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/tabPageDisplay/main_new.css"/>
+    <link href="css/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--树结构-->
+    <link rel="stylesheet" href="/static/frame/jquery-ztree/3.5.12/css/zTreeStyle/zTreeStyle.css">
+    <script type="text/javascript" src="/static/frame/jquery-ztree/3.5.12/js/jquery-1.4.4.min.js"></script>
+    <script src="/static/frame/jquery-ztree/3.5.12/js/jquery.ztree.all-3.5.min.js"></script>
+    <!--table-->
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-table-master/bootstrap-table.min.css"/>
+    <!--全局参数设置-->
+    <link rel="stylesheet" href="static/css/globalParameterSetting/BootSideMenu.css">
+    <!--todo css end-->
+    <!-- 内部css覆盖 -->
+    <style type="text/css">
+     .dropdown-menu{font-family:"microsoft yahei", "times new roman", Helvetica, Arial, sans-serif;}
+    </style>
+</head>
+<body id="pageBody"
+      class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid skin-green-light"
+      ng-app="infopowerWebApp" ng-controller="initCtrl">
+<!-- BEGIN HEADER -->
+<div id="page-header" class="page-header navbar navbar-fixed-top" >
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner ">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a>
+                <img src="assets/layouts/layout2/img/logo-default.png" alt="logo" class="logo-default"/>
+            </a>
+            <div id="sidebarToggerId" class="menu-toggler sidebar-toggler " onclick="cutChangeClicked(this)">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+            </div>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
+           data-target=".navbar-collapse"> </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN PAGE TOP -->
+        <div class="page-top">
+            <!-- END HEADER SEARCH BOX -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div style="float:left;padding-top: 10px;padding-left: 16px;">
+                <img src="assets/layouts/layout2/img/logo-title.png" height="19px" width="292px">
+            </div>
+            <div class="top-menu" style="z-index:999">
+
+                <!--<button id="view-fullscreen" style="display: none;">Fullscreen</button>-->
+                <!--<button id="cancel-fullscreen" style="display: none;">cancel-fullscreen</button>-->
+                <!--<button id="cancel-fullscreen">Cancel fullscreen</button>-->
+                <ul class="nav navbar-nav pull-right">
+                    <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar2">
+                        <a href="javascript:;" class="dropdown-toggle" title="全屏显示" onclick="fullScreenClick()"
+                           data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="icon-screen-desktop" ></i>
+                            <!--<span class="badge badge-default"> 3 </span>-->
+                        </a>
+                        <ul></ul>
+                    </li>
+                    <li class="dropdown dropdown-extended dropdown-notification dropdown-dark"
+                        id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true">
+                            <i class="icon-bell" ></i>
+                        </a>
+                        <ul></ul>
+                    </li>
+                    <li class="dropdown dropdown-user dropdown-dark">
+                        <a href="javascript:;"  class="dropdown-toggle"
+                           data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <img alt="" class="img-circle" src="assets/layouts/layout2/img/avatar.png"/>
+                            <!--<span class="username username-hide-on-mobile">{{i18n('page_index_lbl_current_user')}}：{{loginUser.loginName}} </span>-->
+                            <span class="username username-hide-on-mobile">{{loginUser.loginName}}</span>
+                            <i class="fa fa-angle-down" ></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="javascript:;" ng-if="'admin'!=loginUser.loginName" ng-click="getUserInfo()">
+                                    <i class="icon-note"></i> {{i18n('sys_title_dlg_edit')}}</a>
+                            </li>
+                            <li>
+                                <!--<a href="page_user_login_1.html">
+                                    <i class="icon-key"></i> Log Out </a>-->
+                                <a href="sysUsers/close.do?loginName={{loginUser.loginName}}">
+                                    <i class="icon-key" ></i> {{i18n('page_index_sign')}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true">
+                            <i class="icon-settings" ></i>
+                            <!--<span class="badge badge-default"> 3 </span>-->
+                        </a>
+                        <!--<ul class="dropdown-menu extended tasks">-->
+                        <ul class="dropdown-menu dropdown-menu-default" style="min-width: 160px;max-width: 210px;">
+                            <li>
+                                <ul id="personalSettingUlId" class="dropdown-menu-list scroller" style="height: 165px;"
+                                    data-handle-color="#637283">
+                                    <li>
+                                        <a id="20160927105313704" href="javascript:return false;"
+                                           reportId="20160927105313704"
+                                           personalSettingItem="sysCommonReportSetting"
+                                           onclick="add(this);">
+                                                    <span id="spanId20160927105313704" class="task">
+                                                        <i class="fa fa-line-chart"></i>
+                                                        <span class="desc">  {{i18n('page_system_common_report_settings')}} </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="20160927105422818" href="javascript:return false;"
+                                           reportId="20160927105422818"
+                                           personalSettingItem="sysDefaultReportSetting"
+                                           onclick="add(this);">
+                                                    <span id="spanId20160927105422818" class="task">
+                                                        <i class="fa fa-bar-chart"></i>
+                                                        <span class="desc">  {{i18n('page_system_default_report_settings')}} </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="20160927105509795" href="javascript:return false;"
+                                           reportId="20160927105509795"
+                                           personalSettingItem="sysRefreshParameterSetting"
+                                           onclick="add(this);">
+                                                    <span id="spanId20160927105509795" class="task">
+                                                        <i class="fa fa-refresh"></i>
+                                                        <span class="desc">  {{i18n('page_system_refresh_param_settings')}} </span>
+                                                    </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                    <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    <!--<li class="dropdown dropdown-extended quick-sidebar-toggler">-->
+                        <!--<span class="sr-only">Toggle Quick Sidebar</span>-->
+                        <!--<i class="icon-logout"></i>-->
+                    <!--</li>-->
+
+                    <!-- END QUICK SIDEBAR TOGGLER -->
+                </ul>
+            </div>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+        <!-- END PAGE TOP -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<!-- BEGIN HEADER & CONTENT DIVIDER -->
+<div id="clearfix" class="clearfix"></div>
+<!-- END HEADER & CONTENT DIVIDER -->
+<!-- BEGIN CONTAINER -->
+
+<!--<div id="page-container" class="page-container" ui-view></div>-->
+<div id="page-container" class="page-container">
+    <div id="page-sidebar-wrapper" class="page-sidebar-wrapper">
+        <!-- END SIDEBAR -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <div class="page-sidebar navbar-collapse collapse" style="position: fixed !important;z-index:999">
+            <!--<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 599px;">-->
+            <!--<ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">-->
+            <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-compact ">
+
+            </ul>
+            <!--</div>-->
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+    </div>
+    <div id="page-content-wrapper" class="page-content-wrapper" ui-view>
+    </div>
+</div>
+
+<a href="javascript:;" class="page-quick-sidebar-toggler">
+    <i class="icon-login"></i>
+</a>
+<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+    <div class="page-quick-sidebar">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab">{{i18n('page_system_settings')}}
+                    <!--<span class="badge badge-danger">2</span>-->
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+                <div style="margin-left:auto;margin-right:auto; " class="page-quick-sidebar-chat-users"
+                     data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
+                    <div class="theme-panel">
+                        <!--<div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
+                            <i class="icon-settings"></i>
+                        </div>
+                        <div class="toggler-close">
+                            <i class="icon-close"></i>
+                        </div>-->
+                        <div class="theme-options" style="display: block">
+                            <div class="theme-option theme-colors clearfix">
+                                <span> {{i18n('page_system_settings_theme_color')}} </span>
+                                <ul>
+                                    <li class="color-default current tooltips" data-style="default"
+                                        data-container="body" data-original-title="Default"></li>
+                                    <li class="color-grey tooltips" data-style="grey" data-container="body"
+                                        data-original-title="Grey"></li>
+                                    <li class="color-blue tooltips" data-style="blue" data-container="body"
+                                        data-original-title="Blue"></li>
+                                    <li class="color-dark tooltips" data-style="dark" data-container="body"
+                                        data-original-title="Dark"></li>
+                                    <li class="color-light tooltips" data-style="light" data-container="body"
+                                        data-original-title="Light"></li>
+                                </ul>
+                            </div>
+                            <!--<div class="theme-option">
+                                <span>{{i18n('page_system_settings_theme_style')}} </span>
+                                <select class="layout-style-option form-control input-small">
+                                    <option value="square" selected="selected">Square corners</option>
+                                    <option value="rounded">Rounded corners</option>
+                                </select>
+                            </div>-->
+                            <div class="theme-option">
+                                <span> {{i18n('page_system_settings_layout')}} </span>
+                                <select class="layout-option form-control input-small">
+                                    <option value="fluid" selected="selected">Fluid</option>
+                                    <option value="boxed">Boxed</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> {{i18n('page_system_settings_header')}} </span>
+                                <select class="page-header-option form-control input-small">
+                                    <option value="fixed" selected="selected">Fixed</option>
+                                    <option value="default">Default</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span>{{i18n('page_system_settings_top_dropdown')}}</span>
+                                <select class="page-header-top-dropdown-style-option form-control input-small">
+                                    <option value="dark" selected="selected">Dark</option>
+                                    <option value="light">Light</option>
+                                </select>
+                            </div>
+                            <!--<div class="theme-option">
+                                <span> {{i18n('page_system_settings_sidebar_mode')}}</span>
+                                <select class="sidebar-option form-control input-small">
+                                    <option value="fixed">Fixed</option>
+                                    <option value="default" selected="selected">Default</option>
+                                </select>
+                            </div>-->
+                            <div class="theme-option">
+                                <span> {{i18n('page_system_settings_sidebar_style')}}</span>
+                                <select class="sidebar-style-option form-control input-small">
+                                <option value="compact" selected="selected">Compact</option>
+                                <option value="default">Default</option>
+                            </select>
+                            </div>
+                            <div class="theme-option">
+                                <span>{{i18n('page_system_settings_sidebar_menu')}} </span>
+                                <select class="sidebar-menu-option form-control input-small">
+                                    <option value="accordion" selected="selected">Accordion</option>
+                                    <option value="hover">Hover</option>
+                                </select>
+                            </div>
+                            <!--<div class="theme-option">
+                                <span> {{i18n('page_system_settings_sidebar_position')}} </span>
+                                <select class="sidebar-pos-option form-control input-small">
+                                    <option value="left" selected="selected">Left</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </div>-->
+                            <!--<div class="theme-option">
+                                <span> Footer </span>
+                                <select class="page-footer-option form-control input-small">
+                                    <option value="fixed">Fixed</option>
+                                    <option value="default" selected="selected">Default</option>
+                                </select>
+                            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div class="scroll-to-top">
+    <i class="icon-arrow-up"></i>
+</div>
+<!--登陆超时-->
+<div class="modal fade" id="successModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">系统提示-超时</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">登陆超时！</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--<div class="page-footer">
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>-->
+<!-- END FOOTER -->
+<!--[if lt IE 9]>
+
+<!--<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script>-->
+
+<!-- BEGIN CORE PLUGINS -->
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+<!--<script src="assets/global/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/vendor/tmpl.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js"
+        type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>-->
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="assets/apps/scripts/inbox.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME LAYOUT SCRIPTS -->
+<script src="assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
+<script src="assets/layouts/layout2/scripts/demo.min.js" type="text/javascript"></script>
+<script src="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<!-- END THEME LAYOUT SCRIPTS -->
+<!--todo 整合新增_begin-->
+<!--<script type="text/javascript" src="js/jquery/jquery-2.1.4.min.js"></script>-->
+<script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/i18n/jquery.i18n.properties-min-1.0.9.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<!--<script type="text/javascript" src="js/bootstrap/bootstrap-3.3.5.min.js"></script>-->
+<script type="text/javascript" src="js/bootstrap/bootstrap-paginator.js"></script>
+<script type="text/javascript" src="js/multiselect.min.js"></script>
+<script type="text/javascript" src="js/adminx.min.js"></script>
+<script type="text/javascript" src="plugins/loading/msgbox.js"></script>
+<script type="text/javascript" src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="plugins/ztree/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="js/bootstrapValidator/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="js/i18n/local.i18n.js"></script>
+<!--angular-config之前初始化菜单相关信息，以便angular-config使用-->
+<script type="text/javascript" src="static/js/index/index.js"></script>
+
+<script type="text/javascript" src="js/angular/angular.min.js"></script>
+<script type="text/javascript" src="js/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="js/angular/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="js/angular/ct-ui-router-extras.js"></script>
+<script type="text/javascript" src="js/common/constant.js"></script>
+<script type="text/javascript" src="js/common/directives.js"></script>
+<script type="text/javascript" src="js/common/filters.js"></script>
+<script type="text/javascript" src="js/common/baseModule_new.js"></script>
+<script type="text/javascript" src="js/common/appRoute_new.js"></script>
+<script type="text/javascript" src="js/common/underscore-min.js"></script>
+
+<script type="text/javascript" src="page_new/system/controller/indexController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/initController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysUserController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysRoleController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysMenuController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysLogController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysReportController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysOtherController.js"></script>
+<script type="text/javascript" src="page_new/report/controller/reportToolController.js"></script>
+<script type="text/javascript" src="page_new/report/controller/reportParamController.js"></script>
+<script type="text/javascript" src="page_new/report/controller/reportListController.js"></script>
+<script type="text/javascript" src="page_new/report/controller/reportBusinessController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysCommonReportSettingController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysDefaultReportSettingController.js"></script>
+<script type="text/javascript" src="page_new/system/controller/sysRefreshParameterSettingController.js"></script>
+<!--数据角色-参数值关联数据维度设置-->
+<script src="static/js/paramRelateData/tableExport.js"></script>
+<script src="static/js/paramRelateData/jquery.base64.js"></script>
+<script src="static/js/paramRelateData/bootstrap-table.js"></script>
+<script src="static/js/paramRelateData/bootstrap-table-export.js"></script>
+<!--分标签页展示-->
+<script src="static/js/tabPageDisplay/bootstrap-closable-tab_new.js"></script>
+<!--全局参数设置-->
+<script src="static/js/globalParameterSetting/BootSideMenu.js"></script>
+<script src="static/js/fullScreen/fullscreen.js"></script>
+<script src="static/js/main/main.js"></script>
+
+<!--charts-->
+<!--<script src="assets/global/plugins/highcharts/js/highcharts.js" type="text/javascript"></script>
+<script src="assets/global/plugins/highcharts/js/highcharts-3d.js" type="text/javascript"></script>
+<script src="assets/global/plugins/highcharts/js/highcharts-more.js" type="text/javascript"></script>
+<script src="assets/pages/scripts/charts-highcharts.min.js" type="text/javascript"></script>-->
+<!--todo 整合新增_end-->
+
+</body>
+
+</html>

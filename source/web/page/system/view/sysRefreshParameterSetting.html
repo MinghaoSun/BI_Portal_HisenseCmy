@@ -1,0 +1,306 @@
+<!-- 刷新参数设置列表 -->
+<script type="application/javascript">
+    /*用于保存已选的刷新参数，此处选择map集合*/
+    var selectRefreshParamArray = [];
+
+    function onSingleSelChangeForRefreshParam(objSel){
+        if (selectRefreshParamArray.length>0){
+            selectRefreshParamArray.splice($.inArray($(objSel).val(),selectRefreshParamArray),1);
+        }else{
+            selectRefreshParamArray.push($(objSel).val());
+        }
+    }
+</script>
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+        {{i18n('page_refresh_parameter_setting')}}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}}</a></li>
+        <!--<li><a href="#">系统管理</a></li>-->
+        <li class="active">{{i18n('page_refresh_parameter_setting')}}</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{{i18n('page_reportparameter_parameterlist')}}</h3>
+            <div class="box-tools">
+                <span class="pull-left span-lh">{{i18n('page_reportparameter_parameterkey')}}</span>
+                <div class="input-group pull-left">
+                    <input type="text" class="form-control input-sm" ng-model="search.reportParamKey"
+                           placeholder="{{i18n('page_reportparameter_parameterkey')}}"/>
+                </div>
+                <span class="pull-left span-lh">{{i18n('page_reportparameter_parametername')}}</span>
+                <div class="input-group pull-left">
+                    <input type="text" class="form-control input-sm" ng-model="search.reportParamName"
+                           placeholder="{{i18n('page_reportparameter_parametername')}}"/>
+                </div>
+                <div class="pull-right">
+                    <a class="btn btn-default btn-sm" id="search-btn" ng-click="reload('yes')">
+                        <i class="fa fa-search"></i> {{i18n('page_reporttool_search')}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>{{i18n('page_reportparameter_parametercode')}}</th>
+                    <th>{{i18n('page_reportparameter_parametername')}}</th>
+                    <th>{{i18n('page_reportparameter_parameterkey')}}</th>
+                    <!--<th>参数值</th>-->
+                    <th>{{i18n('page_reportparameter_parametersequence')}}</th>
+                    <th>{{i18n('page_reporttool_creationtime')}}</th>
+                    <th>{{i18n('page_reportparameter_parametervalues')}}</th>
+                    <th>{{i18n('page_reportparameter_refreshparametervalues')}}</th>
+                    <th>{{i18n('page_reporttool_operation')}}</th>
+                </tr>
+                <tr ng-repeat="reportParam in datas">
+                    <td>{{reportParam.code}}</td>
+                    <td>{{reportParam.paramName}}</td>
+                    <td>{{reportParam.paramKey}}</td>
+                    <td>{{reportParam.paramOrder}}</td>
+                    <td>{{reportParam.createTime}}</td>
+                    <td>{{reportParam.paramValue}}</td>
+                    <td>{{reportParam.refreshValue}}</td>
+                    <td>
+                        <a ng-click="editBtn('updateReportParam',reportParam.id)" title="{{i18n('sys_title_dlg_edit')}}"
+                           data-toggle="modal" data-target="#adminModal"><i class="fa fa-gear"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <p class="pull-left">
+                {{i18n('page_index_pages_total')}} <span>{{itemCount}}</span>
+                {{i18n('page_index_pages_record')}} , {{i18n('page_index_pages_total')}}
+                <span>{{pageCount}}</span> {{i18n('page_index_pages_page')}}
+            </p>
+            <ul id="pagination"></ul>
+        </div>
+    </div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="adminModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="hEdit">{{i18n('page_refresh_parameter_setting')}}</h4>
+            </div>
+            <div class="modal-body">
+                <form id="reportParamForm" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_reportparameter_parametername')}}</label>
+                                <input readonly="readonly" type="text" ng-model="reportParam.paramName"
+                                       class="form-control" id="paramName" name="paramName"
+                                       placeholder="{{i18n('page_reportparameter_parametername')}}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_reportparameter_parametersequence')}}</label>
+                                <input readonly="readonly" type="text" ng-model="reportParam.paramOrder"
+                                       class="form-control" id="paramOrder" name="paramOrder"
+                                       placeholder="{{i18n('page_reportparameter_parametersequence')}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_reportparameter_parameterkey')}}</label>
+                                <input readonly="readonly" type="text" ng-model="reportParam.paramKey"
+                                       class="form-control" id="paramKey" name="paramKey"
+                                       placeholder="{{i18n('page_reportparameter_parameterkey')}}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_reportparameter_parametervalues')}}</label>
+                                <input readonly="readonly" type="text" ng-model="reportParam.paramValue"
+                                       class="form-control" id="paramValue" name="paramValue"
+                                       placeholder="{{i18n('page_reportparameter_parameterkey')}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="specialRowId" class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_reportparameter_refreshparametervalues')}}</label>
+                                <input type="text" ng-model="reportParam.paramValue" class="form-control" id="paramKey" name="paramKey" placeholder="{{i18n('page_reportparameter_parameterkey')}}" />
+                            </div>
+                        </div>
+                    </div>-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                    {{i18n('page_sys_dlg_cancel')}}
+                </button>
+                <button type="button" class="btn btn-preserve" ng-click="editBtn('addReportParam')">
+                    {{i18n('page_sys_dlg_save')}}
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="roleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">分配角色</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="ztree" id="roleTree"></ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-preserve">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_reportparameter')}}-{{i18n('page_delete')}} </h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">{{i18n('page_sys_dlg_confirm')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}
+                </button>
+                <button type="button" class="btn btn-preserve" ng-click="editBtn('deleteReportParam')">
+                    {{i18n('page_sys_dlg_confirmDel')}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="successModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_reportparameter')}}-{{i18n('page_sys_dlg_save')}}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <p class="delete-sure">{{i18n('page_savesuccess')}}</p> -->
+                <p class="delete-sure" id="hintInfo"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">
+                    {{i18n('page_sys_dlg_confirmDel')}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+<!--提示信息-->
+<div class="modal fade" id="tipModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_reportparameter')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">{{i18n('page_tip_repeat')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">
+                    {{i18n('page_sys_dlg_confirmDel')}}
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+    $(function () {
+        //loading
+        //$("#search-btn").click(function() {
+        //var tip = "正在加载中，请稍候...";
+        //ZENG.msgbox.show(tip, 6, 3000);
+        //});
+
+        //表单验证
+        $('#reportParamForm').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                paramName: {
+                    validators: {
+                        notEmpty: {
+                            message: "{{i18n('page_reportparameter_nametip')}}"
+                        }
+                    }
+                },
+                paramKey: {
+                    validators: {
+                        notEmpty: {
+                            message: "{{i18n('page_reportparameter_keytip')}}"
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_]+$/,
+                            message: "{{i18n('page_reportparameter_keyvalidate')}}"
+                        }
+                    }
+                },
+                paramOrder: {
+                    validators: {
+                        notEmpty: {
+                            message: "{{i18n('page_reportparameter_sequencetip')}}"
+                        },
+                        regexp: {
+                            regexp: /^[Z0-9]+$/,
+                            message: "{{i18n('page_reportparameter_sequencevalidate')}}"
+                        }
+                    }
+                },
+            }
+        });
+
+    });
+</script>

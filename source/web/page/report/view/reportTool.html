@@ -1,0 +1,258 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+    	{{i18n('page_index_menu_birt')}} 
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#/main"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}}</a></li>
+    	<li><a href="#">{{i18n('page_index_menu_sysManagement')}}</a></li>
+    	<li class="active">{{i18n('page_index_menu_birt')}}</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{{i18n('page_reporttool_list')}}</h3>
+            <div class="box-tools">
+    			
+    			<span class="pull-left span-lh">{{i18n('page_reporttool_toolName')}}</span>
+            	<div class="input-group pull-left">
+      				<input type="text"  ng-model="search.reportToolName" class="form-control input-sm" placeholder="{{i18n('page_reporttool_toolName')}}"/>
+    			</div>
+    			<span class="pull-left span-lh">{{i18n('page_reporttool_tooltype')}}</span>
+    			<div class="input-group pull-left">
+      				<select class="form-control select-sm" ng-model="search.reportToolType"  ng-options="x.id as x.name for x in reportToolTypesList">
+						
+					</select>
+    			</div>
+    			<div class="pull-right">
+    				<a class="btn btn-default btn-sm" ng-click="reload('yes')">
+                		<i class="fa fa-search"></i> {{i18n('page_reporttool_search')}}
+                	</a>
+    				<a ng-click="editBtn('showReportTool')"  class="btn btn-default btn-sm">
+                		<i class="fa fa-plus-circle"></i> {{i18n('sys_title_dlg_new')}}
+                	</a>
+    			</div>
+            </div>
+        </div>
+    	<div class="box-body no-padding">
+      		<table class="table table-striped">
+        		<tbody>
+        			<tr>
+                        <th>{{i18n('page_reporttool_toolcode')}}</th>
+                        <th>{{i18n('page_reporttool_toolName')}}</th>
+                        <th>{{i18n('page_reporttool_tooltype')}}</th>
+                        <th>{{i18n('page_reporttool_toolversion')}}</th>
+<!--                         暂时隐藏该功能，后期根据实际情况再做相应调整 -->
+<!--                         <th>{{i18n('page_reporttool_displaymode')}}</th> -->
+                        <th>{{i18n('page_reporttool_creationtime')}}</th>
+                        <th>{{i18n('page_reporttool_operation')}}</th>
+                    </tr>
+        			<tr ng-repeat="reportTool in datas">
+                      <td>{{reportTool.code}}</td>
+					  <td>{{reportTool.reportToolName}}</td>
+					  <td ng-if="reportTool.reportToolType==01">BusinessObjects</td>
+					  <td ng-if="reportTool.reportToolType==02">Tableau</td>
+					  <td ng-if="reportTool.reportToolType==03">QlikView</td>
+					  <td>{{reportTool.reportToolVersion}}</td>
+<!--                      暂时隐藏该功能，后期根据实际情况再做相应调整 -->
+<!-- 					  <td ng-if="reportTool.reportToolDisplay==1">{{i18n('page_reporttool_window')}}</td> -->
+<!-- 					  <td ng-if="reportTool.reportToolDisplay==0">{{i18n('page_reporttool_tab')}}</td> -->
+					  <td>{{reportTool.createTime}}</td>
+					  
+                        <td>
+                        	<a ng-click="editBtn('updateReportTool',reportTool.id)" title="{{i18n('sys_title_dlg_edit')}}" 
+                        	data-toggle="modal" data-target="#adminModal" data-id="{{reportTool.id}}">
+                        	<i class="fa fa-edit"></i></a>
+                        	<a  ng-click="editBtn('showDelDiv',reportTool.id)" title="{{i18n('page_delete')}}" 
+                        	data-toggle="modal" data-id="{{reportTool.id}}" data-target="#deleteModal">
+                        	<i class="fa fa-remove"></i></a>
+                        </td>
+        			</tr>
+
+      			</tbody>
+      		</table>
+    	</div>
+    	<div class="box-footer clearfix">
+    		<p class="pull-left">
+			{{i18n('page_index_pages_total')}} <span>{{itemCount}}</span>
+			 {{i18n('page_index_pages_record')}} , {{i18n('page_index_pages_total')}} 
+			 <span>{{pageCount}}</span> {{i18n('page_index_pages_page')}}
+			</p>
+			<ul id="pagination"></ul>
+        </div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="adminModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="hAdd">{{i18n('page_index_menu_birt')}} -{{i18n('sys_title_dlg_new')}}</h4>
+                <h4 class="modal-title" id="hEdit">{{i18n('page_index_menu_birt')}} -{{i18n('sys_title_dlg_edit')}}</h4>
+            </div>
+            <div class="modal-body">
+            	<form novalidate id="reportToolForm" method="post">
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>{{i18n('page_reporttool_toolName')}}</label>
+            				<input type="text" class="form-control" id="toolName" name="toolName"  ng-model="reportTool.reportToolName" placeholder="{{i18n('page_reporttool_toolName')}}" required/>
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>{{i18n('page_reporttool_tooltype')}}</label>
+            				<select class="form-control" id="Type" name="reportToolType"  ng-model="reportTool.reportToolType"  placeholder="{{i18n('page_reporttool_tooltype')}}"  ng-options="x.id as x.name for x in reportToolTypes">
+            					
+            				</select>
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group modal-select">
+            				<label>{{i18n('page_reporttool_toolversion')}}</label>
+            				<select class="form-control" ng-model="reportTool.reportToolVersion"   ng-options="x.id as x.name for x in reportToolVersions">
+            					
+            				</select>
+            			</div>
+            		</div>
+<!--             		暂时隐藏该功能，后期根据实际需求做调整 -->
+<!--             		<div class="col-md-6"> -->
+<!--             			<div class="form-group"> -->
+<!--             				<label>{{i18n('page_reporttool_displaymode')}}</label> -->
+<!--             				<select class="form-control" ng-model="reportTool.reportToolDisplay"  ng-options="x.id as x.name for x in reportToolDisplays"> -->
+            				
+<!--             				</select> -->
+<!--             			</div> -->
+<!--             		</div> -->
+            	</div>
+            	<div class="row">
+     		        <div class="col-md-12">
+						<div class="form-group modal-select">
+							<label>{{i18n('page_reporttool_Authorized')}}</label>
+							<input type="text" class="form-control" id="toolAuthAddress" ng-model="reportTool.reportToolAuthUrl" name="toolAuthAddress" placeholder="{{i18n('page_reporttool_Authorized')}}" required/>
+						</div>
+					</div>
+            		<div class="col-md-12">
+							<div class="form-group modal-select">
+								<label>{{i18n('page_log_accessAddress')}}</label>
+								<input type="text" class="form-control" id="toolAddress" ng-model="reportTool.reportToolUrl" name="toolAddress" placeholder="{{i18n('page_log_accessAddress')}}" required/>
+							</div>
+						</div>
+            	</div>
+            	</form>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}</button>
+            	<button type="button" class="btn btn-preserve" ng-click="editBtn('addReportTool')">{{i18n('page_sys_dlg_save')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal">
+	 <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            	<h4 class="modal-title">{{i18n('page_index_menu_birt')}}-{{i18n('page_delete')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">{{i18n('page_sys_dlg_confirm')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}</button>
+                <button type="button" class="btn btn-preserve" ng-click="editBtn('deleteReportTool')">{{i18n('page_sys_dlg_confirmDel')}}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!--保存成功-->
+<div class="modal fade" id="successModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_index_menu_birt')}}-{{i18n('page_sys_dlg_save')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure" id="hintInfo"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+<!--提示信息-->
+<div class="modal fade" id="tipModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_index_menu_birt')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">{{i18n('page_tip_repeat')}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+
+<script type="text/javascript">
+	$(function() {
+		
+		$('#reportToolForm').bootstrapValidator({
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				toolAddress: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_reporttool_addresstip')}}"
+						}
+					}
+				},
+				toolName: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_reporttool_nametip')}}"
+						}
+					}
+				},
+				toolAuthAddress: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_reporttool_authorizeTip')}}"
+						}
+					}
+				}
+			}
+		});
+		
+	});
+</script>

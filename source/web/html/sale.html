@@ -1,0 +1,343 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	报表列表
+    </h1>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-body">
+			<ol class="breadcrumb nav-ol">
+				<li id="nav-olone"><a href="#">报表列表</a></li>
+			</ol>
+			<ul class="folder-ul ul1">
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="box-footer clearfix">
+        </div>
+</section>
+
+<script type="text/javascript">
+
+	$(function() {
+		
+		var data = [
+			{
+				name: " 华东销售报表报表报表报表报表报表报表报表报表报表报表报表报表报表报表",
+				type: 0,
+				list: [
+					{
+						name: " 销售报表1",
+						type: 0,
+						list: [
+							{
+								name: " BO报表",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					},
+					{
+						name: " 销售报表2",
+						type: 0,
+						list: [
+							{
+								name: " BO报表2",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表2",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					}
+				]
+			},
+			{
+				name: " 华南销售报表",
+				type: 0,
+				list: [
+					{
+						name: " 销售报表3",
+						type: 0,
+						list: [
+							{
+								name: " BO报表3",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表3",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					},
+					{
+						name: " 销售报表4",
+						type: 0,
+						list: [
+							{
+								name: " BO报表4",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表4",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					}
+				]
+			},
+			{
+				name: " 华北销售报表",
+				type: 0,
+				list: [
+					{
+						name: " 销售报表3",
+						type: 0,
+						list: [
+							{
+								name: " BO报表3",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表3",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					},
+					{
+						name: " 销售报表4",
+						type: 0,
+						list: [
+							{
+								name: " BO报表4",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表4",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					}
+				]
+			},
+			{
+				name: " 华西销售报表",
+				type: 0,
+				list: [
+					{
+						name: " 销售报表3",
+						type: 0,
+						list: [
+							{
+								name: " BO报表3",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表3",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					},
+					{
+						name: " 销售报表4",
+						type: 0,
+						list: [
+							{
+								name: " BO报表4",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表4",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					}
+				]
+			},
+			{
+				name: " 华西销售报表",
+				type: 0,
+				list: [
+					{
+						name: " 销售报表3",
+						type: 0,
+						list: [
+							{
+								name: " BO报表3",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表3",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					},
+					{
+						name: " 销售报表4",
+						type: 0,
+						list: [
+							{
+								name: " BO报表4",
+								type: 1,
+								href: "html/BO.html"
+							},
+							{
+								name: " Tableau报表4",
+								type: 1,
+								href: "html/Tableau.html"
+							}
+						]
+					}
+				]
+			}
+		];
+		
+		var folderUl = $(".folder-ul");
+		var navOl = $(".nav-ol");
+		
+		folderUl.onselectstart = function(){ return false; };
+		
+		/**
+		 * 根据名称和类型获得一个菜单条目
+		 * @param {Object} text
+		 * @param {Object} type
+		 */
+		function getAnItem(text, type, href){
+			return "<li data-type=\"" +type+ "\" " +(href && "data-href=" + href)+ "><i class=\"fa fa-" 
+			+(type == 0 ? "folder" : "file-text-o")+ "\"></i><span>" +text+ "</span></li>";
+			
+		}
+		
+		/**
+		 * 重置所有菜单条目
+		 * @param {Object} items
+		 */
+		function resetAllItems(items){
+			folderUl.html("");
+			var html = "";
+			for(var i in items){
+				var item = items[i];
+				html += getAnItem(item["name"], item["type"], item["href"]);
+			}
+			folderUl.html(html);
+			resetItemEvent();
+		}
+		
+		/**
+		 * 重置菜单条目的双击/点击事件
+		 */
+		function resetItemEvent(){
+			folderUl.children().each(function(){
+				var $this = $(this);
+				var type = $this.attr("data-type");
+				if(type == 0){
+					$this.dblclick(function(){
+						// 双击文件夹打开该文件夹
+						var text = $this.find("span").text();
+						setListByName(data, text);
+						// 索引+1
+						navOl.append("<li><a href='#' title=\"" +text+ "\" >" + text + "</a></li>");
+						navOl.children().hover(function(){})
+						navOl.children().click(function(){
+							// 记录此时点击的导航索引
+							var index = $(this).index();
+							// 循环所有的导航，索引大的删除
+							navOl.children().each(function(k, v){
+								if(k > index){
+									$(v).remove();
+								}
+							});
+							if(index == 0){
+								resetAllItems(data);
+							}else{
+								setListByName(data, $(this).text());
+							}
+						});
+					});
+				}else{
+					$(this).click(function(){
+						window.open($(this).attr("data-href")) ;
+					});
+				}
+			});
+		}
+		
+		resetAllItems(data);
+		
+		/**
+		 * 根据文件夹名称查找对应的文件夹内容
+		 * @param {Object} list
+		 * @param {Object} name
+		 */
+		function setListByName(list, name){
+			$(list).each(function(k, v){
+				if(v["name"] == name){
+					resetAllItems(v["list"]);
+				}else{
+					setListByName(v["list"], name);
+				}
+			});
+		}
+		
+		
+		
+		
+//		$(".ul1 li").dblclick(function(){
+//			var $ul1Lihtml=$(this).find("span").html();
+////			alert($ul1Lihtml);
+//			$(".ul1").hide();
+//			$(".ul2").show();
+//			$(".nav-ol").append("<li id='nav-oltwo'><a href='#'></a></li>");
+//			$("#nav-oltwo a").html($ul1Lihtml);
+//			$(".ul2 li").dblclick(function(){
+//				var $ul2Lihtml=$(this).find("span").html();
+////				alert($ul2Lihtml);
+//				$(".ul2").hide();
+//				$(".ul3").show();
+//				$(".nav-ol").append("<li class='active' id='nav-olthree'></li>");
+//				$("#nav-olthree").html($ul2Lihtml);
+//			});
+//			$("#nav-oltwo").click(function(){
+//				$(".ul3").hide();
+//				$(".ul2").show();
+//				$("#nav-olthree").remove();
+//			});
+//			$("#nav-olone").click(function(){
+//				$(".ul3").hide();
+//				$(".ul2").hide();
+//				$(".ul1").show();
+//				$("#nav-olthree").remove();
+//				$("#nav-oltwo").remove();
+//			});
+//		});
+		
+	});
+</script>

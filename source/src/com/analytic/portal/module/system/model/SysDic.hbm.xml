@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.analytic.portal.module.system.model.SysDic" table="sys_dic">
+        <id name="id" type="java.lang.String">
+            <column name="id"/>
+            <generator class="assigned" />
+        </id>
+        <property name="dicName" type="java.lang.String">
+            <column name="dic_name" length="100" />
+        </property>
+        <property name="dicCategory" type="java.lang.String">
+            <column name="dic_category" length="100" />
+        </property>
+        <property name="dicCode" type="java.lang.String">
+            <column name="dic_code" length="100" />
+        </property>
+        <property name="dicValue" type="java.lang.String">
+            <column name="dic_value" length="100" />
+        </property>
+        <property name="dicDesc" type="java.lang.String">
+            <column name="dic_desc" />
+        </property>
+    </class>
+</hibernate-mapping>

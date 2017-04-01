@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.analytic.portal.module.system.model.SysLog" table="sys_log">
+        <id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="loginName" type="java.lang.String">
+            <column name="login_name" length="100" />
+        </property>
+        <property name="userName" type="java.lang.String">
+            <column name="user_name" length="100" />
+        </property>
+        <property name="menuName" type="java.lang.String">
+            <column name="menu_name" length="100" />
+        </property>
+        <property name="menuCode" type="java.lang.String">
+            <column name="menu_code" length="100" />
+        </property>
+        <property name="operType" type="java.lang.String">
+            <column name="oper_type" />
+        </property>
+        <property name="reqPath" type="java.lang.String">
+            <column name="req_path" length="100" />
+        </property>
+        <property name="reqData" type="java.lang.String">
+            <column name="req_data" length="2000" />
+        </property>
+        <property name="statusCode" type="java.lang.Integer">
+            <column name="status_code" />
+        </property>
+        <property name="logDesc" type="java.lang.String">
+            <column name="log_desc" length="100" />
+        </property>
+        <property name="menuReportId" type="java.lang.String">
+            <column name="menu_report_id" length="100" />
+        </property>
+        <property name="createTime" type="java.lang.String">
+            <column name="create_time" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

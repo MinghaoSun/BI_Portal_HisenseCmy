@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.analytic.portal.module.system.model.SysMenu" table="sys_menu" >
+        <id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="java.lang.String">
+            <column name="code" length="100" />
+        </property>
+        <property name="menuName" type="java.lang.String">
+            <column name="menu_name" length="100" />
+        </property>
+        <property name="menuNameEn" type="java.lang.String">
+            <column name="menu_name_en" length="100" />
+        </property>
+        <property name="menuNameZh" type="java.lang.String">
+            <column name="menu_name_zh" length="100" />
+        </property>
+        <property name="menuIcon" type="java.lang.String">
+            <column name="menu_icon" length="100" />
+        </property>
+        <property name="menuUrl" type="java.lang.String">
+            <column name="menu_url" length="100" />
+        </property>
+        <property name="menuStatus" type="java.lang.String">
+            <column name="menu_status" length="1" />
+        </property>
+        <property name="menuOrder" type="java.lang.Integer">
+            <column name="menu_Order" />
+        </property>
+        <property name="menuParentId" type="java.lang.String">
+            <column name="menu_parent_id" length="100" />
+        </property>
+        <property name="menuType" type="java.lang.String">
+            <column name="menu_type" length="1" />
+        </property>
+        <property name="menuAttribute" type="java.lang.String">
+            <column name="menu_attribute" length="100" />
+        </property>
+            <property name="menuReportTool" type="java.lang.String">
+            <column name="menu_report_tool" length="100" />
+        </property>
+        <property name="menuRemark" type="java.lang.String">
+            <column name="menu_remark" length="100" />
+        </property>
+        <property name="isDelete" type="java.lang.String">
+            <column name="is_delete" length="1" />
+        </property>
+        <property name="createTime" type="java.lang.String">
+            <column name="create_time" length="19" />
+        </property>
+        <property name="createUser" type="java.lang.String">
+            <column name="create_user" length="100" />
+        </property>
+        <property name="updateTime" type="java.lang.String">
+            <column name="update_time" length="19" />
+        </property>
+        <property name="updateUser" type="java.lang.String">
+            <column name="update_user" length="100" />
+        </property>
+        <property name="designType" type="java.lang.String">
+            <column name="design_type" length="2" />
+        </property>
+    </class>
+</hibernate-mapping>

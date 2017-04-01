@@ -1,0 +1,83 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>{{i18n('page_index_menu_accesslog')}} </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}}</a></li>
+		<li class="active">{{i18n('page_index_menu_accesslog')}}</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">{{i18n('page_log_loglist')}}</h3>
+			<div class="box-tools">
+				<span class="pull-left span-lh">{{i18n('page_user_username')}}</span>
+				<div class="input-group pull-left">
+					<input type="text" ng-model="search.userName" class="form-control input-sm" placeholder="{{i18n('page_user_username')}}" />
+				</div>
+				<span class="pull-left span-lh">{{i18n('page_user_loginaccount')}}</span>
+				<div class="input-group pull-left">
+					<input type="text"  ng-model="search.loginName" class="form-control input-sm" placeholder="{{i18n('page_user_loginaccount')}}" />
+				</div>
+				<span class="pull-left span-lh" >{{i18n('page_index_Operation')}}</span>
+				<div class="input-group pull-left">
+					<select class="form-control select-sm" ng-model="search.operType" ng-options="x.id as x.name for x in operTypes">
+				 		<option value="" selected="selected">{{i18n('page_log_select')}}</option>
+					</select>
+				</div>
+				<div class="pull-right">
+					<a class="btn btn-default btn-sm" id="search-btn" ng-click="reload()"> <i
+						class="fa fa-search" ></i> {{i18n('page_reporttool_search')}}
+					</a>
+					<div class="zeng_msgbox_layer_wrap" id="q_Msgbox"></div>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>{{i18n('page_user_loginaccount')}}</th>
+						<th>{{i18n('page_user_username')}}</th>
+						<th>{{i18n('page_log_functionmenu')}}</th>
+						<th>{{i18n('page_index_Operation')}}</th>
+						<th>{{i18n('page_log_accessAddress')}}</th>
+						<th>{{i18n('page_log_Request')}}</th>
+						<th>{{i18n('page_log_Operation')}}</th>
+					</tr>
+					<tr ng-repeat="sysLog in datas">
+						<td>{{sysLog.loginName}}</td>
+						<td>{{sysLog.userName}}</td>
+						<td>{{sysLog.menuName}}</td>
+						
+						<td ng-if="sysLog.operType==01">{{i18n('page_login_btn_login')}}</td>
+						<td ng-if="sysLog.operType==02">{{i18n('page_index_sign')}}</td>
+						<td ng-if="sysLog.operType==03">{{i18n('sys_title_dlg_new')}}</td>
+						<td ng-if="sysLog.operType==04">{{i18n('page_delete')}}</td>
+						<td ng-if="sysLog.operType==05">{{i18n('sys_title_dlg_edit')}}</td>
+						<td ng-if="sysLog.operType==06">{{i18n('page_index_query')}}</td>
+						<td>{{sysLog.reqPath}}</td>
+						<td>{{sysLog.logDesc}}</td>	
+						<td>{{sysLog.createTime}}</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+			<p class="pull-left">
+			{{i18n('page_index_pages_total')}} <span>{{itemCount}}</span>
+			 {{i18n('page_index_pages_record')}} , {{i18n('page_index_pages_total')}} 
+			 <span>{{pageCount}}</span> {{i18n('page_index_pages_page')}}
+			</p>
+			<ul id="pagination" class="pagination pagination-sm no-margin pull-right">
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- Main content -->

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>海信集团报表门户</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="plugins/ztree/zTreeStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="plugins/datepicker/datepicker3.css"/>
+    <link rel="stylesheet" type="text/css" href="plugins/loading/msgbox.css"/>
+    <link rel="stylesheet" type="text/css" href="css/adminx.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/skins/_all-skins.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <!--分标签页展示-->
+    <link rel="stylesheet" type="text/css" href="static/css/tabPageDisplay/main.css"/>
+    <link href="css/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--树结构-->
+    <link rel="stylesheet" href="/static/frame/jquery-ztree/3.5.12/css/zTreeStyle/zTreeStyle.css">
+    <script type="text/javascript" src="/static/frame/jquery-ztree/3.5.12/js/jquery-1.4.4.min.js"></script>
+    <script src="/static/frame/jquery-ztree/3.5.12/js/jquery.ztree.all-3.5.min.js"></script>
+    <!--table-->
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-table-master/bootstrap-table.min.css"/>
+    <!--全局参数设置-->
+    <link rel="stylesheet" href="static/css/globalParameterSetting/BootSideMenu.css">
+    <!--<link rel='stylesheet' type='text/css' href='js/bootstrapMultiselect/bootstrap-multiselect.css' />-->
+
+    <!--进度条-->
+    <!--<link rel="stylesheet" type="text/css" href="static/css/progressbar/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/progressbar/default.css">
+    <link rel="stylesheet" type="text/css" href="static/css/progressbar/minddust.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/progressbar/bootstrap-progressbar-3.2.0.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/progressbar/bootstrap-progressbar-demo.css">-->
+</head>
+
+<body id="pageBody"
+      class="hold-transition fixed sidebar-mini {{loginUser.userThemes == ''? 'skin-blue-light' : loginUser.userThemes}}"
+      ng-app="infopowerWebApp" ng-controller="initCtrl">
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Main Header -->
+    <header class="main-header" id="main-header">
+        <!-- Logo -->
+        <a href="index2.html#/main" class="logo">
+					<span class="logo-mini">
+						BI
+					</span>
+					<span class="logo-lg">
+						BIPortal
+                        <div class="menu-toggler sidebar-toggler">
+                            <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                        </div>
+					</span>
+        </a>
+        <!-- /Logo -->
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" title="显示/隐藏菜单">
+                <span class="sr-only">切换导航栏</span>
+            </a>
+            <!-- /Sidebar toggle button-->
+
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a  class="dropdown-toggle" data-toggle="dropdown">
+                            {{i18n('page_index_lbl_current_user')}}：<span
+                                class="hidden-xs">{{loginUser.loginName}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <p>
+                                    {{loginUser.loginName}}
+                                    <small></small>
+                                </p>
+                            </li>
+                            <li class="user-body">
+                                <div class="text-center">
+                                    <a href="javascript:;" ng-if="'admin'!=loginUser.loginName" ng-click="getUserInfo()"
+                                       class="btn btn-default btn-flat">{{i18n('sys_title_dlg_edit')}}</a>
+                                    <a href="sysUsers/close.do?loginName={{loginUser.loginName}}"
+                                       class="btn btn-default btn-flat">{{i18n('page_index_sign')}}</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu">
+                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {{i18n('page_index_lbl_current_user')}}：<span
+                                        class="hidden-xs">{{loginUser.loginName}}</span>
+                                </a>-->
+                                <a href="javascript:return false;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!--<i class="fa fa-gear"></i>-->
+                                    <span>{{i18n('page_index_menu_personalizedSettings')}}</span>
+                                    <span class="caret"></span>
+                                    <!--<i class="fa fa-angle-right pull-right"></i>-->
+                                </a>
+                                <ul page-sidebar-menu class="dropdown-menu">
+                                    <li>
+                                        <a id="20160927105313704" href="#/sysCommonReportSetting/20160927105313704"
+                                           onclick="add(this);"><span id="spanId20160927105313704">{{i18n('page_system_common_report_settings')}}</span></a>
+                                    </li>
+                                    <li>
+                                        <a id="20160927105422818" href="#/sysDefaultReportSetting/20160927105422818"
+                                           onclick="add(this);"><span id="spanId20160927105422818">{{i18n('page_system_default_report_settings')}}</span></a>
+                                    </li>
+                                    <li>
+                                        <a id="20160927105509795" href="#/sysRefreshParameterSetting/20160927105509795"
+                                           onclick="add(this);"><span id="spanId20160927105509795">{{i18n('page_system_refresh_param_settings')}}</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="control-sidebar" id="ctrlLink"><i class="fa fa-gears"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /Navbar Right Menu -->
+        </nav>
+        <!-- /Header Navbar -->
+    </header>
+    <!-- /Main Header -->
+
+    <!-- Main Sidebar -->
+    <aside class="main-sidebar" id="main-sidebar">
+        <div class="sidebar">
+            <ul class="sidebar-menu"  >
+
+            </ul>
+        </div>
+    </aside>
+    <!-- /Main Sidebar -->
+
+    <!-- Content Wrapper -->
+    <!--<div class="wrapper" id="pageLoader">-->
+    <div class="content-wrapper" id="pageLoader">
+        <!-- Main content -->
+        <section id="ng-view-content">
+            <!--<div class="row">-->
+
+            <!-- 此处是相关代码 -->
+            <ul id="navTabsId" class="nav nav-tabs" role="tablist" style="background-color: #ebebeb;">
+                <li role="presentation" class="active" id="tab_seed_mainId"
+                    style="position: relative;padding:2px 20px 0px 15px">
+                    <span onclick="openMainPage()" role="tab" data-toggle="tab">{{i18n('page_system_homepage')}}</span>
+                    <i title="{{i18n('page_system_full_screen_display')}}" class="glyphicon glyphicon-fullscreen small" tabenlarge="enlargeMainId"
+                       style="position: relative;left: 9%;" onclick="closableTab.enlargeTab(this)"></i>
+                    <i title="{{i18n('page_system_resume_normal_display')}}" class="glyphicon glyphicon-resize-small small" tabenlarge="enlargeResizeId"
+                       style="position: relative;left: 9%;display: none" onclick="closableTab.resizeTab(this)"></i>
+                </li>
+            </ul>
+            <div class="row" style="margin-left: 0px;margin-right: 0px">
+                <div class="tab-content" style="width:100%;" ng-view>
+                </div>
+            </div>
+        </section>
+        <!-- /Content Wrapper -->
+
+        <!-- Main Footer -->
+        <!--<footer class="main-footer" id="main-footer">
+            <div class="pull-right hidden-xs">
+                {{i18n('page_index_edition')}} V1.0.0
+            </div>
+            Copyright &copy; 2016 <a href="http://www.analyticservice.net/zh-hans/" target="_blank">{{i18n('page_index_companyName')}}</a> {{i18n('page_index_copyright')}}
+        </footer>-->
+        <!-- /Main Footer -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li class="active">
+                    <a href="#control-sidebar-skin-tab" data-toggle="tab">
+                        <i class="fa fa-yelp"></i> {{i18n('page_index_skin')}}
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="control-sidebar-skin-tab">
+                    <div class="row skin-links" id="skinLinks">
+                        <!-- <div class="col-md-4">
+                            <a href="#" data-skin="skin-blue-light" class="skin-link skin-link-blue active"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" data-skin="skin-red-light" class="skin-link skin-link-red"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" data-skin="skin-green-light" class="skin-link skin-link-green"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" data-skin="skin-yellow-light" class="skin-link skin-link-yellow"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" data-skin="skin-purple-light" class="skin-link skin-link-purple"></a>
+                        </div> -->
+                        <div class="col-md-4">
+                            <a id="skin-blue-light" data-skin="skin-blue-light"
+                               ng-click="changeTheme('skin-blue-light')"
+                               class="skin-link skin-link-blue"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a id="skin-red-light" data-skin="skin-red-light" ng-click="changeTheme('skin-red-light')"
+                               class="skin-link skin-link-red"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a id="skin-green-light" data-skin="skin-green-light"
+                               ng-click="changeTheme('skin-green-light')"
+                               class="skin-link skin-link-green"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a id="skin-yellow-light" data-skin="skin-yellow-light"
+                               ng-click="changeTheme('skin-yellow-light')" class="skin-link skin-link-yellow"></a>
+                        </div>
+                        <div class="col-md-4">
+                            <a id="skin-purple-light" data-skin="skin-purple-light"
+                               ng-click="changeTheme('skin-purple-light')" class="skin-link skin-link-purple"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="control-sidebar-layout-tab"></div>
+            </div>
+        </aside>
+        <div class="control-sidebar-bg"></div>
+        <!-- /Control Sidebar -->
+    </div>
+    <!-- /Wrapper -->
+    <div class="modal fade" id="updateUserInfoModal">
+        <div class="modal-dialog">
+            <form name="updateSysUserInfoForm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">{{i18n('sys_title_dlg_edit')}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_loginaccount')}}</label>
+                                    <input type="text" class="form-control" ng-model="updateUserInfo.loginName"
+                                           readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_new_fullname')}}</label>
+                                    <input type="text" name="userFullName" class="form-control"
+                                           ng-model="updateUserInfo.userFullName" readonly="readonly"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_new_username')}}</label>
+                                    <input type="text" name="firstName" class="form-control"
+                                           ng-model="updateUserInfo.firstName"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_new_usersurname')}}</label>
+                                    <input type="text" name="lastName" class="form-control"
+                                           ng-model="updateUserInfo.lastName"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_login_lbl_password')}}</label>
+                                    <input type="password" name="newPassword" class="form-control"
+                                           ng-model="updateUserInfo.newPassword"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_new_pwdconfirmation')}}</label>
+                                    <input type="password" name="confirmPassword" class="form-control"
+                                           ng-model="updateUserInfo.confirmPassword"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_email')}}</label>
+                                    <input type="text" name="userEmail" class="form-control"
+                                           ng-model="updateUserInfo.userEmail"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>{{i18n('page_user_phonenumber')}}</label>
+                                    <input type="text" name="userMobile" class="form-control"
+                                           ng-model="updateUserInfo.userMobile"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                            {{i18n('page_user_close')}}
+                        </button>
+                        <button type="button" class="btn btn-preserve" ng-click="updateSysUserInfo()">
+                            {{i18n('page_sys_dlg_save')}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="successUpdateModal">
+        <div class="modal-dialog prompt">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">
+                        {{i18n('page_index_menu_usermanagement')}}-{{i18n('page_sys_dlg_save')}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="delete-sure hintInfo"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-preserve" data-dismiss="modal" id="btnSave">
+                        {{i18n('page_sys_dlg_confirmDel')}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--提示信息-->
+    <div class="modal fade" id="tipModal">
+        <div class="modal-dialog prompt">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">
+                        {{i18n('page_index_menu_usermanagement')}}-{{i18n('page_sys_dlg_save')}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="delete-sure" id="tipSure"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">
+                        {{i18n('page_sys_dlg_confirmDel')}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/i18n/jquery.i18n.properties-min-1.0.9.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/bootstrap/bootstrap-3.3.5.min.js"></script>
+<script type="text/javascript" src="js/bootstrap/bootstrap-paginator.js"></script>
+<script type="text/javascript" src="js/multiselect.min.js"></script>
+<script type="text/javascript" src="js/adminx.min.js"></script>
+<script type="text/javascript" src="plugins/loading/msgbox.js"></script>
+<script type="text/javascript" src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="plugins/ztree/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="js/bootstrapValidator/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="js/i18n/local.i18n.js"></script>
+
+<script type="text/javascript" src="js/angular/angular.min.js"></script>
+<script type="text/javascript" src="js/angular/angular-route.min.js"></script>
+<script type="text/javascript" src="js/common/constant.js"></script>
+<script type="text/javascript" src="js/common/directives.js"></script>
+<script type="text/javascript" src="js/common/filters.js"></script>
+<script type="text/javascript" src="js/common/baseModule.js"></script>
+<script type="text/javascript" src="js/common/appRoute.js"></script>
+<script type="text/javascript" src="js/common/underscore-min.js"></script>
+
+<script type="text/javascript" src="page/system/controller/initController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysUserController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysRoleController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysMenuController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysLogController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysReportController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysOtherController.js"></script>
+<script type="text/javascript" src="page/report/controller/reportToolController.js"></script>
+<script type="text/javascript" src="page/report/controller/reportParamController.js"></script>
+<script type="text/javascript" src="page/report/controller/reportListController.js"></script>
+<script type="text/javascript" src="page/report/controller/reportBusinessController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysCommonReportSettingController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysDefaultReportSettingController.js"></script>
+<script type="text/javascript" src="page/system/controller/sysRefreshParameterSettingController.js"></script>
+<!--数据角色-参数值关联数据维度设置-->
+<script src="static/js/paramRelateData/tableExport.js"></script>
+<script src="static/js/paramRelateData/jquery.base64.js"></script>
+<script src="static/js/paramRelateData/bootstrap-table.js"></script>
+<script src="static/js/paramRelateData/bootstrap-table-export.js"></script>
+<!--分标签页展示-->
+<script src="static/js/tabPageDisplay/bootstrap-closable-tab.js"></script>
+<!--全局参数设置-->
+<script src="static/js/globalParameterSetting/BootSideMenu.js"></script>
+<!--<script src="js/bootstrapMultiselect/bootstrap-multiselect.js"></script>-->
+<!--进度条-->
+<!--<script src="static/js/progressbar/bootstrap-progressbar.js"></script>
+<script src="static/js/progressbar/minddust.min.js"></script>-->
+
+<script type="text/javascript">
+    $(function () {
+        window.setTimeout(function () {
+            $("#pageBody").css("visibility", "visible");
+        }, 500);
+    });
+    function openMainPage() {
+        window.location.href = "#/main";
+    }
+    window.onload = function () {
+        openMainPage();
+    }
+</script>
+</body>
+
+</html>

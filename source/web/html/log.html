@@ -1,0 +1,171 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	访问日志
+    </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+		<li><a href="#">系统管理</a></li>
+		<li class="active">访问日志</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">日志列表</h3>
+			<div class="box-tools">
+				<span class="pull-left span-lh">用户姓名</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="业务代码" />
+				</div>
+				<span class="pull-left span-lh">用户帐户</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="业务名称" />
+				</div>
+				<span class="pull-left span-lh">操作类别</span>
+				<div class="input-group pull-left">
+					<select class="form-control select-sm">
+						<option value="选择" selected="selected" disabled="disabled">选择</option>
+						<option value="新增">新增</option>
+						<option value="删除">删除</option>
+						<option value="修改">修改</option>
+						<option value="查询">查询</option>
+						<option value="登录">登录</option>
+						<option value="注销">注销</option>
+					</select>
+				</div>
+				<div class="pull-right">
+					<a href="#" class="btn btn-default btn-sm">
+						<i class="fa fa-search"></i> 检索
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>用户帐户</th>
+						<th>用户姓名</th>
+						<th>功能菜单</th>
+						<th>操作类别</th>
+						<th>IP地址</th>
+						<th>操作时间</th>
+						<th>描述</th>
+
+					</tr>
+					<tr>
+						<td>zhangsan</td>
+						<td>张三</td>
+						<td>用户管理</td>
+						<td>新增</td>
+						<td>http:www.dhjsdhfjh.com</td>
+						<td>2016-02-21</td>
+						<td>我是描述我是我是描述我是我是描述我是我是描述我是我是描述我是</td>
+					</tr>
+					<tr>
+						<td>zhangsan</td>
+						<td>张三</td>
+						<td>用户管理</td>
+						<td>删除</td>
+						<td>http:www.dhjsdhfjh.com</td>
+						<td>2016-02-21</td>
+						<td>我是描述我是我是描述我是我是描述我是我是描述我是我是描述我是</td>
+					</tr>
+					<tr>
+						<td>zhangsan</td>
+						<td>张三</td>
+						<td>用户管理</td>
+						<td>修改</td>
+						<td>http:www.dhjsdhfjh.com</td>
+						<td>2016-02-21</td>
+						<td>我是描述我是我是描述我是我是描述我是我是描述我是我是描述我是</td>
+					</tr>
+					<tr>
+						<td>zhangsan</td>
+						<td>张三</td>
+						<td>用户管理</td>
+						<td>查询</td>
+						<td>http:www.dhjsdhfjh.com</td>
+						<td>2016-02-21</td>
+						<td>我是描述我是我是描述我是我是描述我是我是描述我是我是描述我是</td>
+					</tr>
+					<tr>
+						<td>zhangsan</td>
+						<td>张三</td>
+						<td>用户管理</td>
+						<td>登录</td>
+						<td>http:www.dhjsdhfjh.com</td>
+						<td>2016-02-21</td>
+						<td>我是描述我是我是描述我是我是描述我是我是描述我是我是描述我是</td>
+					</tr>
+					<tr>
+						<td>zhangsan</td>
+						<td>张三</td>
+						<td>用户管理</td>
+						<td>注销</td>
+						<td>http:www.dhjsdhfjh.com</td>
+						<td>2016-02-21</td>
+						<td>我是描述我是我是描述我是我是描述我是我是描述我是我是描述我是</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+			<p class="pull-left">
+				共<span>52</span>条记录， 共
+				<span>6</span>页
+			</p>
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<li><a href="#">«</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">»</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="adminModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">访问日志-新增/编辑</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>用户帐户</label>
+							<input type="text" class="form-control" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>用户姓名</label>
+							<input type="text" class="form-control" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+	$(function() {});
+</script>

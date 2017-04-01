@@ -1,0 +1,328 @@
+<!-- 输入界面 -->
+			
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                        输入界面
+    	<small>用作其他输入界面的模板</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">模板界面</a></li>
+    	<li class="active">输入界面</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+    	<div class="box-body">
+    		<div class="row">
+        		<div class="col-md-6">
+        			<div class="form-group">
+        				<label>负责人手机</label>
+        				<input type="text" class="form-control" />
+        			</div>
+        		</div>
+        		<div class="col-md-6">
+        			<div class="form-group">
+        				<label>场馆座机</label>
+        				<input type="text" class="form-control" />
+        			</div>
+        		</div>
+        		
+        		<div class="col-md-3">
+        			<div class="form-group">
+        				<label>工作日营业时间</label>
+        				<div class="input-group clockpicker">
+						    <input type="text" class="form-control" value="09:00">
+						    <span class="input-group-addon">
+						        <span class="glyphicon glyphicon-time"></span>
+						    </span>
+						</div>
+        			</div>
+        		</div>
+        		
+        		<div class="col-md-3">
+        			<div class="form-group">
+        				<label>&nbsp;</label>
+        				<div class="input-group clockpicker">
+						    <input type="text" class="form-control" value="17:00">
+						    <span class="input-group-addon">
+						        <span class="glyphicon glyphicon-time"></span>
+						    </span>
+						</div>
+        			</div>
+        		</div>
+        		<div class="col-md-3">
+        			<div class="form-group">
+        				<label>节假日营业时间</label>
+        				<div class="input-group clockpicker">
+						    <input type="text" class="form-control" value="08:30">
+						    <span class="input-group-addon">
+						        <span class="glyphicon glyphicon-time"></span>
+						    </span>
+						</div>
+        			</div>
+        		</div>
+        		<div class="col-md-3">
+        			<div class="form-group">
+        				<label>&nbsp;</label>
+        				<div class="input-group clockpicker">
+						    <input type="text" class="form-control" value="17:30">
+						    <span class="input-group-addon">
+						        <span class="glyphicon glyphicon-time"></span>
+						    </span>
+						</div>
+        			</div>
+        		</div>
+        		
+        		<div class="col-md-3">
+					<div class="form-group">
+        				<label>场馆地址</label>
+    					<select class="form-control" id="cmbProvince"></select>
+    				</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+        				<label>&nbsp;</label>
+    					<select class="form-control" id="cmbCity"></select>
+    				</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+        				<label>&nbsp;</label>
+    					<select class="form-control" id="cmbArea"></select>
+    				</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+        				<label>&nbsp;</label>
+        				<input type="text" class="form-control" />
+        			</div>
+				</div>
+        	
+    			<div class="col-md-3">
+    				<div class="form-group">
+    					<label>是否支持预定</label>
+						<div class="radio">
+						    <label>
+						        <input type="radio" name="rd1" value="0" checked="checked"> 
+						        <span class="label label-success">是</span>
+						    </label>
+						    <label>
+						        <input type="radio" name="rd1" value="1"> 
+						        <span class="label label-danger">否</span>
+						    </label>
+						</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3">
+    				<div class="form-group">
+    					<label>是否支持退款</label>
+						<div class="radio">
+						    <label>
+						        <input type="radio" name="rd2" value="0" checked="checked"> 
+						        <span class="label label-success">是</span>
+						    </label>
+						    <label>
+						        <input type="radio" name="rd2" value="1"> 
+						        <span class="label label-danger">否</span>
+						    </label>
+						</div>
+    				</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="form-group">
+    					<label>是否开灯收费</label>
+						<div class="radio">
+						    <label>
+						        <input type="radio" name="rd3" value="0" checked="checked"> 
+						        <span class="label label-success">是</span>
+						    </label>
+						    <label>
+						        <input type="radio" name="rd3" value="1"> 
+						        <span class="label label-danger">否</span>
+						    </label>
+						</div>
+    				</div>
+    			</div>
+    			
+    			<div class="col-md-12">
+    				<div class="form-group">
+    					<label>场馆标签</label>
+    					<div class="checkbox" id="tagDiv">
+						    <label class="no-padding">
+						        <span class="label label-default">
+						        	室内 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+						        </span>
+						    </label>
+						    <label class="no-padding">
+						        <span class="label label-default">
+						        	室外 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+						        </span>
+						    </label>
+						    <label class="no-padding">
+						        <span class="label label-default">
+						        	学校 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+						        </span>
+						    </label>
+						    <label class="no-padding">
+						        <span class="label label-default">
+						        	小区 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+						        </span>
+						    </label>
+						    <label class="no-padding">
+						        <span class="label label-default">
+						        	商务中心 <a href="#" class="tag-del"><i class="fa fa-remove"></i></a>
+						        </span>
+						    </label>
+						    <label class="no-padding">
+						        <span class="label label-default">
+						        	<a href="#" data-toggle="modal" data-target="#tagModal">
+						        		<i class="fa fa-plus"></i>
+						        	</a>
+						        </span>
+						    </label>
+						</div>
+    				</div>
+    			</div>
+    			
+    			<div class="col-md-12">
+    				<div class="form-group">
+    					<label>场馆属性</label>
+						<div class="checkbox">
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">灯光</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">储物柜</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">更衣室</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">停车场</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">设备销售</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">设备租赁</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">设备维修</span>
+						    </label>
+						    <label>
+						        <input type="checkbox" name="ck1" value=""> 
+						        <span class="label label-default">免费WiFi</span>
+						    </label>
+						</div>
+    				</div>
+    			</div>
+    			
+    			<div class="col-md-12">
+    				<div class="form-group">
+    					<label>场馆图片</label>
+    					<input type="file" multiple="multiple" class="form-control" />
+    				</div>
+    			</div>
+    			
+    			<div class="col-md-12">
+    				<div class="row img-preview">
+    					<div class="col-md-2">
+    						<img src="res/app01.png" class="img-responsive" />
+    					</div>
+    					<div class="col-md-2">
+    						<img src="res/app02.png" class="img-responsive" />
+    					</div>
+    					<div class="col-md-2">
+    						<img src="res/app03.png" class="img-responsive" />
+    					</div>
+    					<div class="col-md-2">
+    						<img src="res/app04.png" class="img-responsive" />
+    					</div>
+    					<div class="col-md-2">
+    						<img src="res/app01.png" class="img-responsive" />
+    					</div>
+    				</div>
+    			</div>
+    			
+    			<div class="col-md-12">
+    				<div class="form-group">
+    					<label>场馆简介</label>
+    					<textarea class="form-control" rows="3" placeholder="请输入100字以内 ..."></textarea>
+    				</div>
+    			</div>
+    			
+    		</div>
+    	</div>
+    	<div class="box-footer">	  
+    		<button type="button" class="btn btn-success">保存</button>
+    	</div>
+	</div>
+</section>
+<!-- /Main content -->
+			
+<!-- Modals -->
+<div class="modal fade" id="tagModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加标签</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-12">
+            			<div class="form-group">
+            				<label>标签名称</label>
+            				<input type="text" class="form-control" id="tagName" />
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success" id="tagBtn">保存</button>
+            </div>
+        </div>
+   	</div>
+</div>
+<!-- /Modals -->
+		
+<script type="text/javascript">
+	$(function() {
+		//初始化时间选择插件
+		$('.clockpicker').clockpicker();
+		
+		//删除标签
+		$("#tagDiv").on("click", ".tag-del", function(e) {
+			e.preventDefault();
+			$(this).parent().parent().remove();
+		});
+		
+		//保存标签
+		$("#tagBtn").on("click", function(e) {
+			e.preventDefault();
+			var tagName = $("#tagName").val().trim();
+			if(tagName.length>0) {
+				$("#tagModal").modal("hide");
+				var tag =   "<label class='no-padding'>" +
+								"<span class='label label-default'>" +
+								    tagName + " <a href='#' class='tag-del'><i class='fa fa-remove'></i></a>" +
+								"</span>" +
+							"</label>";
+				$("#tagDiv").prepend($(tag));
+			}
+		});
+	});
+</script>

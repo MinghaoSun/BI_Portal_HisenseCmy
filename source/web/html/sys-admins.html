@@ -1,0 +1,334 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                                        管理员列表
+    	<small>系统管理员列表</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">系统管理</a></li>
+    	<li class="active">管理员列表</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+        <div class="box-header">
+            <h3 class="box-title">管理员列表</h3>
+            <div class="box-tools">
+            	<div class="input-group pull-left">
+      				<input type="text" class="form-control input-sm" placeholder="用户名/手机/邮箱" />
+      				<div class="input-group-btn">
+        				<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+      				</div>
+    			</div>
+    			<div class="pull-right">
+    				<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#adminModal">
+                		<i class="fa fa-plus-circle"></i> 新增
+                	</a>
+                	<a href="#" class="btn btn-default btn-sm">
+                		<i class="fa fa-times-circle"></i> 批量删除
+                	</a>
+    			</div>
+            </div>
+        </div>
+    	<div class="box-body no-padding">
+      		<table class="table table-striped">
+        		<tbody>
+        			<tr>
+                        <th>
+                        	<label>
+								<input type="checkbox" class="check-all" />
+							</label>
+                        </th>
+                        <th>姓名</th>
+                        <th>账号</th>
+                        <th>职位</th>
+                        <th>手机</th>
+                        <th>邮箱</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+        			<tr>
+                        <td>
+                        	<label>
+								<input type="checkbox" />
+							</label>
+                        </td>
+                      	<td>张三</td>
+                      	<td>zhangsan</td>
+                      	<td>初级管理员</td>
+                      	<td>15987654321</td>
+                      	<td>zhangsan@163.com</td>
+                        <td><span class="label label-success">在线</span></td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="分配角色" data-toggle="modal" data-target="#roleModal"><i class="fa fa-user-plus"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                        <td>
+                        	<label>
+								<input type="checkbox" />
+							</label>
+                        </td>
+                      	<td>李四</td>
+                      	<td>lisi</td>
+                      	<td>初级管理员</td>
+                      	<td>15987654321</td>
+                      	<td>lisi@163.com</td>
+                        <td><span class="label label-default">离线</span></td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="分配角色" data-toggle="modal" data-target="#roleModal"><i class="fa fa-user-plus"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                        <td>
+                        	<label>
+								<input type="checkbox" />
+							</label>
+                        </td>
+                      	<td>张三</td>
+                      	<td>zhangsan</td>
+                      	<td>初级管理员</td>
+                      	<td>15987654321</td>
+                      	<td>zhangsan@163.com</td>
+                        <td><span class="label label-success">在线</span></td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="分配角色" data-toggle="modal" data-target="#roleModal"><i class="fa fa-user-plus"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                        <td>
+                        	<label>
+								<input type="checkbox" />
+							</label>
+                        </td>
+                      	<td>李四</td>
+                      	<td>lisi</td>
+                      	<td>初级管理员</td>
+                      	<td>15987654321</td>
+                      	<td>lisi@163.com</td>
+                        <td><span class="label label-default">离线</span></td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="分配角色" data-toggle="modal" data-target="#roleModal"><i class="fa fa-user-plus"></i></a>
+                        </td>
+        			</tr>
+        			<tr>
+                        <td>
+                        	<label>
+								<input type="checkbox" />
+							</label>
+                        </td>
+                      	<td>张三</td>
+                      	<td>zhangsan</td>
+                      	<td>初级管理员</td>
+                      	<td>15987654321</td>
+                      	<td>zhangsan@163.com</td>
+                        <td><span class="label label-success">在线</span></td>
+                        <td>
+                        	<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        	<a href="#" title="删除"><i class="fa fa-remove"></i></a>
+                        	<a href="#" title="分配角色" data-toggle="modal" data-target="#roleModal"><i class="fa fa-user-plus"></i></a>
+                        </td>
+        			</tr>
+      			</tbody>
+      		</table>
+    	</div>
+    	<div class="box-footer clearfix">
+    		<p class="pull-left">
+    			共<span>52</span>条记录，
+    			共<span>6</span>页
+    		</p>
+            <ul class="pagination pagination-sm no-margin pull-right">
+            	<li><a href="#">«</a></li>
+            	<li><a href="#">1</a></li>
+            	<li><a href="#">2</a></li>
+            	<li><a href="#">3</a></li>
+            	<li><a href="#">»</a></li>
+            </ul>
+        </div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="adminModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加/编辑管理员</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>姓名</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>账号</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>职位</label>
+            				<input type="text" class="form-control" readonly="readonly" id="selInput" />
+            			</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+            				<label>手机</label>
+            				<input type="text" class="form-control" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<img src="res/user01.jpg" class="preview-thumb" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-12">
+            			<div class="form-group">
+            				<label>上传头像</label>
+            				<input type="file" class="form-control" />
+            				<p class="help-block">图片格式必须为：bmp, jpeg, jpg, gif;不可大于2M</p>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success">保存</button>
+            </div>
+        </div>
+   	
+   		<!-- 树形下拉选择框 -->
+    	<div class="ztree-sel" id="selDiv" style="left:15px;top:205px;">
+   			<ul class="ztree" id="selTree"></ul>
+   		</div>
+    </div>
+</div>
+  
+        <div class="modal fade" id="roleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">分配角色</h4>
+            </div>
+            <div class="modal-body">
+            	<ul class="ztree" id="roleTree"></ul>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success" id="saveBtn">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Modals -->
+		
+<script type="text/javascript">
+	$(function() {
+		//初始化树形结构
+		var zNodes = [
+			{id:1, pId:0, name:"部门 A", open:true},
+			{id:11, pId:1, name:"角色 A1", checked:true},
+			{id:12, pId:1, name:"角色 A2", checked:true},
+			{id:13, pId:1, name:"角色 A3"},
+			{id:2, pId:0, name:"部门 B", open:true},
+			{id:21, pId:2, name:"角色 B1"},
+			{id:22, pId:2, name:"角色 B2"},
+			{id:3, pId:0, name:"部门 C", open:true},
+			{id:31, pId:3, name:"角色 C1", checked:true},
+			{id:32, pId:3, name:"角色 C2"},
+			{id:33, pId:3, name:"角色 C3"}
+		];
+		$.fn.zTree.init($("#roleTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true},
+			view: {showIcon:false}
+		}, zNodes);
+		
+		//获取选中的节点Id
+		$("#saveBtn").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj = $.fn.zTree.getZTreeObj("roleTree");
+			var selectedNodes = zTreeObj.getCheckedNodes(true);
+			var selectedIds = [];
+			$.each(selectedNodes, function(i, el) {
+				selectedIds.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		
+		//初始化下拉树形结构
+		var selNodes = [
+			{id:1, pId:0, name:"部门 A", open:true, nocheck:true},
+			{id:11, pId:1, name:"A1"},
+			{id:12, pId:1, name:"A2"},
+			{id:13, pId:1, name:"A3"},
+			{id:2, pId:0, name:"部门 B", open:true, nocheck:true},
+			{id:21, pId:2, name:"B1"},
+			{id:22, pId:2, name:"B2"},
+			{id:3, pId:0, name:"部门 C", open:true, nocheck:true},
+			{id:31, pId:3, name:"C1"},
+			{id:32, pId:3, name:"C2"},
+			{id:33, pId:3, name:"C3"}
+		];
+		$.fn.zTree.init($("#selTree"), {
+			data: {
+				simpleData: {enable:true, idKey:"id", pIdKey:"pId", rootPId:0}
+			},
+			check: {enable:true, chkboxType:{"Y":"", "N":""}},
+			view: {showIcon:false, dblClickExpand:false},
+			callback: {
+				onCheck: function(e, treeId, treeNode) {
+					var zTree = $.fn.zTree.getZTreeObj("selTree"),
+					nodes = zTree.getCheckedNodes(true),
+					v = "";
+					for(var i=0, l=nodes.length; i<l; i++) {
+						v += nodes[i].name + ",";
+					}
+					if(v.length > 0) {
+						v = v.substring(0, v.length-1);
+					};
+					$("#selInput").val(v);
+				}
+			}
+		}, selNodes);
+		//弹出树形下拉选择框
+		$("#selInput").on("click", function(e) {
+			e.stopPropagation();
+			$("#selDiv").slideDown();
+		});
+		//隐藏树形下拉选择框
+		$("body").on("click", function() {
+			$("#selDiv").slideUp();
+		});
+		$("#selDiv").on("click", function(e) {
+			e.stopPropagation();
+		});
+	});
+</script>

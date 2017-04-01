@@ -1,0 +1,92 @@
+<script type="application/javascript">
+    /*用于保存已选的刷新参数，此处选择map集合*/
+    var globalMenuId=null;
+    var selectRefreshParamMap = {};
+    function onSingleSelChangeForGlobal(objSel,id) {
+        $('#'+globalMenuId+'paramSelect'+id).attr("value",$(objSel).val());
+        selectRefreshParamMap[id] = $(objSel).val();
+    }
+    function addGolablResetParam(){
+    	$(".form-body").find("select").each(function(){
+    		$(this).find("option").each(function(){
+    			if(!$(this).val()){
+    				$(this).attr("selected",true);
+    			}else{
+    				$(this).removeAttr("selected");
+    			}
+    		});
+    	});
+    	selectRefreshParamMap = {};
+    	$('#paramSelectContent'+globalMenuId).find('input:hidden').each(function(index,obj){
+             obj.value="";
+        });
+    }
+    function addGolablRefreshParam() {
+        $('#paramSelectContent'+globalMenuId).find('input:hidden').each(function(index,obj){
+            selectRefreshParamMap[obj.name]=obj.value;
+        });
+        var strMap = JSON.stringify(selectRefreshParamMap);
+        var interfaceName = 'sysUserPersonalizedSetting/confirmGlobalRefreshParamSetting.do';
+        $.ajax({
+            type: 'POST',
+            url: interfaceName,
+            async: false,
+            data: {selectRefreshParamMap: strMap},
+            dataType: "json",
+            success: function (data) {
+                $.ajax({
+                    url: 'sysMenu/getReportMenuPage.do',
+                    async: false,
+                    type: "GET",
+                    data:{menuId: globalMenuId},
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.reqLocation!=null&&data.reqLocation.trim()!='') {
+                        	alert(data.reqLocation);
+                            var temp = "#reportContent2" + globalMenuId;
+                            $(temp).attr('src', data.reqLocation);
+                        }else{
+                            $('#uiViewReportBusiness'+globalMenuId).find('.modal').modal('show');
+                        }
+                    }
+                })
+            }
+        });
+    }
+</script>
+<button style="display: none" ng-click="reloadRoute()" class="navbar-brand" title="home"
+        data-translate>刷新当前页面
+</button>
+<!--提示信息-->
+<div class="modal fade">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_birt')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">{{i18n('page_tip_report_url_error')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">{{i18n('page_sys_dlg_confirmDel')}}</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+    $(window).resize(function(){
+        $("#load").css({
+            position: "absolute",
+            left: ($(window).width())/2,
+            top: ($(window).height())/2
+            /*left: ($(window).width())/2,
+            top: ($(window).height())/2*/
+        });
+    });
+    $(function(){
+        $(window).resize();
+    });
+</script>

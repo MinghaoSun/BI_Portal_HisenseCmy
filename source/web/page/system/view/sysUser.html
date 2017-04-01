@@ -1,0 +1,586 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	{{i18n('page_index_menu_usermanagement')}}
+    </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i>{{i18n('page_index_llb_homePage')}}</a></li>
+		<li class="active">{{i18n('page_index_menu_usermanagement')}}</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">{{i18n('page_user_userlist')}}</h3>
+			<div class="box-tools">
+				<span class="pull-left span-lh">{{i18n('page_user_loginaccount')}}</span>
+				<div class="input-group pull-left">
+					<input placeholder="{{i18n('page_user_loginaccount')}}" ng-model="searchInput" type="text" class="form-control" />
+				</div>
+				<span class="pull-left span-lh">{{i18n('page_user_username')}}</span>
+				<div class="input-group pull-left">
+					<input ng-model="search.userFullName" type="text" class="form-control"placeholder="{{i18n('page_user_username')}}" />
+				</div>
+				<div class="pull-right">
+					<a class="btn btn-default btn-sm" id="search-btn" ng-click="editBtn('useradBtn','yes')">
+						<i class="fa fa-search"></i> {{i18n('page_reporttool_search')}}
+					</a>
+					<a  class="btn btn-default btn-sm" ng-click="editBtn('addUserBtn')"
+					data-toggle="modal" data-target="#adminModal">
+					<i class="fa fa-plus-circle"></i> {{i18n('sys_title_dlg_new')}}  </a>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+					<th>{{i18n('page_user_loginaccount')}}</th>
+					<th>{{i18n('page_user_new_fullname')}}</th>
+					<th>{{i18n('page_user_phonenumber')}}</th>
+					<th>{{i18n('page_user_email')}}</th>
+					<th>{{i18n('page_menu_createuser')}}</th>
+					<th>{{i18n('page_reporttool_creationtime')}}</th>
+					<th>{{i18n('page_reporttool_operation')}}</th>
+				</tr>
+				<tr ng-repeat="users in datas">
+					<td>{{users.loginName}}</td>
+					<td>{{users.userFullName}}</td>
+					<td>{{users.userMobile}}</td>
+					<td>{{users.userEmail}}</td>
+					<td>{{users.createUser}}</td>
+					<td>{{users.createTime}}</td>
+					<td>
+						<a ng-click="editBtn('updateSysUser',users.id)" title="{{i18n('sys_title_dlg_edit')}}"  data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+	  					<a ng-if="users.loginName!=curUser" ng-click="editBtn('delUser',users.id)" data-id="{{users.id}}" title="{{i18n('page_delete')}}" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+						<a ng-click="editBtn('getSysUserRole',users.id)" title="{{i18n('page_user_edit_functionrole')}}" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-user-plus"></i></a>
+						<a ng-click="getUserDetail(users.id)" title="{{i18n('page_user_details')}}" data-toggle="modal" data-target="#detailModal"><i class="fa fa-info-circle"></i></a>
+					</td>
+					</tr>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+		<p class="pull-left">
+			{{i18n('page_index_pages_total')}} <span>{{itemCount}}</span>
+			 {{i18n('page_index_pages_record')}} , {{i18n('page_index_pages_total')}} 
+			 <span>{{pageCount}}</span> {{i18n('page_index_pages_page')}}
+		</p>
+		<ul id="pagination"></ul>
+	</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<!--详情-->
+<div class="modal fade" id="detailModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_user_userDetails')}}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_loginaccount')}}</label>
+							<input type="text" class="form-control" ng-model="user.loginName"  readonly="readonly" value="{{i18n('page_user_loginaccount')}}" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_new_fullname')}}</label>
+							<input type="text" class="form-control" ng-model="user.userFullName" readonly="readonly" value="{{i18n('page_user_new_fullname')}}" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_new_username')}}</label>
+							<input type="text" class="form-control" ng-model="user.firstName" readonly="readonly" value="{{i18n('page_user_new_username')}}" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_new_usersurname')}}</label>
+							<input type="text" class="form-control" ng-model="user.lastName" readonly="readonly" value="{{i18n('page_user_new_usersurname')}}" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_email')}}</label>
+							<input type="text" class="form-control" ng-model="user.userEmail"  readonly="readonly"  />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_phonenumber')}}</label>
+							<input type="text" class="form-control" ng-model="user.userMobile" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_new_birth')}}</label>
+							<input type="text" class="form-control" ng-model="user.userBirthday"  readonly="readonly"/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_new_usergender')}}</label>
+							<input ng-repeat="name in userSex" ng-if="name.id==user.userSex" type="text" class="form-control" value="{{name.name}}"  readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_new_isenable')}}</label>
+							<input ng-repeat="name in enabledOptions" ng-if="name.id==user.userEnabled" type="text" class="form-control" value="{{name.name}}" readonly="readonly" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_menu_createuser')}}</label>
+							<input type="text" class="form-control" ng-model="user.createUser" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_reporttool_creationtime')}}</label>
+							<input type="text" class="form-control" ng-model="user.createTime" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_detail_updateaccount')}}</label>
+							<input type="text" class="form-control" ng-model="user.updateUser" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_detail_updatetime')}}</label>
+							<input type="text" class="form-control" ng-model="user.updateTime" readonly="readonly" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>{{i18n('page_user_newrole_datarole')}}</label>
+							<input  ng-repeat="roleName in SysroleDatas" ng-if="roleName.id==user.dataRoleId" ng-if="sysroleDate.id==user.dataRoleId" type="text" class="form-control" readonly="readonly" value="{{roleName.roleName}}" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>{{i18n('page_user_detail_userrole')}}</label>
+							<div class="box-body no-padding TableDiv">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>{{i18n('page_user_detail_rolecode')}}</th>
+											<th>{{i18n('page_user_detail_rolename')}}</th>
+										</tr>
+										<tr ng-repeat="obj in UserRolesDatas">
+											<td>{{obj.code}}</td>
+											<td>{{obj.roleName}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>{{i18n('page_user_newrole_reportmapping')}}</label>
+							<div class="box-body no-padding TableDiv">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>{{i18n('page_user_newrole_toolname')}}</th>
+											<th>{{i18n('page_user_newrole_account')}}</th>
+											<th>{{i18n('page_user_mapPassword')}}</th>
+										</tr>
+										<tr ng-repeat="reportTool in reportTool" >
+											<td>{{reportTool.reportToolName}}</td>
+											<td><input type="text" ng-model="reportTool.reportSysName" class="no-border" readonly="readonly" /></td>
+											<td><input type="password" ng-model="reportTool.reportSysPassword" class="no-border" readonly="readonly" /></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal">{{i18n('page_user_close')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="adminModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="usertitle" style="display: inline;">{{i18n('page_index_menu_usermanagement')}}-{{i18n('sys_title_dlg_new')}}</h4>
+				<h4 class="modal-title" id="usertitleEdit" style="display: none;">{{i18n('page_index_menu_usermanagement')}}-{{i18n('sys_title_dlg_edit')}}</h4>
+			</div>
+			<div class="modal-body">
+			<form novalidate name="sysUserForm" id="user" method="post" >
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_loginaccount')}}</label>
+								<input type="text" id="useraccount" ng-model="user.loginName" name="useraccount" class="form-control" placeholder="{{i18n('page_user_loginaccount')}}" >
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_new_isenable')}}</label>
+							    <select name="userEnabled" ng-model="user.userEnabled" class="form-control" ng-options="x.id as x.name for x in enabledOptions">
+							    </select>
+								
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_new_username')}}</label>
+								<input type="text" id="firstName" ng-model="user.firstName" name="userfirstname" class="form-control"placeholder="{{i18n('page_user_new_username')}}" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_new_usersurname')}}</label>
+								<input type="text" id="lastName" ng-model="user.lastName" name="userlastname" class="form-control" placeholder="{{i18n('page_user_new_usersurname')}}" />
+								
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group" id="passwods1">
+								<label>{{i18n('page_user_new_loginpwd')}}</label>
+								<input type="password" id="loginPassword"  ng-model="user.loginPassword" name="password" class="form-control" placeholder="{{i18n('page_user_new_loginpwd')}}" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" id="passwods">
+								<label>{{i18n('page_user_new_pwdconfirmation')}}</label>
+							      <input type="password" id="password" class="form-control" name="confirmpassword" placeholder="{{i18n('page_user_new_pwdconfirmation')}}" />
+							      <input type="hidden" id="oldPassword" name="oldPassword"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_email')}}</label>
+								<input type="text" id="userEmail" ng-model="user.userEmail" name="email" class="form-control" placeholder="{{i18n('page_user_email')}}" />
+								
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_phonenumber')}}</label>
+								<input type="text" id="userMobile" ng-model="user.userMobile" name=telnumber class="form-control" placeholder="{{i18n('page_user_phonenumber')}}" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_new_birth')}}</label>
+								<div class="input-group">
+						            <input type="text" ng-model="user.userBirthday" class="form-control" readonly="readonly" id="dpicker" />
+									   <div class="input-group-addon">
+										<i class="fa fa-calendar"></i></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_new_usergender')}}</label>
+								<select name="userSex" ng-model="user.userSex" class="form-control" ng-options="x.id as x.name for x in userSex" >
+							    </select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>{{i18n('page_user_newrole_datarole')}}</label>
+								<select ng-model="user.dataRoleId" id="user.dataRoleId" ng-options="s.id as s.roleName for s in SysroleDatas" class="form-control">
+									<option value="">{{i18n('page_log_select')}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="setting-con">
+						<ul class="nav nav-tabs" role="tablist" id="myTab">
+						<li role="presentation" class="active">
+                			<a href="/#tab1" aria-controls="tab1" role="tab" data-toggle="tab">
+                			<i class="fa fa-user"></i> {{i18n('page_user_newrole_functionrole')}}</a></li>
+				   			<li role="presentation" class="TableDiv">
+                			<a href="/#tab3" aria-controls="tab3" role="tab" data-toggle="tab">
+                				<i class="fa fa-file-text"></i> {{i18n('page_user_newrole_reportmapping')}}
+                			</a>
+                			</li>
+						</ul>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="tab1">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="multiselect-title">{{i18n('page_user_newrole_rolelist')}}</div>
+										<select id="undo_redo"  ng-model="FunctionForm.roleName" ng-options="t.id as t.roleName for t in roleDatas"  class="form-control" size="6" multiple="multiple">
+										</select>
+									</div>
+
+									<div class="col-xs-2">
+										<div class="form-btn-group1">
+											<button type="button" id="undo_redo_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+											<button type="button" id="undo_redo_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+										</div>
+									</div>
+									<div class="col-xs-5">
+										<div class="multiselect-title">{{i18n('page_user_newrole_selectedrole')}}</div>
+										<select  id="undo_redo_to"  ng-model="FunctionForm1.roleName" ng-options="s.id as s.roleName for s in UserRolesDatas" class="form-control" size="6" multiple="multiple">
+										</select>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane TableDiv" id="tab3">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>{{i18n('page_user_newrole_toolname')}}</th>
+											<th>{{i18n('page_user_newrole_account')}}</th>
+											<th>{{i18n('page_user_mapPassword')}}</th>
+										</tr>
+										<tr ng-repeat="reportTool in reportTool" >
+											<td>{{reportTool.reportToolName}}</td>
+											<td><input type="text" ng-model="reportTool.reportSysName" class="input-border" /></td>
+											<td><input type="password" ng-model="reportTool.reportSysPassword" class="input-border"/></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}</button>
+						<button type="button" class="btn btn-preserve" data-toggle="modal" ng-click="saveSysUser()">{{i18n('page_sys_dlg_save')}}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="roleModal1">
+	<div class="modal-dialog">
+	<form method="post"  name="sysRoleParamForm" ng-submit="saveSysFunctionForm(FunctionForm.id)" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_user_edit_functionrole')}}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-5">
+						<div class="multiselect-title">{{i18n('page_user_newrole_rolelist')}}</div>
+						<select id="undo_redo3" ng-model="FunctionForm.roleName" ng-options="s.id as s.roleName for s in roleDatas" class="form-control" size="6" multiple="multiple">
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<div class="form-btn-group1">
+							<button type="button" id="undo_redo3_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+							<button type="button" id="undo_redo3_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<div class="multiselect-title">{{i18n('page_user_newrole_selectedrole')}}</div>
+						<select name="to3" id="undo_redo3_to" ng-model="FunctionForm1.roleName" ng-options="s.id as s.roleName for s in UserRolesDatas" class="form-control" size="6" multiple="multiple">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-label="Close">{{i18n('page_sys_dlg_cancel')}}</button>
+				<button type="submit" class="btn btn-preserve" >{{i18n('page_sys_dlg_save')}}</button>
+			</div>
+			</div>
+			</form>
+		</div>
+	</div>
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_index_menu_usermanagement')}}-{{i18n('page_delete')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">{{i18n('page_sys_dlg_confirm')}}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}</button>
+				<button type="button" class="btn btn-preserve"  id="btnConfirm">{{i18n('page_sys_dlg_confirmDel')}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--保存成功-->
+<div class="modal fade" id="successModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_index_menu_usermanagement')}}-{{i18n('page_sys_dlg_save')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure" id="hintInfo" ></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal" id="btnSave">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /重复提示 -->
+<div class="modal fade" id="repeathModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">{{i18n('page_index_menu_usermanagement')}}</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure" id="repeathintInfo" ></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-preserve" data-dismiss="modal" id="repeathbtnSave">{{i18n('page_sys_dlg_confirmDel')}}</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	$(function() {
+		//选择日期
+		$("#dpicker").datepicker({
+			format: 'yyyy-mm-dd',
+			language: 'zh-CN',
+			todayHighlight: true,
+			autoclose: true,
+		});
+		
+		//		左右交换内容
+		$("#undo_redo,#undo_redo1,#undo_redo2,#undo_redo3,#undo_redo4,#undo_redo5").multiselect();
+		//		用户报表映射
+		$("input[type=text].no-border,input[type=password].no-border").on("focus", function() {
+			$(this).removeClass("no-border");
+		}).on("blur", function() {
+			$(this).addClass("no-border");
+		});
+		
+		$('#user').bootstrapValidator({
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				useraccount: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_accountvalidate')}}"
+						}
+					}
+				},
+				userfirstname: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_namevalidate')}}"
+						}
+					}
+				},
+				userlastname: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_surnamevalidate')}}"
+						}
+					}
+				},
+				password: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_pwdvalidate')}}"
+						},
+						identical: {
+							field: 'confirmpassword',
+							message: "{{i18n('page_user_new_pwdcompare')}}"
+						}
+					}
+				},
+				confirmpassword: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_confirmvalidate')}}"
+						},
+						identical: {
+							field: 'password',
+							message: "{{i18n('page_user_new_pwdcompare')}}"
+						}
+					}
+				},
+				email: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_emailvalidate')}}"
+						},
+						emailAddress: {
+							message: "{{i18n('page_user_new_validEmail')}}"
+						}
+					}
+				},
+				telnumber: {
+					validators: {
+						notEmpty: {
+							message: "{{i18n('page_user_new_phonevalidate')}}"
+						},
+						regexp: {
+							regexp: /^\d{8}-\d{1,9}$|^\d{11}-\d{1,9}$|^\d{8}$|^\d{11}$/,
+							message: "{{i18n('page_user_new_validPhone')}}"
+						}
+					}
+				}
+			}
+		});
+	});
+	   
+</script>

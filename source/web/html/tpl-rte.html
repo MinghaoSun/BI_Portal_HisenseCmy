@@ -1,0 +1,185 @@
+<!-- 弹出框界面 -->
+			
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+                                        富文本编辑器
+    	<small>为UEditor添加额外功能</small>
+    </h1>
+    <ol class="breadcrumb">
+    	<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+    	<li><a href="#">模板界面</a></li>
+    	<li class="active">富文本编辑</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>富文本内容</label>
+				<!-- 加载富文本编辑器 UEditor -->
+				<script id="UEContainer" name="content" type="text/plain"></script>
+			    <script type="text/javascript">
+			    	//初始化编辑器
+			    	UE.delEditor("UEContainer");
+			        var ue = UE.getEditor('UEContainer');
+			        //定义插入图片命令
+			        ue.commands['insertpic'] = {
+			        	execCommand: function() {
+			        		var that = this;
+			        		$("#uploadModal").modal({
+			        			backdrop: false
+			        		});
+			        		return true;
+			        	}
+			        };
+			        //定义插入视频命令
+			        ue.commands['insertswf'] = {
+			        	execCommand: function() {
+			        		var that = this;
+			        		$("#videoModal").modal({
+			        			backdrop: false
+			        		});
+			        		return true;
+			        	}
+			        };
+			    </script>
+				<!-- /加载富文本编辑器 UEditor -->
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<div class="modal fade" id="uploadModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">插入图片</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-md-12">
+            			<div class="form-group">
+		            		<label>选择图片</label>
+		            		<input type="file" multiple="multiple" class="form-control" />
+		            	</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+		            		<label>宽度</label>
+		            		<input type="text" class="form-control" id="picWidth" />
+		            	</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group">
+		            		<label>高度</label>
+		            		<input type="text" class="form-control" id="picHeight" />
+		            	</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success" id="picBtn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="videoModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">插入视频</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="row">
+            		<div class="col-sm-4">
+            			<div class="video-wrapper">
+            				<img src="res/video01.jpg" class="video-pic" data-url="http://player.youku.com/player.php/sid/XMTM4NDg1NTAxMg==/v.swf" />
+            			</div>
+            		</div>
+            		<div class="col-sm-4">
+            			<div class="video-wrapper">
+            				<img src="res/video02.jpg" class="video-pic" data-url="http://player.youku.com/player.php/sid/XMTM4NDgxMTU4OA==/v.swf" />
+            			</div>
+            		</div>
+            		<div class="col-sm-4">
+            			<div class="video-wrapper">
+            				<img src="res/video03.jpg" class="video-pic" data-url="http://player.youku.com/player.php/sid/XMTM4NDY3NDY0OA==/v.swf" />
+            			</div>
+            		</div>
+            	</div>
+            	<div class="row" style="margin-top:15px;">
+            		<div class="col-md-6">
+            			<div class="form-group form-group-sm">
+		            		<label>宽度</label>
+		            		<input type="text" class="form-control" id="videoWidth" />
+		            	</div>
+            		</div>
+            		<div class="col-md-6">
+            			<div class="form-group form-group-sm">
+		            		<label>高度</label>
+		            		<input type="text" class="form-control" id="videoHeight" />
+		            	</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+            	<button type="button" class="btn btn-success" id="videoBtn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+	$(function() {
+		$("#picBtn").on("click", function() {
+			var picUrl = "res/app01.png"; //图片路径
+			var picWidth = parseInt($("#picWidth").val()); //图片宽度
+			var picHeight = parseInt($("#picHeight").val()); //图片高度
+			//插入图片
+			ue.execCommand("insertHtml", "<img src='"+picUrl+"' width='"+picWidth+"' height='"+picHeight+"' />");
+			//关闭弹出框
+			$("#uploadModal").modal("hide");
+		});
+		
+		//选择视频素材
+		$(".video-wrapper").on("click", function() {
+			$(this).toggleClass("video-selected");
+		});
+		
+		//插入视频
+		$("#videoBtn").on("click", function() {
+			var videoWidth = parseInt($("#videoWidth").val()) || 420; //视频宽度
+			var videoHeight = parseInt($("#videoHeight").val()) || 280; //视频高度
+			var videoUrl = "";
+			$(".video-selected img").each(function() {
+				videoUrl = $(this).data("url");
+				//插入图片
+				ue.execCommand("insertHtml", '<embed type="application/x-shockwave-flash" class="edui-faked-video" pluginspage="http://www.macromedia.com/go/getflashplayer" src="'+videoUrl+'" width="'+videoWidth+'" height="'+videoHeight+'" wmode="transparent" play="true" loop="false" menu="false" allowscriptaccess="never" allowfullscreen="true"/>');
+			});
+			//关闭弹出框
+			$("#videoModal").modal("hide");
+		});
+	});
+</script>
+
+
+
+
+
+
+
+
+
+

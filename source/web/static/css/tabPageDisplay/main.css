@@ -1,0 +1,57 @@
+.nav-tabs>li.active, .nav-tabs>li.active:focus, .nav-tabs>li.active:hover {
+    color: #555;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top:none;border-bottom:none;
+}
+#tab_seed_mainId.active, #tab_seed_mainId.active:focus, #tab_seed_mainId.active:hover {
+    color: #555;
+    cursor: pointer;
+    background-color: #fff;
+    /*border: 1px solid #ddd;*/
+    border-top:none;border-left: none;
+}
+.nav-tabs>li:focus, .nav-tabs>li:hover {
+    color: #555;
+    cursor: pointer;
+    background-color: #fff;
+    /*border: 1px solid #ddd; */
+    border-top:none;border-bottom:none;
+    /*border-bottom-color: transparent;*/
+}
+
+.nav-tabs>li>i:focus, .nav-tabs>li>i:hover {
+    color: #555;
+    /*cursor: pointer;*/
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    /*border-bottom-color: transparent;*/
+}
+
+.nav-tabs>li>span {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.mainHeaderSideBar{
+    background-color: #40d2b6;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+    transition: width .3s ease-in-out;
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+    cursor: pointer;
+}

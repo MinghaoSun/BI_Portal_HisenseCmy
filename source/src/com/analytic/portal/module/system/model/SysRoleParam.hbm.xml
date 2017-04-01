@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.analytic.portal.module.system.model.SysRoleParam" table="sys_role_param">
+        <id name="id" type="java.lang.String">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="roleId" type="java.lang.String">
+            <column name="role_id" />
+        </property>
+        <property name="paramId" type="java.lang.String">
+            <column name="param_id" />
+        </property>
+        <property name="paramValue" type="java.lang.String">
+            <column name="param_value" />
+        </property>
+        <property name="paramType" type="java.lang.String">
+            <column name="param_type" />
+        </property>
+        <property name="paramOperatType" type="java.lang.String">
+            <column name="param_operat_type" />
+        </property>
+        <property name="paramValueType" type="java.lang.String">
+            <column name="param_value_type" />
+        </property>
+        <property name="paramValueRelate" type="java.lang.String">
+            <column name="param_value_relate" />
+        </property>
+    </class>
+</hibernate-mapping>

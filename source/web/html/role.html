@@ -1,0 +1,1032 @@
+<!-- 管理员列表 -->
+
+<!-- Content Header -->
+<section class="content-header">
+	<h1>
+    	角色管理
+    </h1>
+	<ol class="breadcrumb">
+		<li><a href="index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+		<li><a href="#">系统管理</a></li>
+		<li class="active">角色管理</li>
+	</ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">角色列表</h3>
+			<div class="box-tools">
+				<span class="pull-left span-lh">角色代码</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="角色代码" />
+				</div>
+				<span class="pull-left span-lh">角色名称</span>
+				<div class="input-group pull-left">
+					<input type="text" class="form-control input-sm" placeholder="角色名称" />
+				</div>
+				<div class="pull-right">
+					<a href="#" class="btn btn-default btn-sm">
+						<i class="fa fa-search"></i> 检索
+					</a>
+					<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#adminModal">
+						<i class="fa fa-plus-circle"></i> 新增
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="box-body no-padding">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>角色代码</th>
+						<th>角色名称</th>
+						<th>中文名称</th>
+						<th>英文名称</th>
+						<th>角色类别</th>
+						<th>创建用户</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+					<tr>
+						<td>001</td>
+						<td>初级管理员</td>
+						<td>张三</td>
+						<td>zhangsan</td>
+						<td>功能角色</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal"><i class="fa fa-lock"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>002</td>
+						<td>中级管理员</td>
+						<td>李四</td>
+						<td>lisi</td>
+						<td>数据角色</td>
+						<td>李四</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-lock"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>003</td>
+						<td>初级管理员</td>
+						<td>张三</td>
+						<td>zhangsan</td>
+						<td>数据角色</td>
+						<td>张三</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal1"><i class="fa fa-lock"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>004</td>
+						<td>中级管理员</td>
+						<td>李四</td>
+						<td>lisi</td>
+						<td>工具角色</td>
+						<td>李四</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-lock"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+					<tr>
+						<td>005</td>
+						<td>中级管理员</td>
+						<td>李四</td>
+						<td>lisi</td>
+						<td>工具角色</td>
+						<td>李四</td>
+						<td>2016-02-21</td>
+						<td>
+							<a href="#" title="编辑" data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+							<a href="#" title="删除" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+							<a href="#" title="权限管理" data-toggle="modal" data-target="#roleModal2"><i class="fa fa-lock"></i></a>
+							<a href="#" title="详情" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="box-footer clearfix">
+			<p class="pull-left">
+				共<span>52</span>条记录， 共
+				<span>6</span>页
+			</p>
+			<ul class="pagination pagination-sm no-margin pull-right">
+				<li><a href="#">«</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">»</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+<!--详情-->
+<div class="modal fade" id="detailModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">角色管理详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>角色代码</label>
+							<input type="text" class="form-control" readonly="readonly" value="001" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>角色名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="角色名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>中文名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="中文名称" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>英文名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="sss" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>角色状态</label>
+							<input type="text" class="form-control" readonly="readonly" value="角色状态" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>菜单名称</label>
+							<input type="text" class="form-control" readonly="readonly" value="菜单名称" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>角色类型</label>
+							<input type="text" class="form-control" readonly="readonly" value="角色类型" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>工具角色</label>
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>报表工具名称</th>
+											<th>报表</th>
+										</tr>
+										<tr>
+											<td>Tableau</td>
+											<td>销售报表01</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>数据角色</label>
+							<div class="box-body no-padding">
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<th>报表工具名称</th>
+											<th>参数</th>
+										</tr>
+										<tr>
+											<td>BO</td>
+											<td>xxxx</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>功能角色</label>
+							<div class="box-body no-padding">
+								<ul class="ztree" id="selTree2"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="adminModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">角色管理-新增/编辑</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="role">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>角色代码</label>
+								<input type="text" class="form-control" name="rolecode" placeholder="角色代码" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>角色名称</label>
+								<input type="text" class="form-control" name="rolename" placeholder="角色名称" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>中文名称</label>
+								<input type="text" class="form-control" name="rolename" placeholder="中文名称" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>英文名称</label>
+								<input type="text" class="form-control" name="rolename" placeholder="英文名称" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>角色类别</label>
+								<select class="form-control" id="roleclass">
+									<option value="功能角色">功能角色</option>
+									<option value="工具角色">工具角色</option>
+									<option value="数据角色">数据角色</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>角色状态</label>
+								<select class="form-control">
+									<option value="启用">启用</option>
+									<option value="禁用">禁用</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="function-role">
+						<div class="col-md-6">
+							<div class="form-group" style="position: relative;">
+								<label>菜单名称</label>
+								<input type="text" class="form-control" id="selInput" placeholder="菜单名称" />
+								<!-- 树形下拉选择框 -->
+								<div class="ztree-sel" id="selDiv" style="left:0px;top:60px;">
+									<ul class="ztree" id="selTree"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="tool-role">
+						<div class="col-md-3">
+							<div class="form-group" style="position: relative;">
+								<label>工具角色</label>
+								<input type="text" class="form-control" id="selInput1" placeholder="报表" />
+								<!-- 树形下拉选择框 -->
+								<div class="ztree-sel" id="selDiv1" style="left:0px;top:60px;display: block;">
+									<ul class="ztree" id="selTree1"></ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<select class="higher-level">
+									<option value=""></option>
+									<option value="BO">BO</option>
+									<option value="Tableau">Tableau</option>
+									<option value="QlikView">QlikView</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<button class="btn btn-preserve" style="width: 100%;" id="add" disabled="disabled">
+									添加<i class="glyphicon glyphicon-chevron-right"></i>
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<div size="10" multiple="multiple" class="tool-role">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="data-role">
+						<!--<div class="col-md-3">
+            			<div class="form-group">
+            				<label>&nbsp;</label>
+							
+						</div>
+            		</div>-->
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>数据角色</label>
+								<select class="higher-level1" multiple="multiple">
+									<option value=""></option>
+									<option value="参数1">参数1</option>
+									<option value="参数2">参数2</option>
+									<option value="参数2">参数2</option>
+									<option value="参数2">参数2</option>
+									<option value="参数2">参数2</option>
+									<option value="参数2">2</option>
+									<option value="参数2">参数2</option>
+									<option value="参数2">参数2</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<select class="higher-level2">
+									<option value=""></option>
+									<option value="BO">BO</option>
+									<option value="Tableau">Tableau</option>
+									<option value="QlikView">QlikView</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<button class="btn btn-preserve" style="width: 100%;" id="add1" disabled="disabled">
+									添加<i class="glyphicon glyphicon-chevron-right"></i>
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>&nbsp;</label>
+								<div size="10" multiple="multiple" class="tool-role1">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>备注说明</label>
+								<textarea class="form-control" rows="2" placeholder="请输入100字以内 ..."></textarea>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="roleModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">功能权限管理</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="ztree" id="roleTree"></ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" id="saveBtn">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="roleModal1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">数据权限管理</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="ztree" id="roleTree1"></ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" id="saveBtn1">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="roleModal2">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">工具权限管理</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="ztree" id="roleTree2"></ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve" id="saveBtn2">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog prompt">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">&nbsp;</h4>
+			</div>
+			<div class="modal-body">
+				<p class="delete-sure">确认删除该项？</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-preserve">确认</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /Modals -->
+
+<script type="text/javascript">
+	$(function() {
+		//		模糊查询
+		$(".higher-level").select2({
+			placeholder: "选择报表工具",
+			allowClear: true,
+			width: "100%"
+		});
+		$(".higher-level1").select2({
+			placeholder: "选择参数",
+			width: "100%",
+			maximumSelectionLength: 5
+		});
+		$(".higher-level2").select2({
+			placeholder: "选择报表工具",
+			allowClear: true,
+			width: "100%",
+		});
+		//初始化树形结构
+		var zNodes = [{
+			id: 1,
+			pId: 0,
+			name: "系统管理",
+			open: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "角色管理",
+			checked: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "用户管理",
+			checked: true
+		}];
+		$.fn.zTree.init($("#roleTree"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true
+			},
+			view: {
+				showIcon: false
+			}
+		}, zNodes);
+		var zNodes1 = [{
+			id: 1,
+			pId: 0,
+			name: "数据管理",
+			open: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "数据管理1",
+			checked: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "数据管理2",
+			checked: true
+		}];
+		$.fn.zTree.init($("#roleTree1"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true
+			},
+			view: {
+				showIcon: false
+			}
+		}, zNodes1);
+		var zNodes2 = [{
+			id: 1,
+			pId: 0,
+			name: "工具管理",
+			open: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "工具管理1",
+			checked: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "工具管理2",
+			checked: true
+		}];
+		$.fn.zTree.init($("#roleTree2"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true
+			},
+			view: {
+				showIcon: false
+			}
+		}, zNodes2);
+		//获取选中的节点Id
+		$("#saveBtn").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj = $.fn.zTree.getZTreeObj("roleTree");
+			var selectedNodes = zTreeObj.getCheckedNodes(true);
+			var selectedIds = [];
+			$.each(selectedNodes, function(i, el) {
+				selectedIds.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		$("#saveBtn1").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj1 = $.fn.zTree.getZTreeObj("roleTree1");
+			var selectedNodes1 = zTreeObj1.getCheckedNodes(true);
+			var selectedIds1 = [];
+			$.each(selectedNodes1, function(i, el) {
+				selectedIds1.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		$("#saveBtn2").on("click", function(e) {
+			e.preventDefault();
+			var zTreeObj2 = $.fn.zTree.getZTreeObj("roleTree1");
+			var selectedNodes2 = zTreeObj2.getCheckedNodes(true);
+			var selectedIds2 = [];
+			$.each(selectedNodes2, function(i, el) {
+				selectedIds2.push(el.id);
+			});
+			//console.log("Selected: ", selectedIds);
+		});
+		//初始化下拉树形结构--菜单名称
+		var selNodes = [{
+			id: 1,
+			pId: 0,
+			name: "系统管理",
+			open: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "业务管理"
+		}, {
+			id: 12,
+			pId: 1,
+			name: "部门管理"
+		}, {
+			id: 13,
+			pId: 1,
+			name: "用户管理"
+		}, {
+			id: 14,
+			pId: 1,
+			name: "角色管理"
+		}, {
+			id: 15,
+			pId: 1,
+			name: "菜单管理"
+		}, {
+			id: 16,
+			pId: 1,
+			name: "访问日志"
+		}, {
+			id: 2,
+			pId: 0,
+			name: "报表工具",
+			open: true
+		}, {
+			id: 21,
+			pId: 2,
+			name: "BO报表"
+		}, {
+			id: 22,
+			pId: 2,
+			name: "Tableau报表"
+		}, {
+			id: 23,
+			pId: 2,
+			name: "QlikView报表"
+		}, {
+			id: 3,
+			pId: 0,
+			name: "其他系统",
+			open: true
+		}, {
+			id: 31,
+			pId: 3,
+			name: "DCI系统"
+		}];
+		$.fn.zTree.init($("#selTree"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true,
+				chkboxType: {
+					"Y": "s",
+					"N": "ps"
+				}
+			},
+			view: {
+				showIcon: false,
+				dblClickExpand: false
+			},
+			callback: {
+				onCheck: function(e, treeId, treeNode) {
+					var zTree = $.fn.zTree.getZTreeObj("selTree"),
+						nodes = zTree.getCheckedNodes(true),
+						v = "";
+					for (var i = 0, l = nodes.length; i < l; i++) {
+						v += nodes[i].name + ",";
+					}
+					if (v.length > 0) {
+						v = v.substring(0, v.length - 1);
+					};
+					$("#selInput").val(v);
+				}
+			}
+		}, selNodes);
+		//弹出树形下拉选择框
+		$("#selInput").on("click", function(e) {
+			e.stopPropagation();
+			//			$("#selDiv").slideDown();
+		});
+		//隐藏树形下拉选择框
+		//		$("body").on("click", function() {
+		//			$("#selDiv").slideUp();
+		//		});
+		$("#selDiv").on("click", function(e) {
+			e.stopPropagation();
+		});
+		//初始化下拉树形结构--详情
+		var selNodes2 = [{
+			id: 1,
+			pId: 0,
+			name: "系统管理",
+			open: true,
+			nocheck: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "业务管理",
+			nocheck: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "部门管理",
+			nocheck: true
+		}, ];
+		$.fn.zTree.init($("#selTree2"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true,
+				chkboxType: {
+					"Y": "s",
+					"N": "ps"
+				}
+			},
+			view: {
+				showIcon: false,
+				dblClickExpand: false
+			},
+		}, selNodes2);
+		//		菜单隐现
+		$("#roleclass").change(function() {
+			var roleClassval = $(this).val();
+			if (roleClassval == "工具角色") {
+				$("#function-role").hide();
+				$("#data-role").hide();
+				$("#tool-role").show();
+			} else if (roleClassval == "数据角色") {
+				$("#function-role").hide();
+				$("#tool-role").hide();
+				$("#data-role").show();
+			} else {
+				$("#tool-role").hide();
+				$("#data-role").hide();
+				$("#function-role").show();
+			}
+		});
+		//表单验证
+		$('#role').bootstrapValidator({
+			message: '值不能为空',
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				rolecode: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '菜单代码值不能为空'
+						},
+						regexp: {
+							regexp: /^[a-zA-Z0-9]+$/,
+							message: '角色代码值只能包括字母、数字'
+						}
+					}
+				},
+				rolename: {
+					message: '值不能为空',
+					validators: {
+						notEmpty: {
+							message: '名称值不能为空'
+						}
+					}
+				}
+			}
+		});
+		//点击添加，添加到右边select
+		//		工具角色下拉树形结构
+		var reportTable;
+		var selNodes1 = [{
+			id: 1,
+			pId: 0,
+			name: "报表",
+			open: true,
+			nocheck: true
+		}, {
+			id: 11,
+			pId: 1,
+			name: "报表1报表1报表1报表1报表1报表1报表1报表1",
+			nocheck: true
+		}, {
+			id: 12,
+			pId: 1,
+			name: "报表2",
+			nocheck: true
+		}, {
+			id: 2,
+			pId: 0,
+			name: "报表",
+			open: true,
+			nocheck: true
+		}, {
+			id: 21,
+			pId: 2,
+			name: "报表1",
+			nocheck: true
+		}, {
+			id: 22,
+			pId: 2,
+			name: "报表2",
+			nocheck: true
+		}, {
+			id: 23,
+			pId: 2,
+			name: "报表3",
+			nocheck: true
+		}, {
+			id: 3,
+			pId: 0,
+			name: "报表",
+			open: true,
+			nocheck: true
+		}, {
+			id: 31,
+			pId: 3,
+			name: "报表4",
+			nocheck: true
+		}];
+		$.fn.zTree.init($("#selTree1"), {
+			data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			},
+			check: {
+				enable: true,
+				chkStyle: "radio",
+				radioType: "all"
+			},
+			view: {
+				showIcon: false,
+				dblClickExpand: false
+			},
+			callback: {
+				onClick: function(e, treeId, treeNode) {
+					var zTree = $.fn.zTree.getZTreeObj("selTree1"),
+						nodes = zTree.getSelectedNodes(true),
+						v = "";
+					for (var i = 0, l = nodes.length; i < l; i++) {
+						v += nodes[i].name + ",";
+					}
+					if (v.length > 0) {
+						v = v.substring(0, v.length - 1);
+					};
+					if (treeNode.level > 0) {
+						$("#selInput1").val(v);
+						reportTable = v;
+						// 进行选择时，检查是否可以添加
+						checkAdd();
+					}
+				}
+			}
+		}, selNodes1);
+		//弹出树形下拉选择框
+		$("#selInput1").on("click", function(e) {
+			e.stopPropagation();
+			//			$("#selDiv1").slideDown();
+		});
+		//隐藏树形下拉选择框
+		//		$("body").on("click", function() {
+		//			$("#selDiv1").slideUp();
+		//		});
+		$("#selDiv1").on("click", function(e) {
+			e.stopPropagation();
+		});
+		var deptName;
+		$(".higher-level").change(function() {
+			deptName = $(this).val();
+			// 进行选择时，检查是否可以进行添加
+			checkAdd();
+		});
+		var params = [];
+		$(".higher-level1").change(function() {
+			params = $(this).val();
+			checkAdd1();
+		});
+		var reportTables;
+		$(".higher-level2").change(function() {
+			// 将选择的元素添加进数组
+			reportTables = $(this).val();
+			checkAdd1();
+		});
+		/**
+		 * 是否可以添加
+		 */
+		function checkAdd() {
+			if (reportTable && deptName) {
+				$("#add").removeAttr("disabled");
+			}
+		}
+		var toolRole = $(".tool-role");
+		$("#add").click(function(e) {
+			e.preventDefault();
+			// 先将所有选项清空，避免因多次点击而产生的选项叠加，非常难看
+			toolRole.html("");
+			var toolRoleval = reportTable + " + " + deptName;
+			toolRole.append("<a title='" + toolRoleval + "'><i class=\"fa fa-remove\" title='点击删除该选项'></i>" + toolRoleval + "</a>");
+			toolRole.children("a").click(function() {
+				$(this).css({
+					"background-color": "blue",
+					"color": "white"
+				});
+			});
+			// 点击前面的图标，删除选项
+			toolRole.find("i").click(function() {
+				$(this).parent().remove();
+			})
+		});
+		/**
+		 * 是否可以添加
+		 */
+		function checkAdd1() {
+			if (params.length && reportTables) {
+				$("#add1").removeAttr("disabled");
+			}
+		}
+		var toolRole1 = $(".tool-role1");
+		$("#add1").click(function(e) {
+			e.preventDefault();
+			// 先将选项清空，避免选项叠加
+			toolRole1.html("");
+			for (var r in params) {
+				var temp = params[r] + "+" + reportTables;
+				toolRole1.append("<a title='" + temp + "'><i class=\"fa fa-remove\" title='点击删除该选项'></i>" + temp + "</a>");
+			}
+			toolRole1.children("a").click(function() {
+				$(this).css({
+						"background-color": "blue",
+						"color": "white"
+					})
+					.siblings().css({
+						"background-color": "white",
+						"color": "black"
+					});
+			});
+			// 点击前面的图标，删除选项
+			toolRole1.find("i").click(function() {
+				var parent = $(this).parent();
+				parent.remove();
+			});
+		});
+	});
+</script>

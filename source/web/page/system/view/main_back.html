@@ -1,0 +1,111 @@
+<!--<section class="content-header">
+    <h1>
+        {{i18n('page_index_lbl_recentaccessReport')}}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#/main"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}} </a></li>
+        <li class="active">{{i18n('page_index_lbl_recentaccessReport')}}</li>
+    </ol>
+</section>-->
+<!-- /Content Header -->
+
+<!-- Main content -->
+
+    <div class="portlet-body" style="padding:0 0 15px 15px; ">
+        <div class="panel-group accordion scrollable" id="accordion2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="/#collapse_2_1"> 常用报表 </a>
+                    </h4>
+                </div>
+                <div id="collapse_2_1" class="panel-collapse in">
+                    <section class="content">
+                        <div class="list-group msg-list">
+						<span class="list-group-item" ng-repeat="log in dataLog">
+							<div class="badge">{{log.createTime}}</div>
+							<i class="fa fa-circle"></i>
+							<a href="#/reportBusiness/{{log.menuId}}" target="_blank" class="report-name"
+                               title="{{log.logDesc}}">{{log.menuName}}</a>
+						</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="/#collapse_2_2"> 默认报表 </a>
+                    </h4>
+                </div>
+                <div id="collapse_2_2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut. </p>
+                        <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                        </p>
+                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut. </p>
+                        <p>
+                            <a class="btn blue" href="ui_tabs_accordions_navs.html#collapse_2_2" target="_blank"> Activate this section via URL </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="/#collapse_2_3"> 最近访问报表 </a>
+                    </h4>
+                </div>
+                <div id="collapse_2_3" class="panel-collapse collapse">
+                    <section class="content">
+                        <div class="list-group msg-list">
+						<span class="list-group-item" ng-repeat="log in dataLog">
+							<div class="badge">{{log.createTime}}</div>
+							<i class="fa fa-circle"></i>
+							<a href="#/reportBusiness/{{log.menuId}}" target="_blank" class="report-name"
+                               title="{{log.logDesc}}">{{log.menuName}}</a>
+						</span>
+                            <!-- <span class="list-group-item">
+                                <div class="badge">2016-02-21 12:00:00</div>
+                                <i class="fa fa-circle"></i>
+                                <a target="_blank" href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="销售报表">销售报表</a>
+                            </span>
+                            <span class="list-group-item">
+                                <div class="badge">2016-02-21 12:00:00</div>
+                                <i class="fa fa-circle"></i>
+                                <a target="_blank"  href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="年度分类汇总明细报表">年度分类汇总明细报表</a>
+                            </span>
+                            <span class="list-group-item">
+                                <div class="badge">2016-02-21 12:00:00</div>
+                                <i class="fa fa-circle"></i>
+                                <a target="_blank"  href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="东南季度销售汇总报表">东南季度销售汇总报表</a>
+                            </span>
+                            <span class="list-group-item">
+                                <div class="badge">2016-02-21 12:00:00</div>
+                                <i class="fa fa-circle"></i>
+                                <a target="_blank"  href="/Portal/page/report/view/reportBusiness.html" class="report-name" title="华南区域汇总报表">华南区域汇总报表</a>
+                            </span>  -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!--<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="/#collapse_2_4"> Collapsible Group Item #4 </a>
+                    </h4>
+                </div>
+                <div id="collapse_2_4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut. </p>
+                        <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                            Brunch 3 wolf moon tempor. </p>
+                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut. </p>
+                        <p>
+                            <a class="btn red" href="ui_tabs_accordions_navs.html#collapse_2_4" target="_blank"> Activate this section via URL </a>
+                        </p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>

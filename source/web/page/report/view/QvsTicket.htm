@@ -1,0 +1,75 @@
+﻿<!-- QV报表授权访问页面，集成QV报表时，把该页面存放于QV的WEB目录下，且BIPortal的授权地址为该页面的访问地址 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+	
+	<script>
+		//获取请求参数
+		function Request(strName) {
+	 		var strHref = window.document.location.href;
+		 	var intPos = strHref.indexOf("?");
+		 	var strRight = strHref.substr(intPos + 1);
+		 	var arrTmp = strRight.split("&");
+		 	for(var i = 0; i < arrTmp.length; i++) {
+		 		var arrTemp = arrTmp[i].split("=");
+			  	if(arrTemp[0].toUpperCase() == strName.toUpperCase()) {
+				  	return arrTemp[1];
+			  	}
+		 	}
+		 	return "";
+		}
+	</script>
+    <script>
+    	//登录系统直接调用此方法加载获取用户名
+	 	window.onload =function GoAjax() {
+    		var reportUser = Request("reportUser");
+	      	var reportPass = Request("reportPass");
+	      	var location = unescape(Request("location"));
+		 	document.getElementById("reportUser").value = reportUser;
+		 	document.getElementById("reportPass").value = reportPass;
+	      	var ticket = escape(GetTicket()) ;
+		    //形成报表访问地址
+	 		window.location.href= location+"&ticket="+ticket;
+	  }
+	</script>
+	<script>
+		function GetTicket() {
+            try { xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); }
+            catch (e) { try { xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+            catch (e) { try { xmlhttp = new XMLHttpRequest(); }
+            catch (e) {
+                xmlhttp = false;
+                alert('no XMLRequest Object');
+                return false;
+            }}}
+            var url = '/QvAJAXZfc/GetTicket.aspx?';
+            var cmd = '<Global method="GetTicket"><UserId>' + document.getElementById("reportUser").value + '</UserId></Global>';
+            xmlhttp.open("POST", url, false,document.getElementById("reportUser").value,document.getElementById("reportPass").value);
+            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+            xmlhttp.send(cmd);
+            if (xmlhttp.readyState==4) {
+                if(xmlhttp.status==200) {
+                  var xmldoc = xmlhttp.responseXML;
+                  var theRoot = xmldoc.childNodes[0].nodeName;
+                  if ( theRoot == 'Global' ) {
+                    var val = xmldoc.getElementsByTagName("_retval_")[0].childNodes[0].nodeValue;
+                    return val ;
+                  }else{
+                    return xmldoc.childNodes[0].nodeValue;
+                  }
+                }else{
+                  alert("Problem retrieving data:" + xmlhttp.status + " - " + xmlhttp.statusText);
+                  return false;
+                }
+            }
+        }
+    </script>
+</head>
+<body> 
+	<form>
+		<input type="hidden" id="reportUser" name="reportUser"/>
+		<input type="hidden" id="reportPass" name="reportPass"/>
+	</form>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!---->
+
+<script>
+    function getIdSelections() {
+        var mapSelected = $.map($('#table').bootstrapTable('getSelections'), function (row) {
+            return row.field1
+        });
+        var mapSelected2 = $.map($('#table').bootstrapTable('getSelections'), function (row) {
+            return row.field1+':'+row.field2
+        });
+//        alert("mapSelected2:"+mapSelected2)
+        console.log($('#table').bootstrapTable('getSelections'))
+        console.log(mapSelected)
+
+        var tempV = $('#paramSelectId').attr("value")
+        var docSelect = $('#' + tempV);
+        var paramValue = mapSelected;
+        var docInput = docSelect.prev();
+        var docHiddenInput = docSelect.prev().prev();
+        console.log("docHiddenInput:"+docHiddenInput)
+        docInput.val(paramValue).trigger('change');;
+        docHiddenInput.val(mapSelected2).trigger('change');;
+        if (paramValue != null && paramValue != '') {
+            docInput.attr("readonly", true);
+        } else {
+            docInput.val("");
+            docInput.attr("readonly", false);
+        }
+        $('#relateDataModal').modal('hide');
+
+    }
+</script>
+
+
+<!-- 管理员列表 -->
+<!-- Content Header -->
+<section class="content-header">
+    <h1>
+        {{i18n('page_index_menu_rolemanagement')}}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="index.html"><i class="fa fa-dashboard"></i> {{i18n('page_index_llb_homePage')}}</a></li>
+        <li><a href="#">{{i18n('page_index_menu_sysManagement')}}</a></li>
+        <li class="active">{{i18n('page_index_menu_rolemanagement')}}</li>
+    </ol>
+</section>
+<!-- /Content Header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{{i18n('page_user_newrole_rolelist')}}</h3>
+            <div class="box-tools">
+                <!--<span class="pull-left span-lh">角色代码</span>
+                <div class="input-group pull-left">
+                    <input type="text" class="form-control input-sm" placeholder="角色代码" />
+                </div>-->
+                <span class="pull-left span-lh">{{i18n('page_user_detail_rolename')}}</span>
+                <div class="input-group pull-left">
+                    <input ng-model="searchInput" type="text" class="form-control input-sm"
+                           placeholder="{{i18n('page_user_detail_rolename')}}"/>
+                </div>
+                <span class="pull-left span-lh">{{i18n('page_user_detail_rolecategory')}}</span>
+                <div class="input-group pull-left">
+                    <select class="form-control select-sm" ng-model="search.roleType"
+                            ng-options="x.id as x.name for x in roleTypes">
+                        <option value="">{{i18n('page_log_select')}}</option>
+                    </select>
+                </div>
+                <div class="pull-right">
+                    <a ng-click="editBtn('reloadBtn','yes')" class="btn btn-default btn-sm" id="search-btn">
+                        <i class="fa fa-search"></i> {{i18n('page_reporttool_search')}}
+                    </a>
+                    <a ng-click="editBtn('addSysRole')" class="btn btn-default btn-sm" data-toggle="modal"
+                       data-target="#adminModal">
+                        <i class="fa fa-plus-circle"></i> {{i18n('sys_title_dlg_new')}}
+                    </a>
+                </div>
+                <div class="zeng_msgbox_layer_wrap" id="q_msgbox"></div>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>{{i18n('page_user_detail_rolecode')}}</th>
+                    <!-- <th>{{i18n('page_user_detail_rolename')}}</th> -->
+                    <th>{{i18n('page_menu_new_chinesename')}}</th>
+                    <th>{{i18n('page_menu_new_englishname')}}</th>
+                    <th>{{i18n('page_user_detail_rolecategory')}}</th>
+                    <th>{{i18n('page_menu_createuser')}}</th>
+                    <th>{{i18n('page_reporttool_creationtime')}}</th>
+                    <th>{{i18n('page_reporttool_operation')}}</th>
+                </tr>
+                <tr ng-repeat="sysRole in datas">
+                    <td>{{sysRole.code}}</td>
+                    <td>{{sysRole.roleNameZh}}</td>
+                    <td>{{sysRole.roleNameEn}}</td>
+                    <td ng-if="sysRole.roleType==1">{{i18n('page_user_newrole_functionrole')}}</td>
+                    <td ng-if="sysRole.roleType==3">{{i18n('page_user_newrole_datarole')}}</td>
+                    <td>{{sysRole.createUser}}</td>
+                    <td>{{sysRole.createTime}}</td>
+                    <td>
+                        <a ng-click="editBtn('updateSysRole',sysRole.id)" title="{{i18n('sys_title_dlg_edit')}}"
+                           data-toggle="modal" data-target="#adminModal"><i class="fa fa-edit"></i></a>
+                        <a ng-click="editBtn('deleteSysRole',sysRole.id)" title="{{i18n('page_delete')}}"
+                           data-toggle="modal" data-target="#deleteModal"><i class="fa fa-remove"></i></a>
+                        <a ng-click="editBtn('manageSysRoleParams',sysRole.id)" title="{{i18n('page_role_Authority')}}"
+                           data-toggle="modal" ng-if="sysRole.roleType == 3" data-target="#roleModal1"><i
+                                class="fa fa-lock"></i></a>
+                        <a ng-click="editBtn('manageSysRoleMenus',sysRole.id)" title="{{i18n('page_role_Authority')}}"
+                           data-toggle="modal" ng-if="sysRole.roleType == 1" data-target="#roleModal"><i
+                                class="fa fa-lock"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer clearfix">
+            <p class="pull-left">
+                {{i18n('page_index_pages_total')}} <span>{{itemCount}}</span>
+                {{i18n('page_index_pages_record')}} , {{i18n('page_index_pages_total')}}
+                <span>{{pageCount}}</span> {{i18n('page_index_pages_page')}}
+            </p>
+            <ul id="pagination">
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Main content -->
+
+<!-- Modals -->
+
+<div class="modal fade" id="adminModal">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="newTitle" style="display: inline;">
+                    {{i18n('page_index_menu_rolemanagement')}}-{{i18n('sys_title_dlg_new')}}</h4>
+                <h4 class="modal-title" id="editTitle" style="display: none;">
+                    {{i18n('page_index_menu_rolemanagement')}}-{{i18n('sys_title_dlg_edit')}}</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="role" novalidate name="sysRoleForm">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_menu_new_chinesename')}}</label>
+                                <input type="text" id="roleNameZh" class="form-control" name="Chinarolename"
+                                       placeholder="{{i18n('page_menu_new_chinesename')}}"
+                                       ng-model="sysRole.roleNameZh"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_menu_new_englishname')}}</label>
+                                <input type="text" id="roleNameEn" class="form-control" name="Englishrolename"
+                                       placeholder="{{i18n('page_menu_new_englishname')}}"
+                                       ng-model="sysRole.roleNameEn"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_role_new_rolestate')}}</label>
+                                <select class="form-control" name="roleStatus" ng-model="sysRole.roleStatus"
+                                        ng-options="x.id as x.name for x in roleStatus">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{i18n('page_user_detail_rolecategory')}}</label>
+                                <select class="form-control" id="roleclass" name="roleType" ng-model="sysRole.roleType"
+                                        ng-options="x.id as x.name for x in roleTypes">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="function-role">
+                        <div class="col-md-12">
+                            <div class="form-group" style="position: relative;">
+                                <label>{{i18n('page_menu_menuname')}}</label>
+                                <input type="text" class="form-control" id="rolemenuName"
+                                       placeholder="{{i18n('page_menu_menuname')}}" readonly="readonly"
+                                       ng-model="sysRole.roleMenuName"/>
+                                <input type="hidden" ng-model="sysRole.sysRoleMenuIds">
+                                <!-- 树形下拉选择框 -->
+                                <div class="ztree-sel" style="left:0px;top:60px;">
+                                    <ul class="ztree" id="rolemenuNameTree"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="data-role">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>{{i18n('page_user_newrole_datarole')}}</label>
+                                <div class="TableDiv">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <th>{{i18n('page_reportparameter_parametername')}}</th>
+                                            <th>{{i18n('page_reportparameter_parameterkey')}}</th>
+                                            <th>{{i18n('page_reportparameter_displayoperationtype')}}</th>
+                                            <th>参数值类型</th>
+                                            <th>{{i18n('page_reportparameter_parametervalues')}}</th>
+                                        </tr>
+                                        <tr ng-repeat="reportParam in reportParams">
+                                            <td>{{reportParam.paramName}}</td>
+                                            <td>{{reportParam.paramKey}}</td>
+                                            <td>
+                                                <!--<select name="paramOperatType"
+                                                        ng-model="reportParam.paramOperatType">
+                                                    <option value="0">{{i18n('page_param_radio')}}</option>
+                                                    <option value="1">{{i18n('page_param_multiselect')}}</option>
+                                                </select>-->
+                                                <select name="paramOperatType" ng-model="reportParam.paramOperatType"
+                                                        ng-options="x.id as x.name for x in paramOperatTypes">
+                                                    <option value="">{{i18n('page_log_select')}}</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <!--<select name="paramValueType"
+                                                        ng-model="reportParam.paramValueType">
+                                                    <option value="0" selected="true">{{i18n('page_param_singlevalue')}}</option>
+                                                    <option value="1">{{i18n('page_param_multivalue')}}</option>
+                                                </select>-->
+                                                <select name="paramValueType" ng-model="reportParam.paramValueType"
+                                                        ng-options="x.id as x.name for x in paramValueTypes" >
+                                                    <option value="">{{i18n('page_log_select')}}</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="reportParam.paramValueRelate" class="parameterval" style="display: none"/>
+                                                <input type="text" ng-model="reportParam.paramValue"
+                                                       ng-if="reportParam.relateDataType !=null &&reportParam.relateDataType !=''"
+                                                       ng-click="editBtn2('changeParamValueByRelateData',reportParam.id,reportParam.relateDataType)"
+                                                       class="parameterval" placeholder="多值之间用逗号分隔"/>
+                                                <input type="text" ng-model="reportParam.paramValue"
+                                                       ng-if="reportParam.relateDataType ==null ||reportParam.relateDataType ==''"
+                                                       class="parameterval" placeholder="多值之间用逗号分隔"/>
+
+                                                <select id="{{reportParam.id}}" name="paramValue"
+                                                        ng-model="reportParam.paramValue1"
+                                                        ng-options="x.id as x.name for x in paramValues"
+                                                        ng-change="editBtn('changeParamValue',reportParam.id+','+$index)">
+                                                    <option value="">{{i18n('page_log_select')}}</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                            {{i18n('page_sys_dlg_cancel')}}
+                        </button>
+                        <button type="button" class="btn btn-preserve" ng-click="editBtn('saveSysRole')">
+                            {{i18n('page_sys_dlg_save')}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="roleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- <form method="post" id="sysRoleMenu" novalidate name="sysRoleMenuForm" ng-submit="saveSysRoleMenu(roleMenu.roleId)"> -->
+            <form method="post" id="sysRoleMenu" novalidate name="sysRoleMenuForm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">{{i18n('page_role_FunctionalRole')}}</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="ztree" id="functionroleTree"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                        {{i18n('page_sys_dlg_cancel')}}
+                    </button>
+                    <button type="button" class="btn btn-preserve"
+                            ng-click="editBtn('saveSysRoleMenu',roleMenu.roleId)">{{i18n('page_sys_dlg_save')}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="roleModal1">
+    <div class="modal-dialog">
+        <form method="post" id="sysRoleParam" novalidate name="sysRoleParamForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">{{i18n('page_role_DataRole')}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group dataTableDiv">
+                                <table class="table table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <th>{{i18n('page_reportparameter_parametername')}}</th>
+                                        <th>{{i18n('page_reportparameter_parameterkey')}}</th>
+                                        <th>{{i18n('page_reportparameter_parametervalues')}}</th>
+                                    </tr>
+                                    <tr ng-repeat="reportParam in reportParams">
+                                        <td>{{reportParam.paramName}}</td>
+                                        <td>{{reportParam.paramKey}}</td>
+                                        <td>
+                                            <input type="text" ng-model="reportParam.paramValue" class="parameterval">
+                                            <select id="{{reportParam.id}}id" name="paramValue"
+                                                    ng-model="reportParam.paramValue1"
+                                                    ng-options="x.id as x.name for x in paramValues"
+                                                    ng-change="editBtn('changeParamValue1',reportParam.id+','+$index)">
+                                                <option value="">{{i18n('page_log_select')}}</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                        {{i18n('page_sys_dlg_cancel')}}
+                    </button>
+                    <button type="button" class="btn btn-preserve"
+                            ng-click="editBtn('saveSysRoleParam',reportParams.roleId)">{{i18n('page_sys_dlg_save')}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_rolemanagement')}}-{{i18n('page_delete')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">{{i18n('page_sys_dlg_confirm')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{i18n('page_sys_dlg_cancel')}}
+                </button>
+                <button type="button" class="btn btn-preserve" id="btnConfirm">{{i18n('page_sys_dlg_confirmDel')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_rolemanagement')}}-{{i18n('page_sys_dlg_save')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure" id="hintInfo"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">
+                    {{i18n('page_sys_dlg_confirmDel')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--提示信息-->
+<div class="modal fade" id="tipModal">
+    <div class="modal-dialog prompt">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">{{i18n('page_index_menu_rolemanagement')}}</h4>
+            </div>
+            <div class="modal-body">
+                <p class="delete-sure">{{i18n('page_tip_repeat')}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-preserve" data-dismiss="modal" id="successBtn">
+                    {{i18n('page_sys_dlg_confirmDel')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="relateDataModal">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="newTitle1" style="display: inline;">
+                    数据选择</h4>
+                <h4 class="modal-title" id="editTitle1" style="display: none;">
+                    {{i18n('page_index_menu_rolemanagement')}}-{{i18n('sys_title_dlg_edit')}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <input id="paramSelectId" type="hidden" value="">
+                    <div id="initDataTableId" class="col-md-12">
+                        <table id="table"
+                               data-toggle="table"
+                               data-show-columns="true"
+                               data-search="true"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-pagination="true">
+                            <thead>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                    {{i18n('page_sys_dlg_cancel')}}
+                </button>
+                <button type="button" class="btn btn-preserve" onclick="getIdSelections()">
+                    {{i18n('page_sys_dlg_save')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        //表单验证
+        $('#role').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                Chinarolename: {
+                    validators: {
+                        notEmpty: {
+                            message: "{{i18n('page_menu_chinesenametip')}}"
+                        }
+                    }
+                },
+                Englishrolename: {
+                    validators: {
+                        notEmpty: {
+                            message: "{{i18n('page_menu_englishnametip')}}"
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+

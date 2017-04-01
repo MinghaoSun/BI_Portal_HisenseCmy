@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.analytic.portal.module.report.model.ReportTool" table="report_tool">
+        <id name="id" type="java.lang.String">
+            <column name="id"  length="100"/>
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="java.lang.String">
+            <column name="code" length="100" />
+        </property>
+        <property name="reportToolName" type="java.lang.String">
+            <column name="report_tool_name" length="100" />
+        </property>
+        <property name="reportToolType" type="java.lang.String">
+            <column name="report_tool_type" length="100" />
+        </property>
+        <property name="reportToolUrl" type="java.lang.String">
+            <column name="report_Tool_url" length="100" />
+        </property>
+        <property name="reportToolVersion" type="java.lang.String">
+            <column name="report_tool_version" length="100" />
+        </property>
+        <property name="reportToolDisplay" type="java.lang.String">
+            <column name="report_tool_display" length="100" />
+        </property>
+        <property name="reportToolRemark" type="java.lang.String">
+            <column name="report_tool_remark" length="100" />
+        </property>
+        <property name="isDelete" type="java.lang.String">
+            <column name="is_delete" length="1" />
+        </property>
+        <property name="createTime" type="java.lang.String" update="false">
+            <column name="create_time" length="100" />
+        </property>
+        <property name="createUser" type="java.lang.String">
+            <column name="create_user" length="100" />
+        </property>
+        <property name="updateTime" type="java.lang.String">
+            <column name="update_time" length="100" />
+        </property>
+        <property name="updateUser" type="java.lang.String">
+            <column name="update_user" length="100" />
+        </property>
+        <property name="reportToolAuthUrl" type="java.lang.String">
+            <column name="report_tool_auth_url" length="100" />
+        </property>
+        
+    </class>
+</hibernate-mapping>
