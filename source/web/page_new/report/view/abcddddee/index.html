@@ -1,10 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 </head>
 <body>
-hello world!
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px">2222</div>
+    <!-- ECharts单文件引入 -->
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+                [
+                    'echarts',
+                    'echarts/chart/treemap' // 加载treemap模块，按需加载
+                ],
+                function (ec) {
+                	var myChart = ec.init(document.getElementById("main"));
+                    
+                    var option = {
+                        title : {
+                            text: 'A公司员工吃水果统计表',
+                            subtext: '多吃水果有益身体健康'
+                        },
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{b}: {c}"
+                        },
+                        toolbox: {
+                            show : true,
+                            feature : {
+                                mark : {show: true},
+                                dataView : {show: true, readOnly: false},
+                                restore : {show: true},
+                                saveAsImage : {show: true}
+                            }
+                        },
+                        calculable : false,
+                        series : [
+                            {
+                                name:'矩形图',
+                                type:'treemap',
+                                itemStyle: {
+                                    normal: {
+                                        label: {
+                                            show: true,
+                                            formatter: "{b}"
+                                        },
+                                        borderWidth: 1
+                                    },
+                                    emphasis: {
+                                        label: {
+                                            show: true
+                                        }
+                                    }
+                                },
+                                data:[
+                                    {
+                                        name: '苹果',
+                                        value: 6
+                                    },
+                                    {
+                                        name: '香蕉',
+                                        value: 4
+                                    },
+                                    {
+                                        name: '猕猴桃',
+                                        value: 4
+                                    },
+                                    {
+                                        name: '梨',
+                                        value: 2
+                                    },
+                                    {
+                                        name: '橙子',
+                                        value: 2
+                                    },
+                                    {
+                                        name: '桔子',
+                                        value: 1
+                                    },
+                                    {
+                                        name: '西瓜',
+                                        value: 1
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                        
+                    myChart.setOption(option);
+                }
+            ); 
+    </script>
 </body>
 </html>
