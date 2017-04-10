@@ -26,7 +26,7 @@ public class ImageCodeMakerServlet extends HttpServlet {
 	private static final int IMG_W = 80;
 	private static final int IMG_H = 40;
 	private static final Random RANDOM = new Random();
-	private static final String aa = "222";
+	private static final String aa = "333";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
