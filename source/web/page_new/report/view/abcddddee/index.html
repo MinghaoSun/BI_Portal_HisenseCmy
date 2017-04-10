@@ -1,103 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>ECharts</title>
-    <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
-</head>
-<body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="height:400px">2222</div>
-    <!-- ECharts单文件引入 -->
-    <script type="text/javascript">
-        // 路径配置
-        require.config({
-            paths: {
-                echarts: 'http://echarts.baidu.com/build/dist'
-            }
-        });
-        require(
-                [
-                    'echarts',
-                    'echarts/chart/treemap' // 加载treemap模块，按需加载
-                ],
-                function (ec) {
-                	var myChart = ec.init(document.getElementById("main"));
-                    
-                    var option = {
-                        title : {
-                            text: 'A公司员工吃水果统计表',
-                            subtext: '多吃水果有益身体健康'
-                        },
-                        tooltip : {
-                            trigger: 'item',
-                            formatter: "{b}: {c}"
-                        },
-                        toolbox: {
-                            show : true,
-                            feature : {
-                                mark : {show: true},
-                                dataView : {show: true, readOnly: false},
-                                restore : {show: true},
-                                saveAsImage : {show: true}
-                            }
-                        },
-                        calculable : false,
-                        series : [
-                            {
-                                name:'矩形图',
-                                type:'treemap',
-                                itemStyle: {
-                                    normal: {
-                                        label: {
-                                            show: true,
-                                            formatter: "{b}"
-                                        },
-                                        borderWidth: 1
-                                    },
-                                    emphasis: {
-                                        label: {
-                                            show: true
-                                        }
-                                    }
-                                },
-                                data:[
-                                    {
-                                        name: '苹果',
-                                        value: 6
-                                    },
-                                    {
-                                        name: '香蕉',
-                                        value: 4
-                                    },
-                                    {
-                                        name: '猕猴桃',
-                                        value: 4
-                                    },
-                                    {
-                                        name: '梨',
-                                        value: 2
-                                    },
-                                    {
-                                        name: '橙子',
-                                        value: 2
-                                    },
-                                    {
-                                        name: '桔子',
-                                        value: 1
-                                    },
-                                    {
-                                        name: '西瓜',
-                                        value: 1
-                                    }
-                                ]
-                            }
-                        ]
-                    };
-                        
-                    myChart.setOption(option);
-                }
-            ); 
-    </script>
-</body>
-</html>
+<!DOCTYPE html>  
+<head>  
+<meta charset="utf-8">  
+<title>testD3-33-paddingTree.html</title>  
+<style>  
+  
+.node {  
+  border: solid 1px white;  
+  font: 10px sans-serif;  
+  line-height: 12px;  
+  overflow: hidden;  
+  position: absolute;  
+  text-indent: 2px;  
+}  
+  
+</style>  
+</head>  
+<body>  
+<script type="text/javascript">  
+var width = 960,  
+    height = 500;  
+  
+var color = d3.scale.category20c();//20种颜色  
+  
+//(1)填充树  
+var treemap = d3.layout.treemap()//使用递归的空间分割来显示节点的树。  
+    .size([width, height])//指定x和y的布局大小。  
+    .padding(4)//指定一个父及其子之间的填充。  
+    .value(function(d) { //获取或设置树形细胞的大小。  
+    return d.size/2;   
+    });  
+      
+//(2)设置每个树细胞用div存放  
+var div = d3.select("body").append("div")  
+    .style("position", "relative")//位置相依，作用没看出来？  
+    .style("width", width + "px")  
+    .style("height", height + "px");  
+//(3)设置每个树细胞各个属性  
+d3.json("http://localhost:8080/spring/D3data/paddingTree.json",   
+    function(error, root) {  
+  div.selectAll(".node")  
+      .data(treemap.nodes(root))//计算树形布局和返回节点的数组。  
+    .enter().append("div")  
+      .attr("class", "node")  
+      .style("left", function(d) { return d.x + "px"; })  
+      .style("top", function(d) { return d.y + "px"; })  
+      .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })  
+      .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; })  
+        
+      .style("background", function(d) { //只为有孩子的节点赋值，也就是说叶子节点的背景颜色都是他爸爸的颜色  
+        return d.children ? color(d.name) : null;   
+      })  
+      .text(function(d) { //同理，孩子设置文字，爸爸没有  
+        return d.children ? null : d.name;   
+      });  
+});  
+</script>  
+</body>  

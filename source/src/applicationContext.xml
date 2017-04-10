@@ -71,6 +71,24 @@
          <property name="acquireRetryAttempts" value="30"/>
          <property name="acquireRetryDelay" value="100" />
      </bean>
+     <!-- hsbi -->
+     <bean id="dataSource_hsbi" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		 <property name="driverClass" value="${hibernate.connection.hsbi.driver_class}"/>
+		 <property name="jdbcUrl" value="${hibernate.connection.hsbi.url}"/>
+		 <property name="user" value="${hibernate.connection.hsbi.username}"/>
+		 <property name="password" value="${hibernate.connection.hsbi.password}"/>
+		 <property name="maxPoolSize" value="100"/>
+		 <property name="minPoolSize" value="10"/>
+		 <property name="initialPoolSize" value="30"/>
+		 <property name="maxIdleTime" value="60"/>
+		 <property name="acquireIncrement"  value="10"/>    
+		 <property name="maxStatements"  value="0"/>    
+		 <property name="idleConnectionTestPeriod"  value="60"/>    
+		 <property name="testConnectionOnCheckout" value="false" />
+		 <property name="breakAfterAcquireFailure"  value="true"/>  
+         <property name="acquireRetryAttempts" value="30"/>
+         <property name="acquireRetryDelay" value="100" />
+     </bean>
 
     <bean id="nativejdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"/>
 
@@ -131,6 +149,36 @@
     </bean>
     <bean id="iBaseDao" class="com.analytic.portal.module.common.dao.impl.BaseDaoImp">
         <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!-- hsbi sessionFactory -->
+     <bean id="sessionFactory_hsbi" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref local="dataSource_hsbi"/>
+        </property>
+        <property name="mappingDirectoryLocations">
+            <list>
+                <value>classpath:/com/analytic/portal/module/**/entity/</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+                <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.current_session_context_class">
+                    org.springframework.orm.hibernate3.SpringSessionContext
+                </prop>
+
+            </props>
+        </property>
+        <property name="lobHandler">
+            <ref bean="oracleLobHandle"/>
+        </property>
+    </bean>
+    <bean id="iBaseDaoHsbi" class="com.analytic.portal.module.common.dao.impl.HsbiBaseDaoImp">
+        <property name="sessionFactory" ref="sessionFactory_hsbi"/>
     </bean>
 
     <bean id="spring" class="com.analytic.portal.common.filter.SpringContextUtil" lazy-init="false"/>

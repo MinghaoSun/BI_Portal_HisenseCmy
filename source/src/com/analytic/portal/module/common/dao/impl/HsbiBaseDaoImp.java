@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import com.analytic.portal.module.report.model.ReportParam;
 import com.analytic.portal.module.report.model.ReportRefreshParam;
+
 import org.hibernate.*;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
@@ -34,7 +35,7 @@ import com.analytic.portal.module.common.dao.IBaseDao;
  * @author Louis
  *
  */
-public class BaseDaoImp extends HibernateDaoSupport implements IBaseDao {
+public class HsbiBaseDaoImp extends HibernateDaoSupport implements IBaseDao {
 
 	@Autowired
 	public void setSessionFactory0(SessionFactory sessionFactory){
@@ -162,6 +163,19 @@ public class BaseDaoImp extends HibernateDaoSupport implements IBaseDao {
 			e.printStackTrace();
 		}
 		return ety;
+	}
+	@Override
+	public List<?> getListBySQL(int nStartRow, int nRowSize, String strSQL, String... strParams){
+		Query query = this.getSession().createSQLQuery(strSQL);
+		for (int j = 0; j < strParams.length; j++) {
+			query.setString(j, strParams[j]);
+		}
+		if (nRowSize > 0 && nStartRow > -1) {
+			query.setFirstResult(nStartRow);
+			query.setMaxResults(nRowSize);
+		}
+		List<?> objList = query.list();
+		return objList;
 	}
 
 	public Object getListBySql(String sql,Class entityClassObj) {
@@ -498,20 +512,6 @@ public class BaseDaoImp extends HibernateDaoSupport implements IBaseDao {
 		Session session = this.getSession();
 		return session.createQuery(hql).setFirstResult(0).setMaxResults(limit).list();
 	
-	}
-
-	@Override
-	public List<?> getListBySQL(int nStartRow, int nRowSize, String strSQL, String... strParams){
-		Query query = this.getSession().createSQLQuery(strSQL);
-		for (int j = 0; j < strParams.length; j++) {
-			query.setString(j, strParams[j]);
-		}
-		if (nRowSize > 0 && nStartRow > -1) {
-			query.setFirstResult(nStartRow);
-			query.setMaxResults(nRowSize);
-		}
-		List<?> objList = query.list();
-		return objList;
 	}
 
 
