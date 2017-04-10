@@ -291,5 +291,7 @@ public interface IBaseDao {
 
     public void executeSqlBindThread(String string);
 
+	List<?> getListBySQL(int nStartRow, int nRowSize, String strSQL, String[] strParams);
+
 
 }

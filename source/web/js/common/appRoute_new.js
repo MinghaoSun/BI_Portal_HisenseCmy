@@ -187,8 +187,7 @@ infopowerWebApp.config(['$routeProvider', '$stateProvider', '$stickyStateProvide
         $.each(unRepeatUserDIYReportMenuId, function (i, item) {
         	var mapView = {};
             mapView['BusinessDIY' + item] = {
-                templateUrl: 'page_new/report/view/'+item+'/index.html',
-                controller: item+'indexCtrl'
+                templateUrl: 'page_new/report/view/'+item+'/index.html'
             };
             console.log(mapView);
             $stateProvider.state('tab.' + item, {
