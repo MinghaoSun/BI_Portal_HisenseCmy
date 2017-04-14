@@ -160,9 +160,9 @@ var getColor = function(occupancy) {
  * 格式化数据
  */
 var formatData = function(data, sum, filed, width, height) {
-	var allWid =document.getElementById("treeTbl").offsetWidth;
     if(!width) {
-        width = allWid * 0.8;
+        width = document.getElementById("treeTbl").offsetWidth *0.95;
+        
     }
     if(!height) {
         height = 300;
@@ -501,7 +501,10 @@ $
 <tr> 
 <td> 
 <div id="data1"> 
- <div style="float: left;width: 80%;height: 100%;border-right: solid 1px;" id="treeTbl">
+<div style="float: left;width: 10%;height: 100%;border-right: solid 1px;">
+
+</div>
+ <div style="float: left;width: 70%;height: 100%;border-right: solid 1px;" id="treeTbl">
 <div class="treemap-box" id="treeMap">
 
 </div>
