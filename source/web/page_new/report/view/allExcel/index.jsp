@@ -502,7 +502,7 @@ $
 <td> 
 <div id="data1"> 
 <div style="float: left;width: 10%;height: 100%;border-right: solid 1px;">
-
+ 
 </div>
  <div style="float: left;width: 70%;height: 100%;border-right: solid 1px;" id="treeTbl">
 <div class="treemap-box" id="treeMap">
