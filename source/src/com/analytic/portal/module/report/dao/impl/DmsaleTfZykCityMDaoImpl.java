@@ -17,10 +17,10 @@ public class DmsaleTfZykCityMDaoImpl implements DmsaleTfZykCityMDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void getReportResultByParam() {
+	public List getReportResultByParam() {
 		String strSQL="select region_ggrp,line_name,sum(sale_qty),sum(sale_amt) from dmsale_tf_zyk_city_m  where brand_name='海信' and ol_typ=0 and dt_month='201601' group by line_name,region_ggrp order by region_ggrp,line_name";
 		List<Object> list=(List<Object>) iBaseDao.getListBySQL(0, 0, strSQL,new String[]{});
-		
+		return list;
 	}
 	
 

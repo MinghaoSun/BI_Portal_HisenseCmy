@@ -1,7 +1,9 @@
 package com.analytic.portal.module.report.dao.interfaces;
 
+import java.util.List;
+
 public interface DmsaleTfZykCityMDao {
 
-	void getReportResultByParam();
+	List getReportResultByParam();
 
 }

@@ -1,5 +1,7 @@
 package com.analytic.portal.module.report.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,9 @@ public class DIYReportServiceImpl implements DIYReportService {
 	private DmsaleTfZykCityMDao dmsaleTfZykCityMDao;
 
 	@Override
-	public void getReportResultByParam() {
-		dmsaleTfZykCityMDao.getReportResultByParam();
+	public List getReportResultByParam() {
+		
+		return dmsaleTfZykCityMDao.getReportResultByParam();
 		
 	}
 
