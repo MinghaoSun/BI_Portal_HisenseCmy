@@ -18,12 +18,12 @@ body {font-size:12px; }
 	stroke-width: 2px;
   }
   
-  .nodeName {
+ .nodeName {
 	fill: white;
 	font-size: 12px;
 	font-family: simsun;
   }
-  .treemap-box {
+ .treemap-box {
 	position: relative;
 }
 .treemap-box .treemap-child {
@@ -142,6 +142,9 @@ var colorConfig = [
         name: 9
     }
 ];
+/**
+ * 获取颜色
+ */
 var getColor = function(occupancy) {
     var color = null;
     for(var i=0; i<colorConfig.length; i++) {
@@ -153,13 +156,16 @@ var getColor = function(occupancy) {
     }
     return color;
 }
-
+/**
+ * 格式化数据
+ */
 var formatData = function(data, sum, filed, width, height) {
+	var allWid =document.getElementById("treeTbl").offsetWidth;
     if(!width) {
-        width = 900;
+        width = allWid * 0.8;
     }
     if(!height) {
-        height = 450;
+        height = 300;
     }
 
     //移除数据为0的元素
@@ -180,7 +186,6 @@ var formatData = function(data, sum, filed, width, height) {
         }); 
     }
 
-    // data = $filter('orderBy')(data, '-' + filed);
 
     if(data.length <= 3) {//小于三个排列一行
     	$.each(data, function(index,item) {
@@ -257,6 +262,9 @@ var formatData = function(data, sum, filed, width, height) {
 
     return data;
 }
+/**
+ *适配手机屏幕
+ */
 var formatPhone = function(data) {
     var total = 0;
     $.each(data, function(item) {
@@ -271,9 +279,133 @@ var formatPhone = function(data) {
         }
     });
 }
-
-var viewDetail = function(areaName){
-	alert(areaName);
+/**
+ * 点击标题查看下一层
+ */
+var viewNext = function(areaName,type){
+	var url = "<%=basePath%>diyreport/testvalue.do";
+	var list;
+	$
+	.ajax({
+		type : "POST",
+		async : false,
+		url : url,
+		data: {areaName:areaName,type:type},
+		success : function(data) { //回调函数，result，返回值
+			var obj = eval('(' + data + ')');
+			list = obj.list;
+			if(list!=null && list.length != 0){
+				createTbl(list,type);
+			}else{
+				alert("没有数据!");
+			}
+		
+		}
+	});
+	
+}
+/**
+ * 根据数据创建图表
+ */
+var createTbl = function(list,type){
+	$("#treeMap").html("");
+	 var areaList = [];
+	 var areaCache = {};
+     var filed = 'sale_num';
+     var sum = {
+    	        sale_num: 0,
+    	        sale_amt: 0
+    	    };
+     $.each(list,function(i,info){
+    	 var treeMapOptions = {
+    		        title : {
+    		            text: '',
+    		        },
+    		        toolbox: {
+    		            show : false,
+    		        },
+    		        calculable : false,
+    		        series : [
+    		            {
+    		                type:'treemap',
+    		                size: ['100%', '100%'],
+    		                itemStyle: {
+    		                    normal: {
+    		                        label: {
+    		                            show: true,
+    		                            formatter: "{b}"
+    		                        },
+    		                        borderWidth: 1
+    		                    },
+    		                    emphasis: {
+    		                        label: {
+    		                            show: false
+    		                        }
+    		                    }
+    		                },
+    		                data: []
+    		            }
+    		        ]
+    		    };
+		var shtml="";
+		if(!areaCache[info.areaId]) {
+            areaCache[info.areaId] = {
+                area_id: info.areaId,
+                area_name: info.areaName,
+                sale_num: 0,
+                sale_amt: 0,
+                options: treeMapOptions,
+                style: {},
+                box: {},
+            }
+            areaList.push(areaCache[info.areaId]); 
+        }
+		console.log(areaCache[info.areaId])
+		areaCache[info.areaId].sale_num = parseInt(areaCache[info.areaId].sale_num)+parseInt(info.sale_num);
+        areaCache[info.areaId].sale_amt = parseInt(areaCache[info.areaId].sale_amt)+parseInt(info.sale_amt);
+		
+        var s = {
+                name: info.productName ? info.productName : '未知',
+                value: parseInt(info[filed]),
+                hisenseValue: info.hisense_sale_num,
+                data: info
+            };
+        s.occupancy = s.hisenseValue * 100 / s.value;
+        if(!s.occupancy) {
+            s.occupancy = 0;
+        }
+        s.itemStyle = {
+                normal: {
+                    color: getColor(s.occupancy).color
+                }
+            }
+        	
+        	  areaCache[info.areaId].options.series[0].data.push(s);
+              formatPhone(areaCache[info.areaId].options.series[0].data);
+        	  sum.sale_num = parseInt(sum.sale_num) + parseInt(info.sale_num);
+       		  sum.sale_amt = parseInt(sum.sale_amt) + parseInt(info.sale_amt);
+	});
+	var result = formatData(areaList,sum,filed);
+	$.each(result,function(j,obj){
+		if(type=='country'){
+			shtml = '<div class="treemap-child"><div style="width:100%;height:100%;background-color:#00BFFF;text-align: center;" onclick="viewNext(\''+obj.area_name+'\',\'area\')"><a href="javascript:void(0)" style="color:black;font-weight:bold;">'+obj.area_name+''+
+			'</a></div><div style="width:'+obj.style.width+'px;height:'+obj.style.height+'px;" id="'+obj.area_id+'" onclick=""></div></div>';
+		}
+		if(type=='area'){
+			shtml = '<div class="treemap-child"><div style="width:100%;height:100%;background-color:#00BFFF;text-align: center;" onclick="viewNext(\''+obj.area_name+'\',\'city\')"><a href="javascript:void(0)" style="color:black;font-weight:bold;">'+obj.area_name+''+
+			'</a></div><div style="width:'+obj.style.width+'px;height:'+obj.style.height+'px;" id="'+obj.area_id+'"></div></div>';
+		}
+		if(type=='city'){
+			shtml = '<div class="treemap-child"><div style="width:100%;height:100%;background-color:#00BFFF;text-align: center;")"><a href="javascript:void(0)" style="color:black;font-weight:bold;">'+obj.area_name+''+
+			'</a></div><div style="width:'+obj.style.width+'px;height:'+obj.style.height+'px;" id="'+obj.area_id+'"></div></div>';
+		}
+		
+		$("#treeMap").append(shtml);
+		var chartContainer = document.getElementById(obj.area_id);  
+    //加载图表  
+    var myChart = echarts.init(chartContainer);  
+    myChart.setOption(obj.options);  
+	});
 	
 }
 $(document).ready(function() 
@@ -326,94 +458,11 @@ $
 	success : function(data) { //回调函数，result，返回值
 		var obj = eval('(' + data + ')');
 		list = obj.list;
-		 var areaList = [];
-		 var areaCache = {};
-         var filed = 'sale_num';
-         var sum = {
-        	        sale_num: 0,
-        	        sale_amt: 0
-        	    };
-         list.map(function(info){
-        	 var treeMapOptions = {
-        		        title : {
-        		            text: '',
-        		        },
-        		        toolbox: {
-        		            show : false,
-        		        },
-        		        calculable : false,
-        		        series : [
-        		            {
-        		                type:'treemap',
-        		                size: ['100%', '100%'],
-        		                itemStyle: {
-        		                    normal: {
-        		                        label: {
-        		                            show: true,
-        		                            formatter: "{b}"
-        		                        },
-        		                        borderWidth: 1
-        		                    },
-        		                    emphasis: {
-        		                        label: {
-        		                            show: false
-        		                        }
-        		                    }
-        		                },
-        		                data: []
-        		            }
-        		        ]
-        		    };
-			var shtml="";
-			if(!areaCache[info.areaId]) {
-                areaCache[info.areaId] = {
-                    area_id: info.areaId,
-                    area_name: info.areaName,
-                    sale_num: 0,
-                    sale_amt: 0,
-                    options: treeMapOptions,
-                    style: {},
-                    box: {},
-                }
-                areaList.push(areaCache[info.areaId]); 
-                debugger;
-            }
-			console.log(areaCache[info.areaId])
-			areaCache[info.areaId].sale_num = parseInt(areaCache[info.areaId].sale_num)+parseInt(info.sale_num);
-            areaCache[info.areaId].sale_amt = parseInt(areaCache[info.areaId].sale_amt)+parseInt(info.sale_amt);
-			
-            var s = {
-                    name: info.productName ? info.productName : '未知',
-                    value: parseInt(info[filed]),
-                    hisenseValue: info.hisense_sale_num,
-                    data: info
-                };
-            s.occupancy = s.hisenseValue * 100 / s.value;
-            if(!s.occupancy) {
-                s.occupancy = 0;
-            }
-            s.itemStyle = {
-                    normal: {
-                        color: getColor(s.occupancy).color
-                    }
-                }
-            	
-            	  areaCache[info.areaId].options.series[0].data.push(s);
-                  formatPhone(areaCache[info.areaId].options.series[0].data);
-            	  sum.sale_num = parseInt(sum.sale_num) + parseInt(info.sale_num);
-           		  sum.sale_amt = parseInt(sum.sale_amt) + parseInt(info.sale_amt);
-		});
-         console.log(areaList)
-		var result = formatData(areaList,sum,filed);
-		$.each(result,function(j,obj){
-   		shtml = '<div class="treemap-child"><div style="width:100%;height:100%;background-color:blue;text-align: center;" onclick="viewDetail(\''+obj.area_name+'\')"><a href="javascript:void(0)">'+obj.area_name+''+
-   		'</a></div><div style="width:'+obj.style.width+'px;height:'+obj.style.height+'px;" id="'+obj.area_id+'"></div></div>';
-   		$("#treeMap").append(shtml);
-   		var chartContainer = document.getElementById(obj.area_id);  
-        //加载图表  
-        var myChart = echarts.init(chartContainer);  
-        myChart.setOption(obj.options);  
-		});
+		if(list!=null && list.length != 0){
+			createTbl(list,"country");
+		}else{
+			alert("没有数据!");
+		}
 		
 	}
 });
@@ -452,12 +501,12 @@ $
 <tr> 
 <td> 
 <div id="data1"> 
- <div style="float: left;width: 100%;height: 100%;border-right: solid 1px;">
+ <div style="float: left;width: 80%;height: 100%;border-right: solid 1px;" id="treeTbl">
 <div class="treemap-box" id="treeMap">
 
 </div>
 </div> 
-<div  style="float: left;width: 0%;height: 100%;">
+<div  style="float: left;width: 20%;height: 100%;">
 <table style="width: 100%;height: 100%;" cellpadding="0" cellspacing="0">
 <tr>
 	<td>区域:</td><td><input type="text" id="area"/></td>
