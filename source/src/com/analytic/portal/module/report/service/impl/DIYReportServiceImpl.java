@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.analytic.portal.module.report.dao.interfaces.DmsaleTfZykCityMDao;
 import com.analytic.portal.module.report.service.interfaces.DIYReportService;
+import com.analytic.portal.module.report.vo.QPLDIYReportVO;
 
 /**
  * @description 自主设计报表Service接口实现类
@@ -20,9 +21,9 @@ public class DIYReportServiceImpl implements DIYReportService {
 	private DmsaleTfZykCityMDao dmsaleTfZykCityMDao;
 
 	@Override
-	public List getReportResultByParam() {
-		
-		return dmsaleTfZykCityMDao.getReportResultByParam();
+	public List<QPLDIYReportVO> getReportResultByParam() {
+		//2016年1月份所有大区的线下销售额情况
+		return dmsaleTfZykCityMDao.getReportResultByParam(null,null,"201601","0","0");
 		
 	}
 

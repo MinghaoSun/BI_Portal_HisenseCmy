@@ -1,6 +1,7 @@
 package com.analytic.portal.module.report.service.interfaces;
 
 import java.util.List;
+import com.analytic.portal.module.report.vo.QPLDIYReportVO;
 
 /**
  * @description 自主设计报表Service接口
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface DIYReportService {
 
-	List getReportResultByParam();
+	
+	List<QPLDIYReportVO> getReportResultByParam();
 
 }
