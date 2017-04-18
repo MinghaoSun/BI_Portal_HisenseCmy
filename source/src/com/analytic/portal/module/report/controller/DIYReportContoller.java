@@ -1,6 +1,5 @@
 package com.analytic.portal.module.report.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,20 +7,16 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.analytic.portal.module.common.controller.BaseController;
 import com.analytic.portal.module.report.model.AllExcelInfo;
 import net.sf.json.JSONObject;
 import com.analytic.portal.module.report.service.interfaces.DIYReportService;
-import com.analytic.portal.module.report.vo.AllTypeVO;
 import com.analytic.portal.module.report.vo.AlltypeDIYReportVO;
 import com.analytic.portal.module.report.vo.AlltypeParam;
-import com.analytic.portal.module.report.vo.D3VO;
 
 @Controller
 @RequestMapping("/diyreport")
@@ -240,21 +235,6 @@ public class DIYReportContoller extends BaseController {
 		out.flush();
 		out.close();
 	}
-	@RequestMapping("/testvalue")
-	public void testValue2(HttpServletRequest request ,HttpServletResponse response) throws IOException{
-		List<AllTypeVO> vo=dIYReportService.getReportResultByParam();
-		Map<String, Object> map=new HashMap<String,Object>();
-		map.put("list", vo);
-		writerJSON(map, response);
-		/*JSONObject jo = JSONObject.fromObject(map);
-		String json = jo.toString();
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.write(json);
-		out.flush();
-		out.close();*/
-	}
 	/**
 	 * @description 获取全品类VO
 	 * @param param
@@ -298,5 +278,4 @@ public class DIYReportContoller extends BaseController {
 		AlltypeDIYReportVO vo=dIYReportService.getAllTypeResult(param);
 		writerJSON(vo, responses);
 	}
-
 }

@@ -188,7 +188,6 @@ infopowerWebApp.config(['$routeProvider', '$stateProvider', '$stickyStateProvide
         	var mapView = {};
             mapView['BusinessDIY' + item] = {
                 templateUrl: 'page_new/report/view/'+item+'/index.jsp'
-                
             };
             console.log(mapView);
             $stateProvider.state('tab.' + item, {
