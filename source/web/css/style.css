@@ -27,9 +27,9 @@ a{cursor:pointer;}
 }
 
 .login-box-body1 {
-	max-width: 700px;
+	max-width: 400px;
 	margin:auto;
-	margin-top:98px;
+	margin-top:90px;
 	position:relative !important ;
 }
 
@@ -42,14 +42,16 @@ a{cursor:pointer;}
 }
 
 .login-form {
-	float: left;
+	/* float: left;
 	margin-left:70px;
-	width: 320px;
+	width: 320px; */
+	height: 300px;
 	background: #fff;
-	padding: 25px 15px 15px;
+	padding: 50px 35px 15px 10px;
 	box-sizing: border-box;
-	border: 8px solid rgba(82,201,203,0.5);
+	border: 5px solid rgba(82,201,203,0.5);
 	border-radius: 3px;
+	border-bottom-color: #367fa9;
 	/*position: absolute;
 	top: -80px;right: 0;*/
 }

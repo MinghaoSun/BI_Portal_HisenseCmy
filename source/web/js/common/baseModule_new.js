@@ -353,7 +353,6 @@ baseModule.controller('baseCtrl', ['$scope', '$http',
         }
         $scope.createLeftMenu = function () {
             //$(".sidebar-menu").empty();
-            debugger;
             $scope.getApi('sysMenu/getMenuHierarchyListByUserId.do', {}, function (data) {
                 //$scope.datas = data;
                 console.log(data)

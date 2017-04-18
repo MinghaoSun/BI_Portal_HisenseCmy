@@ -21,11 +21,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8"/>
-    <title>海信集团报表门户</title>
+    <title>渠道信息化展示平台</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="assets/global/plugins/googleapis.css" rel="stylesheet" type="text/css"/>
     <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -81,8 +82,15 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" href="static/css/globalParameterSetting/BootSideMenu.css">
     <!--todo css end-->
     <!-- 内部css覆盖 -->
+    <!-- 轮播图片拉伸 -->
     <style type="text/css">
      .dropdown-menu{font-family:"microsoft yahei", "times new roman", Helvetica, Arial, sans-serif;}
+     .carousel-inner > .item > a > img, .carousel-inner > .item > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    line-height: 1;
+    }
     </style>
 </head>
 <body id="pageBody"
@@ -93,9 +101,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
-        <div class="page-logo">
+        <div class="page-logo" style="padding-left: 0px;padding-right: 5px">
             <a>
-                <img src="assets/layouts/layout2/img/logo-default.png" alt="logo" class="logo-default"/>
+                <img src="assets/layouts/layout2/img/logo-default.png" alt="logo" class="logo-default" style="margin: 0 0 0 0; width: 175px"/>
             </a>
             <div id="sidebarToggerId" class="menu-toggler sidebar-toggler " onclick="cutChangeClicked(this)">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -110,8 +118,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="page-top">
             <!-- END HEADER SEARCH BOX -->
             <!-- BEGIN TOP NAVIGATION MENU -->
-            <div style="float:left;padding-top: 10px;padding-left: 16px;">
-                <img src="assets/layouts/layout2/img/logo-title.png" height="19px" width="292px">
+            <div style="float:left;padding-left: 16px;">
+                <img src="assets/layouts/layout2/img/logo-title.png" height="50px" width="220px">
             </div>
             <div class="top-menu" style="z-index:999">
 
@@ -122,8 +130,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar2">
                         <a href="javascript:;" class="dropdown-toggle" title="全屏显示" onclick="fullScreenClick()"
                            data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <i class="icon-screen-desktop" ></i>
-                            <!--<span class="badge badge-default"> 3 </span>-->
+                            <!--<i class="icon-screen-desktop" ></i>-->
+                            <img style="width: 20px;" src="assets/layouts/layout2/img/fullscreen.png">
                         </a>
                         <ul></ul>
                     </li>
@@ -131,14 +139,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         id="header_notification_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
-                            <i class="icon-bell" ></i>
+                            <!--<i class="icon-bell" ></i>-->
+                            <img style="width: 20px;" src="assets/layouts/layout2/img/mainpage.png">
                         </a>
                         <ul></ul>
                     </li>
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;"  class="dropdown-toggle"
                            data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" class="img-circle" src="assets/layouts/layout2/img/avatar.png"/>
+                            <img style="width: 20px;height: 20px;margin-top: 3px;" class="img-circle" src="assets/layouts/layout2/img/avatar.png"/>
                             <!--<span class="username username-hide-on-mobile">{{i18n('page_index_lbl_current_user')}}：{{loginUser.loginName}} </span>-->
                             <span class="username username-hide-on-mobile">{{loginUser.loginName}}</span>
                             <i class="fa fa-angle-down" ></i>
@@ -159,8 +168,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
-                            <i class="icon-settings" ></i>
-                            <!--<span class="badge badge-default"> 3 </span>-->
+                            <!--<i class="icon-settings" ></i>-->
+                            <img style="width: 20px;" src="assets/layouts/layout2/img/setting.png">
                         </a>
                         <!--<ul class="dropdown-menu extended tasks">-->
                         <ul class="dropdown-menu dropdown-menu-default" style="min-width: 160px;max-width: 210px;">
@@ -204,6 +213,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </ul>
                             </li>
                         </ul>
+                    </li>
+                    <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_exit">
+                        <a href="javascript:;" class="dropdown-toggle" title="退出" onclick="fullScreenClick()"
+                           data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <!--<i class="icon-screen-desktop" ></i>-->
+                            <img style="width: 20px;" src="assets/layouts/layout2/img/layout.png">
+                        </a>
+                        <ul></ul>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
@@ -396,7 +413,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/global/plugins/excanvas.min.js"></script>-->
 
 <!-- BEGIN CORE PLUGINS -->
-<script type="text/javascript" src="js/d3/d3.v4.0.0-alpha.35.min.js"></script>
+<script type="text/javascript" src="js/d3/d3.v3.min.js"></script>
 <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
@@ -483,7 +500,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="page_new/system/controller/sysDefaultReportSettingController.js"></script>
 <script type="text/javascript" src="page_new/system/controller/sysRefreshParameterSettingController.js"></script>
 <script type="text/javascript" src="page_new/report/view/abcddddee/indexController.js"></script>
-<script type="text/javascript" src="js/echarts2/echarts2.js"></script>
+<script type="text/javascript" src="js/echarts2/echarts-all.js"></script>
 <!--数据角色-参数值关联数据维度设置-->
 <script src="static/js/paramRelateData/tableExport.js"></script>
 <script src="static/js/paramRelateData/jquery.base64.js"></script>
@@ -497,10 +514,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="static/js/main/main.js"></script>
 
 <!-- highcharts -->
-<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<!-- <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
 <script src="https://img.hcharts.cn/highcharts/modules/heatmap.js"></script>
 <script src="https://img.hcharts.cn/highcharts/modules/treemap.js"></script>
-<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script> -->
 <!-- d3 -->
 <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
 <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->

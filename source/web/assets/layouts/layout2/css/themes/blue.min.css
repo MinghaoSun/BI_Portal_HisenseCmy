@@ -1,10 +1,10 @@
 .page-header.navbar .page-logo {
-    background: #019fa2;
+    background:rgba(1,166,170,1);
 }
 
 .page-header.navbar .page-top {
     box-shadow: 0 1px 10px 0 rgba(50, 50, 50, .2);
-    background: #fff
+    background: rgba(37,53,76,1);
 }
 
 .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover {

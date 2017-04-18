@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.analytic.portal.module.common.dao.IBaseDao;
 import com.analytic.portal.module.report.dao.interfaces.DmsaleTfZykCityMDao;
+import com.analytic.portal.module.report.vo.AlltypeParam;
 import com.analytic.portal.module.report.vo.QPLDIYReportVO;
 @Repository("dmsaleTfZykCityMDao")
 public class DmsaleTfZykCityMDaoImpl implements DmsaleTfZykCityMDao{
@@ -111,6 +112,7 @@ public class DmsaleTfZykCityMDaoImpl implements DmsaleTfZykCityMDao{
 					 vo.setOccup(occupy.toString()+"%");
 					 vo.setLmoccuppercent(lmoccupy.toString()+"%");
 					 vo.setLymoccuppercent(lymoccupy.toString()+"%");
+					 vo.setTotalamt(amt2.toString());
 					
 				 }else{
 					 //qty
@@ -123,6 +125,7 @@ public class DmsaleTfZykCityMDaoImpl implements DmsaleTfZykCityMDao{
 					 vo.setOccup(occupy.toString()+"%");
 					 vo.setLmoccuppercent(lmoccupy.toString()+"%");
 					 vo.setLymoccuppercent(lymoccupy.toString()+"%");
+					 vo.setTotalnum(qty2.toString());
 				 }
 				 break;
 			 }
@@ -131,5 +134,81 @@ public class DmsaleTfZykCityMDaoImpl implements DmsaleTfZykCityMDao{
 		 resultList.add(vo);
 		}
 		return resultList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object> getReportResultByParam(AlltypeParam param, String brand) {
+		String areaName=param.getAreaName(); //大区
+		String centerName=param.getCenterName(); //营销中心
+		String proName=param.getProName(); //省份
+	 	String date=param.getYm(); //年月
+	 	String queryLat=param.getQueryLat();//查询类型（0地理纬度1竞争纬度）
+	 	String tblType=param.getTblType();//0月报1周报
+	 	String olType=param.getOlType();
+	 	List<String> params=new ArrayList<String>();
+	 	//拼接SQL
+	 	StringBuffer strSQL=new StringBuffer("select ");
+	 	String groupAndOrder="";
+	 	if(StringUtils.isBlank(areaName)){
+	 		strSQL.append("region_ggrp,");
+	 		groupAndOrder=" group by line_name,region_ggrp order by region_ggrp,line_name";
+	 	}else{
+	 		if("0".equals(queryLat)){
+		 		//地理纬度
+		 		if(StringUtils.isBlank(proName)){
+		 			strSQL.append("prov,");
+		 			groupAndOrder=" group by line_name,prov order by prov,line_name";
+		 		}else{
+		 			strSQL.append("city_name,");
+		 			groupAndOrder=" group by line_name,city_name order by city_name,line_name";
+		 		}
+	 		}else{
+	 			if(StringUtils.isBlank(centerName)){
+	 				strSQL.append("markt_center,");
+	 				groupAndOrder=" group by line_name,markt_center order by markt_center,line_name";
+	 			}else{
+	 				strSQL.append("city_name,");
+	 				groupAndOrder=" group by line_name,city_name order by city_name,line_name";
+	 			}
+	 		}
+	 		
+	 	}
+	 	strSQL.append("line_name,sum(sale_qty)as qty,sum(sale_amt) as amt,sum(sale_lm_qty) as lmqty,sum(sale_lm_amt) as lmamt,sum(sale_lym_qty) as lymqty,sum(sale_lym_amt) as lymamt from ");
+	 	if("1".equals(tblType)){
+	 		strSQL.append("dmsale_tf_zyk_city_w where 1=1 and dt_week=? ");
+	 		params.add(date);
+	 	}else{
+	 		strSQL.append("dmsale_tf_zyk_city_m where 1=1 and dt_month=? ");
+	 		params.add(date);
+	 	}
+	 	if("hisense".equals(brand)){
+	 		strSQL.append("and brand_name='海信' ");
+	 	}
+	 	strSQL.append("and ol_typ=? ");//类型线上线下
+	 	params.add(olType);
+	 	if(StringUtils.isNotBlank(areaName)){
+	 		strSQL.append("and region_ggrp=? ");
+	 		params.add(areaName);
+	 	}
+	 	if("0".equals(queryLat)){
+	 		//地理纬度
+	 		if(StringUtils.isNotBlank(proName)){
+	 			strSQL.append("and prov=? ");
+	 			params.add(proName);
+	 		}
+	 		
+	 	}else{
+	 		//竞争纬度
+	 		//markt_center
+	 		if(StringUtils.isNotBlank(centerName)){
+	 			strSQL.append("and markt_center=? ");
+	 			params.add(centerName);
+	 		}
+	 	}
+	 	strSQL.append(groupAndOrder);
+	 	System.out.println("strSql="+strSQL);
+	 	List<Object> list=(List<Object>) iBaseDao.getListBySQL(0, 0, strSQL.toString(),(String[])params.toArray(new String[params.size()]));
+		return list;
 	}
 }

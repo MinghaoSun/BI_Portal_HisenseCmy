@@ -1,58 +1,154 @@
-<!DOCTYPE html>  
-<head>  
-<meta charset="utf-8">  
-<title>testD3-33-paddingTree.html</title>  
-<style>  
-  
-.node {  
-  border: solid 1px white;  
-  font: 10px sans-serif;  
-  line-height: 12px;  
-  overflow: hidden;  
-  position: absolute;  
-  text-indent: 2px;  
-}  
-  
-</style>  
-</head>  
-<body>  
-<script type="text/javascript">  
-var width = 960,  
-    height = 500;  
-  
-var color = d3.scale.category20c();//20种颜色  
-  
-//(1)填充树  
-var treemap = d3.layout.treemap()//使用递归的空间分割来显示节点的树。  
-    .size([width, height])//指定x和y的布局大小。  
-    .padding(4)//指定一个父及其子之间的填充。  
-    .value(function(d) { //获取或设置树形细胞的大小。  
-    return d.size/2;   
-    });  
-      
-//(2)设置每个树细胞用div存放  
-var div = d3.select("body").append("div")  
-    .style("position", "relative")//位置相依，作用没看出来？  
-    .style("width", width + "px")  
-    .style("height", height + "px");  
-//(3)设置每个树细胞各个属性  
-d3.json("http://localhost:8080/spring/D3data/paddingTree.json",   
-    function(error, root) {  
-  div.selectAll(".node")  
-      .data(treemap.nodes(root))//计算树形布局和返回节点的数组。  
-    .enter().append("div")  
-      .attr("class", "node")  
-      .style("left", function(d) { return d.x + "px"; })  
-      .style("top", function(d) { return d.y + "px"; })  
-      .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })  
-      .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; })  
-        
-      .style("background", function(d) { //只为有孩子的节点赋值，也就是说叶子节点的背景颜色都是他爸爸的颜色  
-        return d.children ? color(d.name) : null;   
-      })  
-      .text(function(d) { //同理，孩子设置文字，爸爸没有  
-        return d.children ? null : d.name;   
-      });  
-});  
-</script>  
-</body>  
+<html>
+<head>
+    <title>Treemap with Wrapping and Truncated Labels</title>
+    <meta charset="utf-8">
+    <!-- poor man's browser detection -->
+    <!--[if IE]><script type="text/javascript">window['isIE'] = true;</script><![endif]-->
+ 
+    <style type="text/css">
+        html, body {
+            overflow: hidden;
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica;
+        }
+        rect {
+            fill: none;
+            stroke: #FFFFFF;
+        }
+        .labelbody {
+            margin: 2px;
+            background-color:transparent;
+        }
+        .foreignObject {
+            font: 9px sans-serif;
+            text-overflow: ellipsis;
+            text-align: left;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+<div id="chart"></div>
+ 
+ <p>
+<button onclick="switchData('http://localhost:8080/diyreport/testvalue.do')">Show: "Adaptive to What?"</button>
+<button onclick="switchData('http://localhost:8080/diyreport/testvalue.do')">Show: "Adapting What?"</button>
+</p>
+
+<script type="text/javascript">
+    var w = 1000;
+    var h = 500;
+    var paddingAllowance = 2;
+    var color = d3.scale.category20c();
+ 
+    var treemap = d3.layout.treemap()
+        .size([w, h])
+        .padding([20, 4, 4, 4])
+        .value(function(d) {
+            return d.value;
+        });
+ 
+    var svg = d3.select("#chart").append("svg")
+        .style("position", "relative")
+        .style("width", w + "px")
+        .style("height", h + "px")
+        .append("g")
+        .attr("transform", "translate(-.5,-.5)");
+ 
+ function switchData(dataFn) {
+	d3.select("svg").remove();
+	
+	treemap = d3.layout.treemap()
+        .size([w, h])
+        .padding([20, 4, 4, 4])
+        .value(function(d) {
+            return d.value;
+        });
+		
+	svg = d3.select("#chart").append("svg")
+        .style("position", "relative")
+        .style("width", w + "px")
+        .style("height", h + "px")
+        .append("g")
+        .attr("transform", "translate(-.5,-.5)");
+		
+	drawTreemap(dataFn);
+}
+function drawTreemap(datFn01) {
+    d3.json(datFn01, function(json) {
+        var cell = svg.data([json]).selectAll("g")
+            .data(treemap)
+            .enter().append("g")
+            .attr("class", "cell")
+            .attr("transform", function(d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+ 
+        cell.append("rect")
+            .attr("width", function(d) {
+                return d.dx;
+            })
+            .attr("height", function(d) {
+                return d.dy;
+            })
+            .style("fill", function(d) {
+                return d.children ? '#444d5e' : color(d.value);
+            });
+ 
+        if (window['isIE']) { // IE sucks so you have to manually truncate the labels here
+            cell.append("text")
+                .attr("class", "foreignObject")
+                .attr("transform", "translate(3, 13)")
+                .text(function(d) {
+                    return (d.dy < 16 ? "" : d.name);
+                })
+                .filter(function(d) {
+                    d.tw = this.getComputedTextLength();
+                    return d.dx < d.tw;
+                })
+                .each(function(d) { // ridiculous routine where we test to see if label is short enough to fit
+                    var proposedLabel = d.name;
+                    var proposedLabelArray = proposedLabel.split('');
+                    while (d.tw > d.dx && proposedLabelArray.length) {
+                        // pull out 3 chars at a time to speed things up (one at a time is too slow)
+                        proposedLabelArray.pop(); proposedLabelArray.pop(); proposedLabelArray.pop();
+                        if (proposedLabelArray.length===0) {
+                            proposedLabel = "";
+                        } else {
+                            proposedLabel = proposedLabelArray.join('') + "..."; // manually truncate with ellipsis
+                        }
+                        d3.select(this).text(proposedLabel);
+                        d.tw = this.getComputedTextLength();
+                    }
+                });
+        } else {
+            // normal browsers use these labels; using foreignObject inside SVG allows use of wrapping text inside
+            // divs rather than less-flexible svg-text labels
+            cell.append("foreignObject")
+                .attr("class", "foreignObject")
+                .attr("width", function(d) {
+                    return d.dx - paddingAllowance;
+                })
+                .attr("height", function(d) {
+                    return d.dy - paddingAllowance;
+                })
+                .append("xhtml:body")
+                .attr("class", "labelbody")
+                .append("div")
+                .attr("class", "label")
+                .text(function(d) {
+                    return d.name;
+                })
+                .attr("text-anchor", "middle")
+        }
+    });
+}
+ 
+</script>
+
+<script type="text/javascript">
+drawTreemap('http://localhost:8080/diyreport/testvalue.do');
+</script>
+
+</body>
+</html>

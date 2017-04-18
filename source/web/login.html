@@ -6,8 +6,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>海信集团报表门户</title>
-
+    <title>渠道信息化展示平台</title>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/adminx.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/skins/_all-skins.min.css"/>
@@ -25,10 +25,7 @@
 <body class="hold-transition skin-blue-light login-pagebg" id="Loginbody" style="overflow-y: hidden">
 <div class="login-box1">
     <div class="login-box-body1">
-        <div class="login-logo1">
-            <h1>BI Portal</h1>
-            海信集团报表系统
-        </div>
+    <div style="color: white;font-size: 30px;padding-bottom: 30px;padding-left: 60px;font-family: 黑体">渠道信息化展示平台</div>
         <div class="login-form">
             <form novalidate action="sysUsers/userLogin.do" method="post" id="loginForm">
                 <div class="form-group row">
@@ -80,20 +77,17 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>&nbsp;</label>
-                    </div>
-                    <div class="col-md-9 login-btn-box">
-                        <input type="submit" class="btn btn-primary btn-fixwidth"
+                <div class="row" style="padding-left: 20px;">
+                    <div class="col-md-12 login-btn-box">
+                        <input type="submit" class="btn btn-primary btn-fixwidth" style="background-color: #367fa9;"
                                value="{{i18n('page_login_btn_login')}}"/>
                         <input type="reset" id="btnReset" class="btn btn-primary btn-fixwidth"
                                value="{{i18n('page_login_btn_reset')}}"/>
                     </div>
                 </div>
                 <div class="row" >
-                    <div style="margin-top:6px">
-                        <label style="margin-left:88px;margin-bottom:0px;font-size:10px;color:#A9A9A9;font-weight: normal;font-family: inherit">用户名和密码与邮箱一致</label>
+                    <div style="margin-top:12px">
+                        <label style="margin-left:120px;margin-bottom:0px;font-size:10px;color:#A9A9A9;font-weight: normal;font-family: inherit">用户名和密码与邮箱一致</label>
                     </div>
                 </div>
             </form>
